@@ -5,9 +5,23 @@
 #ifndef BIOLOOG_READFROMFILE_H
 #define BIOLOOG_READFROMFILE_H
 
+#include <string>
+
 namespace readFromFile {
 
-    int readFromFile(int path);
+    const std::string pathSeparator =
+#ifdef _WIN32
+            "\\";
+#else
+    "/";
+#endif
+
+    std::string const defaultInputFilePath = ".." +
+            pathSeparator + ".." +
+            pathSeparator + "inputFiles" +
+            pathSeparator;
+
+    void readFromFile(std::string const& path, std::string& result);
 
 };
 
