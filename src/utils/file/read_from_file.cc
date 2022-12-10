@@ -2,7 +2,6 @@
 // Created by Stefano on 11/23/2022.
 //
 
-#include <fstream>
 #include "read_from_file.h"
 
 namespace read_from_file {

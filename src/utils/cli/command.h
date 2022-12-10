@@ -10,15 +10,15 @@
 #define BIOLOOG_SRC_UTILS_CLI_COMMANDS_H_
 namespace cli {
 enum Command {
-  CountNucleotides,
+  CountNucleotidesCommand,
   InvalidCommand
 };
 
 static std::unordered_map<std::string, Command> const command_table = {
-    {"count_nucleotides", Command::CountNucleotides}
+    {"count_nucleotides", Command::CountNucleotidesCommand}
 };
 
-static const Command all_commands[] = {CountNucleotides};
+static const Command all_commands[] = {CountNucleotidesCommand};
 
 std::string CommandToString(Command command);
 

@@ -6,6 +6,8 @@
 #define BIOLOOG_READFROMFILE_H
 
 #include <string>
+#include <fstream>
+#include <iostream>
 
 namespace read_from_file {
 

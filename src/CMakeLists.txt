@@ -9,6 +9,7 @@ set(headers
         utils/file/read_from_file.h
         utils/cli/display_help.h
         utils/cli/command.h
+        utils/cli/count_nucleotides.h
         DNA/count_nucleotides.h
         )
 
@@ -17,6 +18,7 @@ set(sources
         utils/file/read_from_file.cc
         utils/cli/display_help.cc
         utils/cli/command.cc
+        utils/cli/count_nucleotides.cc
         DNA/count_nucleotides.cc
         )
 
@@ -24,6 +26,7 @@ set(testLib
         utils/file/read_from_file.cc
         utils/cli/display_help.cc
         utils/cli/command.cc
+        utils/cli/count_nucleotides.cc
         DNA/count_nucleotides.cc
         )
 

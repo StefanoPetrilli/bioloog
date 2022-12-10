@@ -2,12 +2,13 @@
 // Created by Stefano on 12/2/2022.
 //
 
+#include <iostream>
 #include "command.h"
 
 namespace cli {
 std::string CommandToString(Command command) {
   switch (command) {
-    case CountNucleotides:
+    case CountNucleotidesCommand:
       return "count_nucleotides\tTakes a DNA string and returns"
              "the counting of each nucleotides in the format {'A', 'C', 'T', 'G'}";
     default:throw std::domain_error("Unexpected valued encountered.");
