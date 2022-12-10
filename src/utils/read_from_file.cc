@@ -3,7 +3,7 @@
 //
 
 #include <fstream>
-#include "readFromFile.h"
+#include "read_from_file.h"
 
 namespace readFromFile {
 

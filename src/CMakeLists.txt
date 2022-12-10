@@ -6,19 +6,19 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Bstatic,--whole-archi
 add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 
 set(headers
-        utils/readFromFile.h
+        utils/read_from_file.h
         DNA/countNucleotides.h
         )
 
 set(sources
-        main.cpp
-        utils/readFromFile.cpp
-        DNA/countNucleotides.cpp
+        main.cc
+        utils/read_from_file.cc
+        DNA/count-nucleotides.cc
         )
 
 set(testLib
-        utils/readFromFile.cpp
-        DNA/countNucleotides.cpp
+        utils/read_from_file.cc
+        DNA/count-nucleotides.cc
         )
 
 add_executable(bioloog ${headers} ${sources})

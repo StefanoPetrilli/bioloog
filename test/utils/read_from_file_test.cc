@@ -3,7 +3,7 @@
 //
 #include <gtest/gtest.h>
 #include <fstream>
-#include "../../src/utils/readFromFile.h"
+#include "../../src/utils/read_from_file.h"
 
 namespace readFromFileTest {
 

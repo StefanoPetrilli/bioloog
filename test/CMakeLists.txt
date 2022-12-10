@@ -14,11 +14,11 @@ FetchContent_MakeAvailable(googletest)
 
 add_executable(
         MainTest
-        mainTest.cpp
-        ../src/utils/readFromFile.h
-        utils/readFromFileTest.cpp
+        main_test.cc
+        ../src/utils/read_from_file.h
+        utils/read_from_file_test.cc
         ../src/DNA/countNucleotides.h
-        DNA/countNucleotidesTest.cpp)
+        DNA/count_nucleotides_test.cc)
 target_link_libraries(
         MainTest
         src
