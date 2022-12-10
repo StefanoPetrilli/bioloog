@@ -11,7 +11,9 @@ set(headers
         utils/cli/command.h
         utils/cli/count_nucleotides.h
         utils/cli/display_error.h
+        utils/cli/dna_to_rna_transcription.h
         DNA/count_nucleotides.h
+        DNA/dna_to_rna_transcription.h
         )
 
 set(sources
@@ -21,7 +23,9 @@ set(sources
         utils/cli/command.cc
         utils/cli/count_nucleotides.cc
         utils/cli/display_error.cc
+        utils/cli/dna_to_rna_transcription.cc
         DNA/count_nucleotides.cc
+        DNA/dna_to_rna_transcription.cc
         )
 
 set(testLib
@@ -30,7 +34,9 @@ set(testLib
         utils/cli/command.cc
         utils/cli/count_nucleotides.cc
         utils/cli/display_error.cc
+        utils/cli/dna_to_rna_transcription.cc
         DNA/count_nucleotides.cc
+        DNA/dna_to_rna_transcription.cc
         )
 
 add_executable(bioloog ${headers} ${sources})

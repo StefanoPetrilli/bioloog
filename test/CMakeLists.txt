@@ -21,6 +21,9 @@ add_executable(
         utils/cli/command.cc
         ../src/DNA/count_nucleotides.h
         DNA/count_nucleotides_test.cc
+        ../src/DNA/dna_to_rna_transcription.cc
+        DNA/dna_transcription_rna_test.cc
+
 )
 target_link_libraries(
         MainTest

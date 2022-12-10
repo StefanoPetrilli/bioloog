@@ -12,17 +12,19 @@
 namespace cli {
 enum Command {
   CountNucleotidesCommand,
+  DnaToRnaTranscriptionCommand,
   InvalidCommand
 };
 
 static std::unordered_map<std::string, Command> const command_table = {
-    {"count_nucleotides", Command::CountNucleotidesCommand}
+    {"count_nucleotides", Command::CountNucleotidesCommand},
+    {"dna_to_rna_transcription", Command::DnaToRnaTranscriptionCommand}
 };
 
-static const Command all_commands[] = {CountNucleotidesCommand};
+static const Command all_commands[] = {CountNucleotidesCommand, DnaToRnaTranscriptionCommand};
 
 std::string CommandToString(Command command);
 
-Command StringToCommand(std::string string);
+Command StringToCommand(const std::string& string);
 }
 #endif //BIOLOOG_SRC_UTILS_CLI_COMMANDS_H_
