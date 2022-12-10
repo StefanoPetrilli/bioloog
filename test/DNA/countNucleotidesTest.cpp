@@ -5,6 +5,7 @@
 #include "../../src/DNA/countNucleotides.h"
 
 namespace countNucleotidesTest {
+
     TEST(CountNucleotides, Expect_invalid_argument_whenStringContainsInvalidCharacters) {
         EXPECT_THROW(countNucleotides::CountNucleotides("$"), std::invalid_argument) << std::endl;
         EXPECT_THROW(countNucleotides::CountNucleotides("E"), std::invalid_argument) << std::endl;
@@ -12,32 +13,28 @@ namespace countNucleotidesTest {
         EXPECT_THROW(countNucleotides::CountNucleotides("/"), std::invalid_argument) << std::endl;
     }
 
-    TEST(CountNucleotides, Expect_zerosArray_whenStringIsEmpty) {
-        std::array<int, 4> expected = {0, 0, 0, 0};
-        EXPECT_EQ(expected, countNucleotides::CountNucleotides("")) << std::endl;
-    }
+    class CountNucleotidesMultipleParametersTests
+            : public ::testing::TestWithParam<std::tuple<std::string, std::array<int, 4>>> {
+    };
 
-    TEST(CountNucleotides, Expect_CorrectNumberOfA) {
-        std::string input = "AAAAAAAAAA";
-        std::array<int, 4> expected = {10, 0, 0, 0};
-        EXPECT_EQ(expected, countNucleotides::CountNucleotides(input)) << std::endl;
-    }
+    INSTANTIATE_TEST_CASE_P
 
-    TEST(CountNucleotides, Expect_CorrectNumberOfC) {
-        std::string input = "CCCCCCCCCC";
-        std::array<int, 4> expected = {0, 10, 0, 0};
-        EXPECT_EQ(expected, countNucleotides::CountNucleotides(input)) << std::endl;
-    }
+    (
+            Tests,
+            CountNucleotidesMultipleParametersTests,
+            ::testing::Values(
+                    std::make_tuple("", std::array<int, 4>{0, 0, 0, 0}),
+                    std::make_tuple("AAAAAAAAAA", std::array<int, 4>{10, 0, 0, 0}),
+                    std::make_tuple("CCCCCCCCCC", std::array<int, 4>{0, 10, 0, 0}),
+                    std::make_tuple("GGGGGGGGGG", std::array<int, 4>{0, 0, 10, 0}),
+                    std::make_tuple("TTTTTTTTTT", std::array<int, 4>{0, 0, 0, 10})
+            )
+    );
 
-    TEST(CountNucleotides, Expect_CorrectNumberOfG) {
-        std::string input = "GGGGGGGGGG";
-        std::array<int, 4> expected = {0, 0, 10, 0};
-        EXPECT_EQ(expected, countNucleotides::CountNucleotides(input)) << std::endl;
-    }
+    TEST_P(CountNucleotidesMultipleParametersTests, Expect_properCounting) {
+        std::array<int, 4> expected = std::get<1>(GetParam());
+        std::string input = std::get<0>(GetParam());
 
-    TEST(CountNucleotides, Expect_CorrectNumberOfT) {
-        std::string input = "TTTTTTTTTT";
-        std::array<int, 4> expected = {0, 0, 0, 10};
         EXPECT_EQ(expected, countNucleotides::CountNucleotides(input)) << std::endl;
     }
 }
