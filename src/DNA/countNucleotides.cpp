@@ -13,6 +13,18 @@ namespace countNucleotides {
 
         for(char c : DNA) {
             switch (c) {
+                case 'A':
+                    counting[0] ++;
+                    break;
+                case 'C':
+                    counting[1] ++;
+                    break;
+                case 'G':
+                    counting[2] ++;
+                    break;
+                case 'T':
+                    counting[3] ++;
+                    break;
                 default:
                     throw std::invalid_argument("An illegal character was inserted. Only 'A', 'C', 'G' and 'T' accepted.");
             }

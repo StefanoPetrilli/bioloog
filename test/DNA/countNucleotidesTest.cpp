@@ -16,4 +16,28 @@ namespace countNucleotidesTest {
         std::array<int, 4> expected = {0, 0, 0, 0};
         EXPECT_EQ(expected, countNucleotides::CountNucleotides("")) << std::endl;
     }
+
+    TEST(CountNucleotides, Expect_CorrectNumberOfA) {
+        std::string input = "AAAAAAAAAA";
+        std::array<int, 4> expected = {10, 0, 0, 0};
+        EXPECT_EQ(expected, countNucleotides::CountNucleotides(input)) << std::endl;
+    }
+
+    TEST(CountNucleotides, Expect_CorrectNumberOfC) {
+        std::string input = "CCCCCCCCCC";
+        std::array<int, 4> expected = {0, 10, 0, 0};
+        EXPECT_EQ(expected, countNucleotides::CountNucleotides(input)) << std::endl;
+    }
+
+    TEST(CountNucleotides, Expect_CorrectNumberOfG) {
+        std::string input = "GGGGGGGGGG";
+        std::array<int, 4> expected = {0, 0, 10, 0};
+        EXPECT_EQ(expected, countNucleotides::CountNucleotides(input)) << std::endl;
+    }
+
+    TEST(CountNucleotides, Expect_CorrectNumberOfT) {
+        std::string input = "TTTTTTTTTT";
+        std::array<int, 4> expected = {0, 0, 0, 10};
+        EXPECT_EQ(expected, countNucleotides::CountNucleotides(input)) << std::endl;
+    }
 }
