@@ -20,14 +20,14 @@ namespace readFromFileTest {
             std::remove(existentFilePathTest2.c_str());
 
             std::ofstream file(existentFilePathTest2);
-            EXPECT_EQ(file.is_open(), 1) << std::endl;
+            EXPECT_EQ(1, file.is_open()) << std::endl;
             file << expectedStringTest2;
             file.close();
-            EXPECT_EQ(file.is_open(), 0) << std::endl;
+            EXPECT_EQ(0, file.is_open()) << std::endl;
         }
 
         void TearDown() override {
-            EXPECT_EQ( std::remove(existentFilePathTest2.c_str() ), 0) << std::endl;
+            EXPECT_EQ(0, std::remove(existentFilePathTest2.c_str())) << std::endl;
         }
     };
 
@@ -39,6 +39,6 @@ namespace readFromFileTest {
     TEST_F(ReadFromFile, Expect_result_toContainTheContentOfTheFileWhenTheFileExists) {
         std::string result;
         readFromFile::readFromFile(existentFileNameTest2, result);
-        EXPECT_EQ(result, expectedStringTest2) << std::endl;
+        EXPECT_EQ(expectedStringTest2, result) << std::endl;
     }
 }
