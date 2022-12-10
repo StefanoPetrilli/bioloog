@@ -1,13 +1,14 @@
 //
 // Created by Stefano on 12/1/2022.
 //
+
+#ifndef BIOLOOG_SRC_UTILS_CLI_DISPLAY_HELP_H_
+#define BIOLOOG_SRC_UTILS_CLI_DISPLAY_HELP_H_
+
 #include <string>
 #include <iostream>
 
 #include "command.h"
-
-#ifndef BIOLOOG_SRC_UTILS_CLI_DISPLAY_HELP_H_
-#define BIOLOOG_SRC_UTILS_CLI_DISPLAY_HELP_H_
 
 namespace cli {
 

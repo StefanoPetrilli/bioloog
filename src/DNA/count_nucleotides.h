@@ -12,5 +12,4 @@
 namespace count_nucleotides {
 std::array<int, 4> CountNucleotides(std::string const &DNA);
 }
-
 #endif //BIOLOOG_COUNTNUCELOTIDES_H

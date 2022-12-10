@@ -2,12 +2,13 @@
 // Created by Stefano on 12/2/2022.
 //
 
+#ifndef BIOLOOG_SRC_UTILS_CLI_COMMANDS_H_
+#define BIOLOOG_SRC_UTILS_CLI_COMMANDS_H_
+
 #include <string>
 #include <unordered_map>
 #include <stdexcept>
 
-#ifndef BIOLOOG_SRC_UTILS_CLI_COMMANDS_H_
-#define BIOLOOG_SRC_UTILS_CLI_COMMANDS_H_
 namespace cli {
 enum Command {
   CountNucleotidesCommand,
