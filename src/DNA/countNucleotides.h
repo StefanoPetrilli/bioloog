@@ -8,9 +8,8 @@
 #include <array>
 #include <string>
 
-namespace countNucleotides
-{
-    std::array<int, 4> CountNucleotides(std::string const& DNA);
+namespace countNucleotides {
+std::array<int, 4> CountNucleotides(std::string const &DNA);
 }
 
 #endif //BIOLOOG_COUNTNUCELOTIDES_H

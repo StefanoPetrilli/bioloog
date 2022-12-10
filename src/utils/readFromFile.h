@@ -9,19 +9,19 @@
 
 namespace readFromFile {
 
-    const std::string pathSeparator =
+const std::string pathSeparator =
 #ifdef _WIN32
-            "\\";
+    "\\";
 #else
-    "/";
+"/";
 #endif
 
-    std::string const defaultInputFilePath = ".." +
-            pathSeparator + ".." +
-            pathSeparator + "inputFiles" +
-            pathSeparator;
+std::string const defaultInputFilePath = ".." +
+    pathSeparator + ".." +
+    pathSeparator + "inputFiles" +
+    pathSeparator;
 
-    void readFromFile(std::string const& path, std::string& result);
+void readFromFile(std::string const &path, std::string &result);
 
 };
 

@@ -7,17 +7,16 @@
 
 namespace readFromFile {
 
-    void readFromFile(const std::string& path, std::string& result){
+void readFromFile(const std::string &path, std::string &result) {
 
-        std::ifstream file(defaultInputFilePath + path);
+  std::ifstream file(defaultInputFilePath + path);
 
-        if (file.is_open())
-        {
-            getline (file, result, '\x1A');
-            file.close();
-        } else {
-            throw std::invalid_argument("The path does not correspond to a file or the file cannot be accessed");
-        }
-    }
+  if (file.is_open()) {
+    getline(file, result, '\x1A');
+    file.close();
+  } else {
+    throw std::invalid_argument("The path does not correspond to a file or the file cannot be accessed");
+  }
+}
 
 }
