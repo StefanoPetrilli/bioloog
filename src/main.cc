@@ -2,6 +2,7 @@
 #include "cli/count_nucleotides.h"
 #include "cli/display_error.h"
 #include "cli/dna_to_rna_transcription.h"
+#include "cli/rna_to_protein_translation.h"
 
 int main(int argc, char *argv[]) {
 
@@ -12,6 +13,8 @@ int main(int argc, char *argv[]) {
       case cli::Command::CountNucleotidesCommand: cli::CountNucleotides(argv[2]);
         break;
       case cli::Command::DnaToRnaTranscriptionCommand: cli::DnaToRnaTranscription(argv[2]);
+        break;
+      case cli::Command::RnaToDnaTranslationCommand: cli::RnaToProteinTranslation(argv[2]);
         break;
       default: cli::DisplayError();
     }

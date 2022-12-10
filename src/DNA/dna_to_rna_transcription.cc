@@ -5,7 +5,7 @@
 #include "dna_to_rna_transcription.h"
 
 namespace DNA {
-std::string dna_to_rna_transcription(const std::string& dna) {
+std::string DnaToRnaTranscription(const std::string& dna) {
 
   std::string result;
 

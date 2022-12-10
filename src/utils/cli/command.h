@@ -13,15 +13,17 @@ namespace cli {
 enum Command {
   CountNucleotidesCommand,
   DnaToRnaTranscriptionCommand,
-  InvalidCommand
+  InvalidCommand,
+  RnaToDnaTranslationCommand
 };
 
 static std::unordered_map<std::string, Command> const command_table = {
     {"count_nucleotides", Command::CountNucleotidesCommand},
-    {"dna_to_rna_transcription", Command::DnaToRnaTranscriptionCommand}
+    {"dna_to_rna_transcription", Command::DnaToRnaTranscriptionCommand},
+    {"rna_to_protein_translation", Command::RnaToDnaTranslationCommand}
 };
 
-static const Command all_commands[] = {CountNucleotidesCommand, DnaToRnaTranscriptionCommand};
+static const Command all_commands[] = {CountNucleotidesCommand, DnaToRnaTranscriptionCommand, RnaToDnaTranslationCommand};
 
 std::string CommandToString(Command command);
 

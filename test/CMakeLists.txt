@@ -23,6 +23,8 @@ add_executable(
         DNA/count_nucleotides_test.cc
         ../src/DNA/dna_to_rna_transcription.cc
         DNA/dna_transcription_rna_test.cc
+        ../src/DNA/rna_to_protein_translation.cc
+        DNA/rna_to_protein_translation.cc
 
 )
 target_link_libraries(

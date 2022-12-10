@@ -13,6 +13,9 @@ std::string CommandToString(Command command) {
     case DnaToRnaTranscriptionCommand:
       return "dna_to_rna_transcription\tTakes a DNA string and returns"
              "the rna transcription";
+    case RnaToDnaTranslationCommand:
+      return "rna_to_protein_translation\tTakes a RNA string and returns"
+             "the proteins translation";
     default:throw std::domain_error("Unexpected valued encountered.");
   }
 }
