@@ -18,7 +18,7 @@ const std::string pathSeparator =
 
 std::string const defaultInputFilePath = ".." +
     pathSeparator + ".." +
-    pathSeparator + "inputFiles" +
+    pathSeparator + "input_files" +
     pathSeparator;
 
 void ReadFromFile(std::string const &path, std::string &result);

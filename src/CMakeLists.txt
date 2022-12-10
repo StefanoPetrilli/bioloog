@@ -6,18 +6,24 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Bstatic,--whole-archi
 add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 
 set(headers
-        utils/read_from_file.h
+        utils/file/read_from_file.h
+        utils/cli/display_help.h
+        utils/cli/command.h
         DNA/count_nucleotides.h
         )
 
 set(sources
         main.cc
-        utils/read_from_file.cc
+        utils/file/read_from_file.cc
+        utils/cli/display_help.cc
+        utils/cli/command.cc
         DNA/count_nucleotides.cc
         )
 
 set(testLib
-        utils/read_from_file.cc
+        utils/file/read_from_file.cc
+        utils/cli/display_help.cc
+        utils/cli/command.cc
         DNA/count_nucleotides.cc
         )
 

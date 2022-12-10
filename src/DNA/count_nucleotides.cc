@@ -2,7 +2,6 @@
 // Created by Stefano on 11/29/2022.
 //
 
-#include <stdexcept>
 #include "count_nucleotides.h"
 
 namespace count_nucleotides {
