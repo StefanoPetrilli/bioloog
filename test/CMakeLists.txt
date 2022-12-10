@@ -12,22 +12,18 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(
-        MainTest
+set(sources
         main_test.cc
-        ../src/utils/file/read_from_file.h
         utils/file/read_from_file_test.cc
-        ../src/utils/cli/command_test.h
         utils/cli/command_test.cc
-        ../src/utils/input_validation/alphabet_validatort.h
         utils/input_validation/alphabet_validator_test.cc
-        ../src/DNA/count_nucleotides.h
         DNA/count_nucleotides_test.cc
-        ../src/DNA/dna_to_rna_transcription.cc
         DNA/dna_transcription_rna_test.cc
-        ../src/DNA/rna_to_protein_translation.cc
         DNA/rna_to_protein_translation.cc
-)
+        )
+
+add_executable(MainTest ${sources})
+
 target_link_libraries(
         MainTest
         src

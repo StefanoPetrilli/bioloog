@@ -20,7 +20,6 @@ set(headers
         )
 
 set(sources
-        main.cc
         utils/file/read_from_file.cc
         utils/cli/display_help.cc
         utils/cli/command.cc
@@ -34,20 +33,6 @@ set(sources
         DNA/rna_to_protein_translation.cc
         )
 
-set(testLib
-        utils/file/read_from_file.cc
-        utils/cli/display_help.cc
-        utils/cli/command.cc
-        utils/cli/count_nucleotides.cc
-        utils/cli/display_error.cc
-        utils/cli/dna_to_rna_transcription.cc
-        utils/cli/rna_to_protein_translation.cc
-        utils/input_validation/alphabet_validatort.cc
-        DNA/count_nucleotides.cc
-        DNA/dna_to_rna_transcription.cc
-        DNA/rna_to_protein_translation.cc
-        )
-
-add_executable(bioloog ${headers} ${sources})
-add_library(src STATIC ${headers} ${testLib})
+add_executable(bioloog ${headers} main.cc ${sources})
+add_library(src STATIC ${headers} ${sources})
 
