@@ -3,7 +3,7 @@
 //
 #include <gtest/gtest.h>
 
-#include "../../../src/utils/cli/command.h"
+#include "../../../src/utils/cli/command_test.h"
 
 namespace command_test {
 TEST(CommandToString, CommandCountNucleotidesShouldReturnExpectedText) {

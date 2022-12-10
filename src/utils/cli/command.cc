@@ -2,7 +2,7 @@
 // Created by Stefano on 12/2/2022.
 //
 
-#include "command.h"
+#include "command_test.h"
 
 namespace cli {
 std::string CommandToString(Command command) {
