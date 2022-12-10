@@ -1,5 +1,7 @@
 include_directories(utils)
 include_directories(../../src/utils)
+include_directories(DNA)
+include_directories(../../src/DNA)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -15,7 +17,8 @@ add_executable(
         mainTest.cpp
         ../src/utils/readFromFile.h
         utils/readFromFileTest.cpp
-)
+        ../src/DNA/countNucleotides.h
+        DNA/countNucleotidesTest.cpp)
 target_link_libraries(
         MainTest
         src
