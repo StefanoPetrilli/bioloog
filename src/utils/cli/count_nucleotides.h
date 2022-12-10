@@ -6,6 +6,8 @@
 #define BIOLOOG_SRC_UTILS_CLI_COUNT_NUCLEOTIDES_H_
 
 #include <string>
+#include <iostream>
+
 #include "../../src/DNA/count_nucleotides.h"
 #include "../file/read_from_file.h"
 

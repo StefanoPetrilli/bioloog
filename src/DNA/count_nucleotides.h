@@ -9,7 +9,7 @@
 #include <string>
 #include <stdexcept>
 
-namespace count_nucleotides {
+namespace DNA {
 std::array<int, 4> CountNucleotides(std::string const &DNA);
 }
 #endif //BIOLOOG_COUNTNUCELOTIDES_H

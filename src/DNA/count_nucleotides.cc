@@ -4,7 +4,7 @@
 
 #include "count_nucleotides.h"
 
-namespace count_nucleotides {
+namespace DNA {
 std::array<int, 4> CountNucleotides(std::string const &DNA) {
 
   std::array<int, 4> counting = {0, 0, 0, 0};

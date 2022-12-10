@@ -3,21 +3,22 @@
 //
 #include <gtest/gtest.h>
 #include "../../src/DNA/count_nucleotides.h"
+#include "../../src/utils/file/read_from_file.h"
 
 namespace count_nucleotides_test {
 
 TEST(CountNucleotides, Expect_invalid_argument_whenStringContainsInvalidCharacters) {
-  EXPECT_THROW(count_nucleotides::CountNucleotides("$"), std::invalid_argument) << std::endl;
-  EXPECT_THROW(count_nucleotides::CountNucleotides("E"), std::invalid_argument) << std::endl;
-  EXPECT_THROW(count_nucleotides::CountNucleotides("."), std::invalid_argument) << std::endl;
-  EXPECT_THROW(count_nucleotides::CountNucleotides("/"), std::invalid_argument) << std::endl;
+  EXPECT_THROW(DNA::CountNucleotides("$"), std::invalid_argument) << std::endl;
+  EXPECT_THROW(DNA::CountNucleotides("E"), std::invalid_argument) << std::endl;
+  EXPECT_THROW(DNA::CountNucleotides("."), std::invalid_argument) << std::endl;
+  EXPECT_THROW(DNA::CountNucleotides("/"), std::invalid_argument) << std::endl;
 }
 
 class CountNucleotidesMultipleParametersTests
     : public ::testing::TestWithParam<std::tuple<std::string, std::array<int, 4>>> {
 };
 
-INSTANTIATE_TEST_CASE_P
+INSTANTIATE_TEST_SUITE_P
 (
     Tests,
     CountNucleotidesMultipleParametersTests,
@@ -34,6 +35,22 @@ TEST_P(CountNucleotidesMultipleParametersTests, Expect_properCounting) {
   std::array<int, 4> expected = std::get<1>(GetParam());
   std::string input = std::get<0>(GetParam());
 
-  EXPECT_EQ(expected, count_nucleotides::CountNucleotides(input)) << std::endl;
+  EXPECT_EQ(expected, DNA::CountNucleotides(input)) << std::endl;
+}
+
+TEST(CountNucleotidesDatasetTest, Expect_properTranslation) {
+  std::string input, expected;
+
+  read_from_file::ReadFromFile("rosalind_dna_1_dataset.txt", input);
+  read_from_file::ReadFromFile("rosalind_dna_1_output.txt", expected);
+
+  auto result = DNA::CountNucleotides(input);
+
+  std::string output = std::to_string(result[0]) + " " +
+      std::to_string(result[1]) + " " +
+      std::to_string(result[2]) + " " +
+      std::to_string(result[3]);
+
+  EXPECT_EQ(expected, output);
 }
 }
