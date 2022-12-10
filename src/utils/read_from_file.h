@@ -7,7 +7,7 @@
 
 #include <string>
 
-namespace readFromFile {
+namespace read_from_file {
 
 const std::string pathSeparator =
 #ifdef _WIN32
@@ -21,7 +21,7 @@ std::string const defaultInputFilePath = ".." +
     pathSeparator + "inputFiles" +
     pathSeparator;
 
-void readFromFile(std::string const &path, std::string &result);
+void ReadFromFile(std::string const &path, std::string &result);
 
 };
 

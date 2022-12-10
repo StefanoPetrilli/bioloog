@@ -5,9 +5,9 @@
 #include <fstream>
 #include "read_from_file.h"
 
-namespace readFromFile {
+namespace read_from_file {
 
-void readFromFile(const std::string &path, std::string &result) {
+void ReadFromFile(const std::string &path, std::string &result) {
 
   std::ifstream file(defaultInputFilePath + path);
 

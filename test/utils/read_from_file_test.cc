@@ -5,12 +5,12 @@
 #include <fstream>
 #include "../../src/utils/read_from_file.h"
 
-namespace readFromFileTest {
+namespace read_from_file_test {
 
 const std::string nonExistentFileNameTest1 = "Test1ExampleNonExistent";
-const std::string nonExistentFilePathTest1 = readFromFile::defaultInputFilePath + "Test1ExampleNonExtiente";
+const std::string nonExistentFilePathTest1 = read_from_file::defaultInputFilePath + "Test1ExampleNonExtiente";
 const std::string existentFileNameTest2 = "Test1Example";
-const std::string existentFilePathTest2 = readFromFile::defaultInputFilePath + "Test1Example";
+const std::string existentFilePathTest2 = read_from_file::defaultInputFilePath + "Test1Example";
 const std::string expectedStringTest2 = "The file contain this content";
 
 class ReadFromFile : public ::testing::Test {
@@ -33,12 +33,12 @@ class ReadFromFile : public ::testing::Test {
 
 TEST_F(ReadFromFile, Expect_invalid_argument_whenFileDoesNotExist) {
   std::string result;
-  EXPECT_THROW(readFromFile::readFromFile(nonExistentFileNameTest1, result), std::invalid_argument) << std::endl;
+  EXPECT_THROW(read_from_file::ReadFromFile(nonExistentFileNameTest1, result), std::invalid_argument) << std::endl;
 }
 
 TEST_F(ReadFromFile, Expect_result_toContainTheContentOfTheFileWhenTheFileExists) {
   std::string result;
-  readFromFile::readFromFile(existentFileNameTest2, result);
+  read_from_file::ReadFromFile(existentFileNameTest2, result);
   EXPECT_EQ(expectedStringTest2, result) << std::endl;
 }
 }

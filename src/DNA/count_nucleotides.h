@@ -8,7 +8,7 @@
 #include <array>
 #include <string>
 
-namespace countNucleotides {
+namespace count_nucleotides {
 std::array<int, 4> CountNucleotides(std::string const &DNA);
 }
 

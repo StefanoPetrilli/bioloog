@@ -7,18 +7,18 @@ add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 
 set(headers
         utils/read_from_file.h
-        DNA/countNucleotides.h
+        DNA/count_nucleotides.h
         )
 
 set(sources
         main.cc
         utils/read_from_file.cc
-        DNA/count-nucleotides.cc
+        DNA/count_nucleotides.cc
         )
 
 set(testLib
         utils/read_from_file.cc
-        DNA/count-nucleotides.cc
+        DNA/count_nucleotides.cc
         )
 
 add_executable(bioloog ${headers} ${sources})

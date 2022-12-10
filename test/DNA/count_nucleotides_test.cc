@@ -2,15 +2,15 @@
 // Created by Stefano on 11/29/2022.
 //
 #include <gtest/gtest.h>
-#include "../../src/DNA/countNucleotides.h"
+#include "../../src/DNA/count_nucleotides.h"
 
-namespace countNucleotidesTest {
+namespace count_nucleotides_test {
 
 TEST(CountNucleotides, Expect_invalid_argument_whenStringContainsInvalidCharacters) {
-  EXPECT_THROW(countNucleotides::CountNucleotides("$"), std::invalid_argument) << std::endl;
-  EXPECT_THROW(countNucleotides::CountNucleotides("E"), std::invalid_argument) << std::endl;
-  EXPECT_THROW(countNucleotides::CountNucleotides("."), std::invalid_argument) << std::endl;
-  EXPECT_THROW(countNucleotides::CountNucleotides("/"), std::invalid_argument) << std::endl;
+  EXPECT_THROW(count_nucleotides::CountNucleotides("$"), std::invalid_argument) << std::endl;
+  EXPECT_THROW(count_nucleotides::CountNucleotides("E"), std::invalid_argument) << std::endl;
+  EXPECT_THROW(count_nucleotides::CountNucleotides("."), std::invalid_argument) << std::endl;
+  EXPECT_THROW(count_nucleotides::CountNucleotides("/"), std::invalid_argument) << std::endl;
 }
 
 class CountNucleotidesMultipleParametersTests
@@ -34,6 +34,6 @@ TEST_P(CountNucleotidesMultipleParametersTests, Expect_properCounting) {
   std::array<int, 4> expected = std::get<1>(GetParam());
   std::string input = std::get<0>(GetParam());
 
-  EXPECT_EQ(expected, countNucleotides::CountNucleotides(input)) << std::endl;
+  EXPECT_EQ(expected, count_nucleotides::CountNucleotides(input)) << std::endl;
 }
 }
