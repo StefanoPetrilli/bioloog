@@ -18,7 +18,6 @@ namespace countNucleotidesTest {
     };
 
     INSTANTIATE_TEST_CASE_P
-
     (
             Tests,
             CountNucleotidesMultipleParametersTests,
