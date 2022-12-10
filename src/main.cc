@@ -1,7 +1,6 @@
-#include <iostream>
-
 #include "cli/display_help.h"
 #include "cli/count_nucleotides.h"
+#include "cli/display_error.h"
 
 int main(int argc, char *argv[]) {
 
@@ -11,7 +10,7 @@ int main(int argc, char *argv[]) {
     switch (cli::StringToCommand(argv[1])) {
       case cli::Command::CountNucleotidesCommand: cli::CountNucleotides(argv[2]);
         break;
-      default:return 1; // cli::display_error()
+      default: cli::DisplayError();
     }
 
   return 0;
