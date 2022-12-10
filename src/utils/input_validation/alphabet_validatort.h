@@ -8,6 +8,7 @@
 #include <vector>
 
 namespace input_validation {
+static std::string RNA_ALPHABET = "ACGU";
 class AlphabetValidator {
  private:
   std::vector<int> lookup_vector;
