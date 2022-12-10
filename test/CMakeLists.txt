@@ -17,8 +17,11 @@ add_executable(
         main_test.cc
         ../src/utils/file/read_from_file.h
         utils/file/read_from_file_test.cc
+        ../src/utils/cli/command.h
+        utils/cli/command.cc
         ../src/DNA/count_nucleotides.h
-        DNA/count_nucleotides_test.cc)
+        DNA/count_nucleotides_test.cc
+)
 target_link_libraries(
         MainTest
         src
