@@ -1,10 +1,7 @@
 //
 // Created by Stefano on 12/7/2022.
 //
-#include <gtest/gtest.h>
-#include "../../src/DNA/rna_to_protein_translation.h"
-#include "../../src/utils/file/read_from_file.h"
-#include "../../src/DNA/dna_to_rna_transcription.h"
+#include "rna_to_protein_translation_test.h"
 
 namespace rna_to_protein_translation_test {
 TEST(rna_to_protein_translation, Expect_invalid_argument_whenStringContainsInvalidCharacters) {
@@ -13,10 +10,6 @@ TEST(rna_to_protein_translation, Expect_invalid_argument_whenStringContainsInval
   EXPECT_THROW(DNA::RnaToProteinTranslation("."), std::invalid_argument) << std::endl;
   EXPECT_THROW(DNA::RnaToProteinTranslation("/"), std::invalid_argument) << std::endl;
 }
-
-class RnaToProteinTranslationTestSingleProtein
-    : public ::testing::TestWithParam<std::tuple<std::string, std::string>> {
-};
 
 INSTANTIATE_TEST_SUITE_P
 (
@@ -37,10 +30,6 @@ TEST_P(RnaToProteinTranslationTestSingleProtein, SingleProtein_Expect_properTran
 
   EXPECT_EQ(expected, DNA::RnaToProteinTranslation(input)) << std::endl;
 }
-
-class RnaToProteinTranslationTestMultipleProtein
-    : public ::testing::TestWithParam<std::tuple<std::string, std::string>> {
-};
 
 INSTANTIATE_TEST_SUITE_P
 (

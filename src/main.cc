@@ -2,7 +2,7 @@
 #include "cli/count_nucleotides.h"
 #include "cli/display_error.h"
 #include "cli/dna_to_rna_transcription.h"
-#include "cli/rna_to_protein_translation.h"
+#include "cli/rna_to_protein_translation_test.h"
 
 int main(int argc, char *argv[]) {
 

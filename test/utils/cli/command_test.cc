@@ -1,9 +1,7 @@
 //
 // Created by Stefano on 12/2/2022.
 //
-#include <gtest/gtest.h>
-
-#include "../../../src/utils/cli/command_test.h"
+#include "command_test.h"
 
 namespace command_test {
 TEST(CommandToString, CommandCountNucleotidesShouldReturnExpectedText) {

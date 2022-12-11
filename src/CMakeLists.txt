@@ -12,7 +12,7 @@ set(headers
         utils/cli/count_nucleotides.h
         utils/cli/display_error.h
         utils/cli/dna_to_rna_transcription.h
-        utils/cli/rna_to_protein_translation.h
+        utils/cli/rna_to_protein_translation_test.h
         utils/input_validation/alphabet_validatort.h
         DNA/count_nucleotides.h
         DNA/dna_to_rna_transcription.h

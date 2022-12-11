@@ -2,7 +2,7 @@
 // Created by Stefano on 12/8/2022.
 //
 
-#include "rna_to_protein_translation.h"
+#include "rna_to_protein_translation_test.h"
 #include "file/read_from_file.h"
 #include "../../src/DNA/rna_to_protein_translation.h"
 

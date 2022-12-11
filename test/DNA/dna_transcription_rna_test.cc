@@ -1,9 +1,7 @@
 //
 // Created by Stefano on 12/7/2022.
 //
-#include <gtest/gtest.h>
-#include "../../src/DNA/dna_to_rna_transcription.h"
-#include "../../src/utils/file/read_from_file.h"
+#include "dna_transcription_rna_test.h"
 
 namespace dna_transcript_rna_test {
 TEST(DnaToRnaTranscription, Expect_invalid_argument_whenStringContainsInvalidCharacters) {
@@ -12,10 +10,6 @@ TEST(DnaToRnaTranscription, Expect_invalid_argument_whenStringContainsInvalidCha
   EXPECT_THROW(DNA::DnaToRnaTranscription("."), std::invalid_argument) << std::endl;
   EXPECT_THROW(DNA::DnaToRnaTranscription("/"), std::invalid_argument) << std::endl;
 }
-
-class DnaToRnaTranscriptionMultipleParametersNoTranslationTests
-    : public ::testing::TestWithParam<std::tuple<std::string, std::string>> {
-};
 
 INSTANTIATE_TEST_SUITE_P
 (
@@ -29,9 +23,12 @@ INSTANTIATE_TEST_SUITE_P
     )
 );
 
-class DnaToRnaTranscriptionMultipleParametersTranslationTests :
-    public ::testing::TestWithParam<std::tuple<std::string, std::string>> {
-};
+TEST_P(DnaToRnaTranscriptionMultipleParametersNoTranslationTests, Expect_properTranslation) {
+  std::string expected = std::get<1>(GetParam());
+  std::string input = std::get<0>(GetParam());
+
+  EXPECT_EQ(expected, DNA::DnaToRnaTranscription(input)) << std::endl;
+}
 
 INSTANTIATE_TEST_SUITE_P
 (
@@ -43,13 +40,6 @@ INSTANTIATE_TEST_SUITE_P
                         "GAUGGAACUUGACUACGUAAAUU")
     )
 );
-
-TEST_P(DnaToRnaTranscriptionMultipleParametersNoTranslationTests, Expect_properTranslation) {
-  std::string expected = std::get<1>(GetParam());
-  std::string input = std::get<0>(GetParam());
-
-  EXPECT_EQ(expected, DNA::DnaToRnaTranscription(input)) << std::endl;
-}
 
 TEST_P(DnaToRnaTranscriptionMultipleParametersTranslationTests, Expect_properTranslation) {
   std::string expected = std::get<1>(GetParam());
