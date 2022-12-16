@@ -11,7 +11,7 @@
 namespace read_from_file_test {
 
 const std::string nonExistentFileNameTest1 = "Test1ExampleNonExistent";
-const std::string nonExistentFilePathTest1 = read_from_file::defaultInputFilePath + "Test1ExampleNonExtiente";
+const std::string nonExistentFilePathTest1 = read_from_file::defaultInputFilePath + "Test1ExampleNonExistent";
 const std::string existentFileNameTest2 = "Test1Example";
 const std::string existentFilePathTest2 = read_from_file::defaultInputFilePath + "Test1Example";
 const std::string expectedStringTest2 = "The file contain this content";

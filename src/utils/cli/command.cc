@@ -9,8 +9,10 @@ namespace cli {
 
 std::list<cli::VirtualCommand *> cli::VirtualCommand::list_;
 
-std::list<VirtualCommand *> VirtualCommand::GetList() {
-  return list_;
+VirtualCommand::VirtualCommand(const std::string &name, const std::string &description) {
+  this->SetName(name);
+  this->SetDescription(description);
+  ListPushBack(this);
 }
 
 void VirtualCommand::SetName(const std::string &name) {
@@ -21,12 +23,20 @@ void VirtualCommand::SetDescription(const std::string &description) {
   this->description_ = description;
 }
 
+void VirtualCommand::ListPushBack(VirtualCommand *command) {
+  list_.push_back(command);
+}
+
 std::string VirtualCommand::GetName() const {
   return this->name_;
 }
 
 std::string VirtualCommand::GetDescription() const {
   return this->description_;
+}
+
+std::list<VirtualCommand *> VirtualCommand::GetList() {
+  return list_;
 }
 
 std::string VirtualCommand::ToString() const {

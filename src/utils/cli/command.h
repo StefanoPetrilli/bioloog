@@ -19,31 +19,26 @@
 namespace cli {
 
 class VirtualCommand {
-
  public:
-  //TODO where should I put the fields?
-  std::string name_;
-  std::string description_;
-
-  static std::list<VirtualCommand *> list_;
-
-  //TODO where should I put constructors and de-constructor?
-  VirtualCommand(const std::string &name, const std::string &description) {
-    this->SetName(name);
-    this->SetDescription(description);
-    list_.push_back(this);
-  }
+  VirtualCommand(const std::string &name, const std::string &description);
   ~VirtualCommand() = default;
 
   void SetName(const std::string &name);
   void SetDescription(const std::string &description);
+  static void ListPushBack(VirtualCommand* command);
 
   [[nodiscard]] std::string GetName() const;
   [[nodiscard]] std::string GetDescription() const;
+  static std::list<VirtualCommand *> GetList();
+
   [[nodiscard]] std::string ToString() const;
 
-  static std::list<VirtualCommand *> GetList();
   virtual void Exec(const std::string &path) = 0;
+
+ private:
+  std::string name_;
+  std::string description_;
+  static std::list<VirtualCommand *> list_;
 };
 
 class CountNucleotides : VirtualCommand {

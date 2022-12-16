@@ -15,7 +15,7 @@ const std::string pathSeparator =
 #ifdef _WIN32
     "\\";
 #else
-"/";
+    "/";
 #endif
 
 std::string const defaultInputFilePath = ".." +
@@ -25,6 +25,6 @@ std::string const defaultInputFilePath = ".." +
 
 void ReadFromFile(std::string const &path, std::string &result);
 
-};
+}
 
 #endif //BIOLOOG_READFROMFILE_H
