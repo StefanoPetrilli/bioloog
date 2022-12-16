@@ -16,6 +16,7 @@ set(header
         DNA/count_nucleotides_test.h
         DNA/dna_transcription_rna_test.h
         DNA/rna_to_protein_translation_test.h
+        DNA/find_motif_test.cc DNA/find_motif_test.h
         utils/file/read_from_file_test.h
         utils/input_validation/alphabet_validator_test.h)
 
@@ -25,7 +26,7 @@ set(sources
         DNA/count_nucleotides_test.cc
         DNA/dna_transcription_rna_test.cc
         DNA/rna_to_protein_translation_test.cc
-        )
+        DNA/find_motif_test.cc DNA/find_motif_test.cc)
 
 add_executable(MainTest ${header} ${sources})
 

@@ -7,12 +7,7 @@
 namespace DNA {
 std::string RnaToProteinTranslation(std::string rna_sequence) {
 
-  input_validation::AlphabetValidator rna_alphabet_validator = input_validation::AlphabetValidator(input_validation::RNA_ALPHABET);
-
-  for (char c : rna_sequence) {
-    if (!rna_alphabet_validator.IsPartOfTheAlphabet(c))
-      throw std::invalid_argument("An illegal character was inserted. Only 'A', 'C', 'G' and 'U' accepted.");
-  }
+  input_validation::kStandardValidatorRna.IsPartOfTheAlphabet(rna_sequence);
 
   std::string result, substring;
   for (int i = 0; i + CODON_LENGTH <= (int) rna_sequence.length(); i++) {
