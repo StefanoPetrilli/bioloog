@@ -15,11 +15,12 @@ FetchContent_MakeAvailable(googletest)
 set(header
         DNA/count_nucleotides_test.h
         DNA/dna_transcription_rna_test.h
-        DNA/rna_to_protein_translation_test.h utils/cli/command_test.h utils/file/read_from_file_test.h utils/input_validation/alphabet_validator_test.h)
+        DNA/rna_to_protein_translation_test.h
+        utils/file/read_from_file_test.h
+        utils/input_validation/alphabet_validator_test.h)
 
 set(sources
         utils/file/read_from_file_test.cc
-        utils/cli/command_test.cc
         utils/input_validation/alphabet_validator_test.cc
         DNA/count_nucleotides_test.cc
         DNA/dna_transcription_rna_test.cc

@@ -1,23 +1,18 @@
 #include "cli/display_help.h"
-#include "cli/count_nucleotides.h"
-#include "cli/display_error.h"
-#include "cli/dna_to_rna_transcription.h"
-#include "cli/rna_to_protein_translation_test.h"
+#include "cli/command.h"
 
 int main(int argc, char *argv[]) {
+  cli::CountNucleotides count_nucleotides{"count_nucleotides", "Takes a DNA string and returnsthe counting of each nucleotides in the format {'A', 'C', 'T', 'G}"};
+  cli::DnaToRnaTranscription dna_to_rna_implementation{"dna_to_rna_translation", "Takes a DNA string and returnsthe rna transcription"};
+  cli::RnaToProteinTranslation rna_to_protein_translation{"rna_to_protein_translation", "Takes a RNA string and returnsthe proteins translation"};
 
   if (argc == 1)
     cli::DisplayHelp();
-  else
-    switch (cli::StringToCommand(argv[1])) {
-      case cli::Command::CountNucleotidesCommand: cli::CountNucleotides(argv[2]);
-        break;
-      case cli::Command::DnaToRnaTranscriptionCommand: cli::DnaToRnaTranscription(argv[2]);
-        break;
-      case cli::Command::RnaToDnaTranslationCommand: cli::RnaToProteinTranslation(argv[2]);
-        break;
-      default: cli::DisplayError();
+  else {
+    for(cli::VirtualCommand* i : cli::VirtualCommand::GetList()) {
+      if (argv[1] == i->GetName()) i->Exec(argv[2]);
     }
+  }
 
   return 0;
 }

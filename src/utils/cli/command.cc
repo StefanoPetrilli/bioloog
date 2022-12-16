@@ -2,31 +2,55 @@
 // Created by Stefano on 12/2/2022.
 //
 
-#include "command_test.h"
+#include "command.h"
+
 
 namespace cli {
-std::string CommandToString(Command command) {
-  switch (command) {
-    case CountNucleotidesCommand:
-      return "count_nucleotides\tTakes a DNA string and returns"
-             "the counting of each nucleotides in the format {'A', 'C', 'T', 'G'}";
-    case DnaToRnaTranscriptionCommand:
-      return "dna_to_rna_transcription\tTakes a DNA string and returns"
-             "the rna transcription";
-    case RnaToDnaTranslationCommand:
-      return "rna_to_protein_translation\tTakes a RNA string and returns"
-             "the proteins translation";
-    default:throw std::domain_error("Unexpected valued encountered.");
-  }
+
+std::list<cli::VirtualCommand *> cli::VirtualCommand::list_;
+
+std::list<VirtualCommand *> VirtualCommand::GetList() {
+  return list_;
 }
 
-Command StringToCommand(const std::string& string) {
-  auto it = command_table.find(string);
+void VirtualCommand::SetName(const std::string &name) {
+  this->name_ = name;
+}
 
-  if (it != command_table.end())
-    return it->second;
-  else
-    return Command::InvalidCommand;
+void VirtualCommand::SetDescription(const std::string &description) {
+  this->description_ = description;
+}
 
+std::string VirtualCommand::GetName() const {
+  return this->name_;
+}
+
+std::string VirtualCommand::GetDescription() const {
+  return this->description_;
+}
+
+std::string VirtualCommand::ToString() const {
+  return GetName() + " : " + GetDescription();
+}
+
+void CountNucleotides::Exec(const std::string &path) {
+  std::string dna_sequence;
+  read_from_file::ReadFromFile(path, dna_sequence);
+  std::array<int, 4> result = DNA::CountNucleotides(dna_sequence);
+  std::cout << "A:" << result[0] << ", C:" << result[1] << ", G:" << result[2] << ", T: " << result[3] << std::endl;
+}
+
+void DnaToRnaTranscription::Exec(const std::string &path) {
+  std::string dna_sequence;
+  read_from_file::ReadFromFile(path, dna_sequence);
+  std::string result = DNA::DnaToRnaTranscription(dna_sequence);
+  std::cout << "The corresponding rna is: " << result << std::endl;
+}
+
+void RnaToProteinTranslation::Exec(const std::string &path) {
+  std::string dna_sequence;
+  read_from_file::ReadFromFile(path, dna_sequence);
+  std::string result = DNA::RnaToProteinTranslation(dna_sequence);
+  std::cout << "The protein translation is: " << result << std::endl;
 }
 }

@@ -9,8 +9,7 @@ void DisplayHelp() {
   std::cout << cli::ascii_art << cli::program_name << std::endl;
   std::cout << '\n' << cli::commands_intro << '\n' <<  std::endl;
 
-  for (const auto c: all_commands)
-    std::cout << CommandToString(c) << std::endl;
-  return;
+  for(cli::VirtualCommand* i : cli::VirtualCommand::GetList())
+    std::cout << i->ToString() << std::endl;
 }
 }

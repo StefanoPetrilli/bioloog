@@ -8,7 +8,7 @@
 #include <string>
 #include <iostream>
 
-#include "command_test.h"
+#include "command.h"
 
 namespace cli {
 

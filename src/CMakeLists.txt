@@ -8,11 +8,8 @@ add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 set(headers
         utils/file/read_from_file.h
         utils/cli/display_help.h
-        utils/cli/command_test.h
-        utils/cli/count_nucleotides.h
+        utils/cli/command.h
         utils/cli/display_error.h
-        utils/cli/dna_to_rna_transcription.h
-        utils/cli/rna_to_protein_translation_test.h
         utils/input_validation/alphabet_validatort.h
         DNA/count_nucleotides.h
         DNA/dna_to_rna_transcription.h
@@ -23,10 +20,7 @@ set(sources
         utils/file/read_from_file.cc
         utils/cli/display_help.cc
         utils/cli/command.cc
-        utils/cli/count_nucleotides.cc
         utils/cli/display_error.cc
-        utils/cli/dna_to_rna_transcription.cc
-        utils/cli/rna_to_protein_translation.cc
         utils/input_validation/alphabet_validatort.cc
         DNA/count_nucleotides.cc
         DNA/dna_to_rna_transcription.cc
