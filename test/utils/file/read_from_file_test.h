@@ -18,7 +18,7 @@ static const std::string kExpectedStringTest2 = "The file contain this content";
 static const std::string kMultipleLinesReadFilePath = read_from_file::kDefaultInputFilePath + "Test1MultipleLines";
 static const std::string kMultipleLinesReadFileName = "Test1MultipleLines";
 static const std::string kFileContentMultipleLines = "Test\nTest\nTest\n";
-static const std::list<std::string> kMultipleLinesListExpected = {"Test", "Test", "Test"};
+static const std::vector<std::string> kMultipleLinesListExpected = {"Test", "Test", "Test"};
 
 class ReadFromFile : public ::testing::Test {
  protected:

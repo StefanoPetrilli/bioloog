@@ -8,7 +8,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include <list>
+#include <vector>
 
 namespace read_from_file {
 
@@ -25,6 +25,6 @@ std::string static const kDefaultInputFilePath = ".." +
     kPathSeparator;
 
 void ReadFromFile(std::string const &path, std::string &result);
-std::list<std::string> ReadLinesFromFile(const std::string &path);
+std::vector<std::string> ReadLinesFromFile(const std::string &path);
 }
 #endif //BIOLOOG_READFROMFILE_H

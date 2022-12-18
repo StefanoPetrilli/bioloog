@@ -3,6 +3,7 @@
 //
 
 #include <list>
+#include <vector>
 
 #include "read_from_file.h"
 
@@ -20,12 +21,12 @@ void ReadFromFile(std::string const &path, std::string &result) {
   }
 }
 
-std::list<std::string> ReadLinesFromFile(const std::string &path) {
+std::vector<std::string> ReadLinesFromFile(const std::string &path) {
 
   std::string file_content;
   ReadFromFile(path, file_content);
 
-  std::list<std::string> result{};
+  std::vector<std::string> result{};
   std::string line;
 
   size_t position_start = 0, position_end, delimiter_length = 1;

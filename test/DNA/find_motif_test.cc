@@ -28,4 +28,19 @@ TEST_P(FindMotifParametrizedTests, Expect_ProperMotifPosition_WithMultipleCharac
 
   EXPECT_EQ(expected, DNA::FindMotif(dna_sequence, motif)) << std::endl;
 }
+
+TEST(FindMotifDatasetTest, Expect_ProperTranslation) {
+  std::string input, expected, dna_sequence, motif, result;
+
+  std::vector<std::string> file_lines = read_from_file::ReadLinesFromFile("rosalind_subs_1_dataset.txt");
+  dna_sequence = file_lines.at(0);
+  motif = file_lines.at(1);
+
+  read_from_file::ReadFromFile("rosalind_subs_1_output.txt", expected);
+
+  for (auto element : DNA::FindMotif(dna_sequence, motif))
+    result += std::to_string(element + 1) + " ";
+
+  EXPECT_EQ(expected, result);
+}
 }

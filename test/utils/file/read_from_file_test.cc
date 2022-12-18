@@ -47,7 +47,7 @@ void ReadLinesFromFile::TearDown() {
 }
 
 TEST_F(ReadLinesFromFile, Expect_Result_ToContainTheContentOfTheFileWhenTheFileExists) {
-  std::list<std::string> result;
+  std::vector<std::string> result;
   result = read_from_file::ReadLinesFromFile(kMultipleLinesReadFileName);
   for (int i = 0; i < result.size(); i ++)
     EXPECT_EQ(kMultipleLinesListExpected, result) << std::endl;
