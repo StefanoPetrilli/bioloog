@@ -52,4 +52,15 @@ TEST_F(ReadLinesFromFile, Expect_Result_ToContainTheContentOfTheFileWhenTheFileE
   for (int i = 0; i < result.size(); i ++)
     EXPECT_EQ(kMultipleLinesListExpected, result) << std::endl;
 }
+
+TEST(ReadFastaFromFile, Expect_Result_ToContainTheContentOfTheFile) {
+  std::map<std::string, std::string> result;
+  std::map<std::string, std::string> expected = {
+      {"Taxon1", "CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG"},
+      {"Taxon2", "CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC"},
+      {"Taxon3", "CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT"}
+  };
+  result = read_from_file::ReadFastaFromFile(kFastaContentFileName);
+  EXPECT_EQ(expected, result);
+}
 }

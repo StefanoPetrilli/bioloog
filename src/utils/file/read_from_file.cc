@@ -42,4 +42,26 @@ std::vector<std::string> ReadLinesFromFile(const std::string &path) {
 
   return result;
 }
+
+auto IsSequenceName = [] (const std::string& line) { return line.starts_with('>'); };
+
+std::map<std::string, std::string> ReadFastaFromFile(const std::string &path) {
+  std::map<std::string, std::string> result;
+  std::vector<std::string> file_lines = ReadLinesFromFile(path);
+
+  std::string key, content;
+  for (const std::string& line : file_lines) {
+    if (IsSequenceName(line)) {
+      result.insert({key, content});
+      key = line.substr(1);
+      content = "";
+    } else {
+      content += line;
+    }
+  }
+
+  result.insert({key, content});
+  result.erase("");
+  return result;
+}
 }

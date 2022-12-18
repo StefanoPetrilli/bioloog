@@ -9,10 +9,12 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <map>
 
 namespace read_from_file {
 
 const static char kNewLine = '\n';
+const static char kFastaStartingCharacter = '>';
 const static std::string kPathSeparator =
 #ifdef _WIN32
     "\\";
@@ -26,5 +28,6 @@ std::string static const kDefaultInputFilePath = ".." +
 
 void ReadFromFile(std::string const &path, std::string &result);
 std::vector<std::string> ReadLinesFromFile(const std::string &path);
+std::map<std::string, std::string> ReadFastaFromFile(const std::string &path);
 }
 #endif //BIOLOOG_READFROMFILE_H
