@@ -14,6 +14,7 @@ set(headers
         DNA/count_nucleotides.h
         DNA/dna_to_rna_transcription.h
         DNA/rna_to_protein_translation.h
+        DNA/find_motif.h
         )
 
 set(sources
@@ -25,6 +26,7 @@ set(sources
         DNA/count_nucleotides.cc
         DNA/dna_to_rna_transcription.cc
         DNA/rna_to_protein_translation.cc
+        DNA/find_motif.cc
         )
 
 add_executable(bioloog ${headers} main.cc ${sources})

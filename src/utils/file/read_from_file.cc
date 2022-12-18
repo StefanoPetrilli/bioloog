@@ -2,6 +2,7 @@
 // Created by Stefano on 11/23/2022.
 //
 
+#include <list>
 #include "read_from_file.h"
 
 namespace read_from_file {
@@ -18,4 +19,7 @@ void ReadFromFile(const std::string &path, std::string &result) {
   }
 }
 
+std::list<std::string> ReadLinesFromFile(const std::string &path) {
+  return std::list<std::string>();
+}
 }

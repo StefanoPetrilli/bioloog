@@ -61,5 +61,12 @@ class RnaToProteinTranslation : VirtualCommand {
                                                                                                     description) {};
   void Exec(const std::string &path) override;
 };
+
+class FindMotif : VirtualCommand {
+ public:
+  FindMotif(const std::string &name, const std::string &description) : VirtualCommand(name,
+                                                                                                    description) {};
+  void Exec(const std::string &path) override;
+};
 }
 #endif //BIOLOOG_SRC_UTILS_CLI_COMMANDS_H_

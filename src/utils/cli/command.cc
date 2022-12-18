@@ -3,7 +3,7 @@
 //
 
 #include "command.h"
-
+#include "find_motif.h"
 
 namespace cli {
 
@@ -62,5 +62,22 @@ void RnaToProteinTranslation::Exec(const std::string &path) {
   read_from_file::ReadFromFile(path, dna_sequence);
   std::string result = DNA::RnaToProteinTranslation(dna_sequence);
   std::cout << "The protein translation is: " << result << std::endl;
+}
+
+void FindMotif::Exec(const std::string &path) {
+  std::string file_content;
+  read_from_file::ReadFromFile(path, file_content);
+
+  int newline_position = file_content.find('\n');
+  std::string dna_sequence = file_content.substr(0, newline_position);
+  std::string motif_starting_with_newline = file_content.substr(newline_position);
+  std::string motif = motif_starting_with_newline.substr(1);
+
+  std::list<int> result = DNA::FindMotif(dna_sequence, motif);
+  std::cout << "The motif positions are: ";
+  for (auto i : result) {
+    std::cout << i + 1 << " ";
+  }
+  std::cout << std::endl;
 }
 }
