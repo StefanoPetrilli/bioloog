@@ -68,7 +68,7 @@ void FindMotif::Exec(const std::string &path) {
   std::string file_content;
   read_from_file::ReadFromFile(path, file_content);
 
-  int newline_position = file_content.find('\n');
+  int newline_position = file_content.find(read_from_file::kNewLine);
   std::string dna_sequence = file_content.substr(0, newline_position);
   std::string motif_starting_with_newline = file_content.substr(newline_position);
   std::string motif = motif_starting_with_newline.substr(1);

@@ -10,13 +10,24 @@
 
 namespace read_from_file_test {
 
-const std::string nonExistentFileNameTest1 = "Test1ExampleNonExistent";
-const std::string nonExistentFilePathTest1 = read_from_file::defaultInputFilePath + "Test1ExampleNonExistent";
-const std::string existentFileNameTest2 = "Test1Example";
-const std::string existentFilePathTest2 = read_from_file::defaultInputFilePath + "Test1Example";
-const std::string expectedStringTest2 = "The file contain this content";
+static const std::string kNonExistentFileNameTest1 = "Test1ExampleNonExistent";
+static const std::string kNonExistentFilePathTest1 = read_from_file::kDefaultInputFilePath + "Test1ExampleNonExistent";
+static const std::string kExistentFileNameTest2 = "Test1Example";
+static const std::string kExistentFilePathTest2 = read_from_file::kDefaultInputFilePath + "Test1Example";
+static const std::string kExpectedStringTest2 = "The file contain this content";
+static const std::string kMultipleLinesReadFilePath = read_from_file::kDefaultInputFilePath + "Test1MultipleLines";
+static const std::string kMultipleLinesReadFileName = "Test1MultipleLines";
+static const std::string kFileContentMultipleLines = "Test\nTest\nTest\n";
+static const std::list<std::string> kMultipleLinesListExpected = {"Test", "Test", "Test"};
 
 class ReadFromFile : public ::testing::Test {
+ protected:
+  void SetUp() override;
+
+  void TearDown() override;
+};
+
+class ReadLinesFromFile : public ::testing::Test {
  protected:
   void SetUp() override;
 
