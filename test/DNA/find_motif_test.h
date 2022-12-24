@@ -37,5 +37,20 @@ INSTANTIATE_TEST_SUITE_P
         std::make_tuple("GATATATGCATATACTT", "ATAT", std::list<int>{1, 3, 9})
     )
 );
+
+class ContainMotifParametrizedTests
+    : public ::testing::TestWithParam<std::tuple<std::string, std::string, bool>> {
+};
+
+INSTANTIATE_TEST_SUITE_P
+(
+    Tests,
+    ContainMotifParametrizedTests,
+    ::testing::Values(
+        std::make_tuple("AATTGG", "CC", false),
+        std::make_tuple("AAAATTTATATA", "AT", true),
+        std::make_tuple("GATATATGCATATACTT", "ATAT", true)
+    )
+);
 }
 #endif //BIOLOOG_TEST_DNA_FIND_MOTIF_H_

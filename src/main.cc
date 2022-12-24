@@ -10,6 +10,8 @@ int main(int argc, char *argv[]) {
                                                           "Takes a RNA string and returnsthe proteins translation"};
   cli::FindMotif find_motif{"find_motif",
                                           "Takes a DNA sequence, a motif and return the positions of the motif in the dna sequence"};
+  cli::FindSharedMotif find_shared_motif{"find_shared_motif",
+                            "Takes multiple DNA sequences, and return the longest common motif"};
 
   if (argc == 1)
     cli::DisplayHelp();

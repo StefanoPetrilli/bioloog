@@ -25,7 +25,7 @@ class VirtualCommand {
 
   void SetName(const std::string &name);
   void SetDescription(const std::string &description);
-  static void ListPushBack(VirtualCommand* command);
+  static void ListPushBack(VirtualCommand *command);
 
   [[nodiscard]] std::string GetName() const;
   [[nodiscard]] std::string GetDescription() const;
@@ -44,14 +44,14 @@ class VirtualCommand {
 class CountNucleotides : VirtualCommand {
  public:
   CountNucleotides(const std::string &name, const std::string &description) : VirtualCommand(name,
-                                                                                                    description) {};
+                                                                                             description) {};
   void Exec(const std::string &path) override;
 };
 
 class DnaToRnaTranscription : VirtualCommand {
  public:
   DnaToRnaTranscription(const std::string &name, const std::string &description) : VirtualCommand(name,
-                                                                                                    description) {};
+                                                                                                  description) {};
   void Exec(const std::string &path) override;
 };
 
@@ -65,7 +65,14 @@ class RnaToProteinTranslation : VirtualCommand {
 class FindMotif : VirtualCommand {
  public:
   FindMotif(const std::string &name, const std::string &description) : VirtualCommand(name,
-                                                                                                    description) {};
+                                                                                      description) {};
+  void Exec(const std::string &path) override;
+};
+
+class FindSharedMotif : VirtualCommand {
+ public:
+  FindSharedMotif(const std::string &name, const std::string &description) : VirtualCommand(name,
+                                                                                      description) {};
   void Exec(const std::string &path) override;
 };
 }

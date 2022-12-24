@@ -4,6 +4,7 @@
 
 #include "command.h"
 #include "find_motif.h"
+#include "find_shared_motif.h"
 
 namespace cli {
 
@@ -79,5 +80,13 @@ void FindMotif::Exec(const std::string &path) {
     std::cout << i + 1 << " ";
   }
   std::cout << std::endl;
+}
+
+void FindSharedMotif::Exec(const std::string &path) {
+  std::string file_content;
+  auto map = read_from_file::ReadFastaFromFile(path);
+
+  std::string result = DNA::FindSharedMotif(map);
+  std::cout << result << std::endl;
 }
 }
