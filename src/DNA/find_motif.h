@@ -12,5 +12,6 @@
 
 namespace DNA {
 std::list<int> FindMotif(const std::string& dna_sequence, const std::string& motif);
+bool ContainMotif(const std::string& dna_sequence, const std::string& motif);
 }
 #endif //BIOLOOG_SRC_DNA_FIND_MOTIF_H_
