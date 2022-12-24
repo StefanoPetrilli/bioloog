@@ -5,23 +5,26 @@
 #include "input_validation/alphabet_validatort.h"
 
 namespace DNA {
-//TODO rewrite using find
 std::list<int> FindMotif(const std::string &dna_sequence, const std::string &motif) {
 
   input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence);
   input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(motif);
 
   std::list<int> result{};
-  int motif_length = (int) motif.length();
+  size_t floating_position = 0;
 
-  for (int i = 0; i < (int) dna_sequence.length(); ++i) {
-    if (dna_sequence.substr(i, motif_length) == motif) result.push_back(i);
+  while (floating_position != std::string::npos) {
+    floating_position = dna_sequence.find(motif, floating_position);
+    if (floating_position != std::string::npos) {
+      result.push_back((int) floating_position);
+      floating_position++;
+    }
   }
 
   return result;
 }
 
-bool ContainMotif(const std::string& dna_sequence, const std::string& motif) {
+bool ContainMotif(const std::string &dna_sequence, const std::string &motif) {
   return dna_sequence.find(motif) != std::string::npos;
 }
 }
