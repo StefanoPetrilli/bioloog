@@ -73,9 +73,6 @@ std::vector<std::set<std::string>> GetCommonSubstrings(const std::string &sequen
 }
 
 std::string GetLongestSubstringRemaining(std::vector<std::set<std::string>> substrings) {
-  for (auto i = substrings.size() - 1; i > 0; i--)
-    if (not substrings.at(i).empty())
-      return *substrings.at(i).begin();
-  return "";
+  return *substrings.back().begin();
 }
 }
