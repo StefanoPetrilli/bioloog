@@ -23,17 +23,21 @@ std::string FindSharedMotif(const std::map<std::string, std::string> &sequences)
   auto substrings_to_remove = new std::set<std::string>();
   for (; sequences_iterator != sequences.end(); sequences_iterator++) {
 
-    for (auto substrings_list_iterator = substrings.begin(); substrings_list_iterator != substrings.end();
-         substrings_list_iterator++) {
-      for (const auto &substring_set_iterator : *substrings_list_iterator.base()) {
+    for (auto &substrings_list_iterator : substrings) {
+      for (const auto &substring_set_iterator : substrings_list_iterator) {
         if (not ContainMotif(sequences_iterator->second, substring_set_iterator)) {
           substrings_to_remove->insert(substring_set_iterator);
         }
       }
 
-      for (const auto &substrings_to_remove_iterator : *substrings_to_remove) {
-        substrings_list_iterator.base()->erase(substrings_to_remove_iterator);
-      }
+      std::set_difference(substrings_list_iterator.begin(),
+                          substrings_list_iterator.end(),
+                          substrings_to_remove->begin(),
+                          substrings_to_remove->end(),
+                          std::inserter(substrings_list_iterator,
+                                        substrings_list_iterator.
+                                            end()));
+
       substrings_to_remove = new std::set<std::string>();
     }
   }
