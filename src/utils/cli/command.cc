@@ -3,12 +3,11 @@
 //
 
 #include "command.h"
-#include "find_motif.h"
-#include "find_shared_motif.h"
 
 namespace cli {
 
 std::list<cli::VirtualCommand *> cli::VirtualCommand::list_;
+bool is_instantiated_ = false;
 
 VirtualCommand::VirtualCommand(const std::string &name, const std::string &description) {
   this->SetName(name);
@@ -47,6 +46,9 @@ std::string VirtualCommand::ToString() const {
 void CountNucleotides::Exec(const std::string &path) {
   std::string dna_sequence;
   read_from_file::ReadFromFile(path, dna_sequence);
+
+  input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence);
+
   std::array<int, 4> result = DNA::CountNucleotides(dna_sequence);
   std::cout << "A:" << result[0] << ", C:" << result[1] << ", G:" << result[2] << ", T: " << result[3] << std::endl;
 }
@@ -54,6 +56,9 @@ void CountNucleotides::Exec(const std::string &path) {
 void DnaToRnaTranscription::Exec(const std::string &path) {
   std::string dna_sequence;
   read_from_file::ReadFromFile(path, dna_sequence);
+
+  input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence);
+
   std::string result = DNA::DnaToRnaTranscription(dna_sequence);
   std::cout << "The corresponding rna is: " << result << std::endl;
 }
@@ -61,6 +66,9 @@ void DnaToRnaTranscription::Exec(const std::string &path) {
 void RnaToProteinTranslation::Exec(const std::string &path) {
   std::string dna_sequence;
   read_from_file::ReadFromFile(path, dna_sequence);
+
+  input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence);
+
   std::string result = DNA::RnaToProteinTranslation(dna_sequence);
   std::cout << "The protein translation is: " << result << std::endl;
 }
@@ -74,6 +82,9 @@ void FindMotif::Exec(const std::string &path) {
   std::string motif_starting_with_newline = file_content.substr(newline_position);
   std::string motif = motif_starting_with_newline.substr(1);
 
+  input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence);
+  input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(motif);
+
   std::list<int> result = DNA::FindMotif(dna_sequence, motif);
   std::cout << "The motif positions are: ";
   for (auto i : result) {
@@ -85,6 +96,10 @@ void FindMotif::Exec(const std::string &path) {
 void FindSharedMotif::Exec(const std::string &path) {
   std::string file_content;
   auto map = read_from_file::ReadFastaFromFile(path);
+
+  for (auto dna_sequence : map) {
+    input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence.second);
+  }
 
   std::string result = DNA::FindSharedMotif(map);
   std::cout << result << std::endl;

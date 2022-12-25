@@ -11,10 +11,10 @@
 #include <list>
 #include <iostream>
 
-#include "file/read_from_file.h"
-#include "count_nucleotides.h"
-#include "dna_to_rna_transcription.h"
-#include "rna_to_protein_translation.h"
+#include "../file/read_from_file.h"
+#include "../../DNA/count_nucleotides.h"
+#include "../../DNA/dna_to_rna_transcription.h"
+#include "../../DNA/rna_to_protein_translation.h"
 
 namespace cli {
 
