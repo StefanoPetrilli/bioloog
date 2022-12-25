@@ -8,10 +8,6 @@
 namespace DNA {
 std::string FindSharedMotif(const std::map<std::string, std::string> &sequences) {
 
-  for (const auto &sequence : sequences) {
-    input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(sequence.second);
-  }
-
   auto sequences_iterator = sequences.begin();
 
   std::string sequence1 = sequences_iterator->second;
