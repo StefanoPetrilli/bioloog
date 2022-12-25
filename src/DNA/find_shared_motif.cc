@@ -8,31 +8,36 @@
 namespace DNA {
 std::string FindSharedMotif(const std::map<std::string, std::string> &sequences) {
 
+  for (const auto &sequence : sequences) {
+    input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(sequence.second);
+  }
+
   auto sequences_iterator = sequences.begin();
 
-  input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(sequences_iterator->second);
   std::string sequence1 = sequences_iterator->second;
   sequences_iterator++;
-  input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(sequences_iterator->second);
   std::string sequence2 = sequences_iterator->second;
   sequences_iterator++;
   auto substrings = GetCommonSubstrings(sequence1, sequence2);
 
   auto substrings_to_remove = new std::set<std::string>();
   for (; sequences_iterator != sequences.end(); sequences_iterator++) {
-    input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(sequences_iterator->second);
 
-    for (auto substrings_list_iterator = substrings.begin(); substrings_list_iterator != substrings.end();
-         substrings_list_iterator++) {
-      for (const auto &substring_set_iterator : *substrings_list_iterator.base()) {
+    for (auto &substrings_list_iterator : substrings) {
+      for (const auto &substring_set_iterator : substrings_list_iterator) {
         if (not ContainMotif(sequences_iterator->second, substring_set_iterator)) {
           substrings_to_remove->insert(substring_set_iterator);
         }
       }
 
-      for (const auto &substrings_to_remove_iterator : *substrings_to_remove) {
-        substrings_list_iterator.base()->erase(substrings_to_remove_iterator);
-      }
+      std::set_difference(substrings_list_iterator.begin(),
+                          substrings_list_iterator.end(),
+                          substrings_to_remove->begin(),
+                          substrings_to_remove->end(),
+                          std::inserter(substrings_list_iterator,
+                                        substrings_list_iterator.
+                                            end()));
+
       substrings_to_remove = new std::set<std::string>();
     }
   }
@@ -48,14 +53,18 @@ std::vector<std::set<std::string>> GetCommonSubstrings(const std::string &sequen
 
   while (not subsequences.empty()) {
     result.emplace_back();
+
     for (const auto &motif : subsequences) {
       if ((ContainMotif(sequence1, motif) && ContainMotif(sequence2, motif))) {
-        for (auto nucleotide : {"A", "C", "G", "T"}) {
+        for (auto nucleotide : input_validation::kDnaAlphabet)
           next_subsequences.insert(motif + nucleotide);
-        }
         result.at(motif.length() - 1).insert(motif);
       }
     }
+
+    if (next_subsequences.empty())
+      result.pop_back();
+
     subsequences = next_subsequences;
     next_subsequences = {};
   }
@@ -64,9 +73,6 @@ std::vector<std::set<std::string>> GetCommonSubstrings(const std::string &sequen
 }
 
 std::string GetLongestSubstringRemaining(std::vector<std::set<std::string>> substrings) {
-  for (auto i = substrings.size() - 1; i > 0; i--)
-    if (not substrings.at(i).empty())
-      return *substrings.at(i).begin();
-  return "";
+  return *substrings.back().begin();
 }
 }

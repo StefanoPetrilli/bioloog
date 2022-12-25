@@ -11,7 +11,7 @@ TEST(FindSharedMotif, Expect_invalid_argument_WhenSequencesContainsInvalidCharac
 }
 
 TEST(GetCommonSubstrings, Expect_EmptyVector_WhenInputEmpty) {
-  EXPECT_EQ(DNA::GetCommonSubstrings("", ""), std::vector<std::set<std::string>>{{}}) << std::endl;
+  EXPECT_EQ(DNA::GetCommonSubstrings("", ""), std::vector<std::set<std::string>>{}) << std::endl;
 }
 
 TEST_P(GetCommonSubstringsMultipleParameters, Expect_ResultSize_SameAsStringInput) {
