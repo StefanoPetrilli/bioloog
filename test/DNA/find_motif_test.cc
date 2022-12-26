@@ -6,13 +6,6 @@
 #include "../../src/utils/file/read_from_file.h"
 
 namespace find_motif_test {
-TEST(FindMotif, Expect_invalid_argument_whenStringContainsInvalidCharacters) {
-  EXPECT_THROW(DNA::FindMotif("$", "GA"), std::invalid_argument) << std::endl;
-  EXPECT_THROW(DNA::FindMotif("E", "GA"), std::invalid_argument) << std::endl;
-  EXPECT_THROW(DNA::FindMotif("GA", "."), std::invalid_argument) << std::endl;
-  EXPECT_THROW(DNA::FindMotif("GA", "/"), std::invalid_argument) << std::endl;
-}
-
 TEST_P(FindMotifParametrizedTestsSingleCharacterMotif, Expect_ProperMotifPosition_WithSingleCharacterMotif) {
   std::string dna_sequence = std::get<0>(GetParam());
   std::string motif = std::get<1>(GetParam());

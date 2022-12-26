@@ -5,11 +5,6 @@
 #include "find_shared_motif_test.h"
 
 namespace find_shared_motif_test {
-TEST(FindSharedMotif, Expect_invalid_argument_WhenSequencesContainsInvalidCharacters) {
-  std::map<std::string, std::string> example_input = read_from_file::ReadFastaFromFile(DNA::kFastaFileWithErrors);
-  EXPECT_THROW(DNA::FindSharedMotif(example_input), std::invalid_argument) << std::endl;
-}
-
 TEST(GetCommonSubstrings, Expect_EmptyVector_WhenInputEmpty) {
   EXPECT_EQ(DNA::GetCommonSubstrings("", ""), std::vector<std::set<std::string>>{}) << std::endl;
 }

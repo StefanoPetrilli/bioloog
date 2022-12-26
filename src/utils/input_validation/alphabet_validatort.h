@@ -8,6 +8,10 @@
 #include <vector>
 #include <iostream>
 
+#include "../../DNA/find_motif.h"
+#include "../../DNA/find_shared_motif.h"
+#include "../input_validation/alphabet_validatort.h"
+
 namespace input_validation {
 static const std::string kRnaAlphabet = "ACGU";
 static const std::string kDnaAlphabet = "ACGT";

@@ -11,15 +11,14 @@
 #include <list>
 #include <iostream>
 
-#include "file/read_from_file.h"
-#include "count_nucleotides.h"
-#include "dna_to_rna_transcription.h"
-#include "rna_to_protein_translation.h"
+#include "../file/read_from_file.h"
+#include "../../DNA/count_nucleotides.h"
+#include "../../DNA/dna_to_rna_transcription.h"
+#include "../../DNA/rna_to_protein_translation.h"
 
 namespace cli {
-
 class VirtualCommand {
- public:
+ protected:
   VirtualCommand(const std::string &name, const std::string &description);
   ~VirtualCommand() = default;
 
@@ -72,7 +71,7 @@ class FindMotif : VirtualCommand {
 class FindSharedMotif : VirtualCommand {
  public:
   FindSharedMotif(const std::string &name, const std::string &description) : VirtualCommand(name,
-                                                                                      description) {};
+                                                                                            description) {};
   void Exec(const std::string &path) override;
 };
 }

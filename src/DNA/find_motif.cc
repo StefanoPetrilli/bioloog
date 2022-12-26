@@ -7,9 +7,6 @@
 namespace DNA {
 std::list<int> FindMotif(const std::string &dna_sequence, const std::string &motif) {
 
-  input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence);
-  input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(motif);
-
   std::list<int> result{};
   size_t floating_position = 0;
 

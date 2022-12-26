@@ -7,8 +7,6 @@
 namespace DNA {
 std::string RnaToProteinTranslation(std::string rna_sequence) {
 
-  input_validation::kStandardValidatorRna.IsPartOfTheAlphabet(rna_sequence);
-
   std::string result, substring;
   for (int i = 0; i + CODON_LENGTH <= (int) rna_sequence.length(); i++) {
     substring = rna_sequence.substr(i,  CODON_LENGTH);

@@ -4,13 +4,6 @@
 #include "rna_to_protein_translation_test.h"
 
 namespace rna_to_protein_translation_test {
-TEST(rna_to_protein_translation, Expect_invalid_argument_whenStringContainsInvalidCharacters) {
-  EXPECT_THROW(DNA::RnaToProteinTranslation("$"), std::invalid_argument) << std::endl;
-  EXPECT_THROW(DNA::RnaToProteinTranslation("E"), std::invalid_argument) << std::endl;
-  EXPECT_THROW(DNA::RnaToProteinTranslation("."), std::invalid_argument) << std::endl;
-  EXPECT_THROW(DNA::RnaToProteinTranslation("/"), std::invalid_argument) << std::endl;
-}
-
 INSTANTIATE_TEST_SUITE_P
 (
     Tests,
