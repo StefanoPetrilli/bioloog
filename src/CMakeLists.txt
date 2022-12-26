@@ -1,10 +1,6 @@
 include_directories(utils)
 include_directories(DNA)
 
-set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ ${CMAKE_CXX_STANDARD_LIBRARIES}")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Bstatic,--whole-archive -Wl,--no-whole-archive")
-add_compile_options(-Wall -Wextra -Wpedantic -Werror)
-
 set(headers
         utils/file/read_from_file.h
         utils/cli/display_help.h
@@ -29,6 +25,16 @@ set(sources
         DNA/find_motif.cc
         DNA/find_shared_motif.cc
         )
+
+if (OPENMP_FOUND)
+    set(sources
+            ${sources}
+            )
+
+    set(header
+            ${header}
+            )
+endif ()
 
 add_executable(bioloog ${headers} main.cc ${sources})
 add_library(src STATIC ${headers} ${sources})
