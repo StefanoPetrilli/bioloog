@@ -5,9 +5,7 @@
 #include "command.h"
 
 namespace cli {
-
 std::list<cli::VirtualCommand *> cli::VirtualCommand::list_;
-bool is_instantiated_ = false;
 
 VirtualCommand::VirtualCommand(const std::string &name, const std::string &description) {
   this->SetName(name);
@@ -104,4 +102,15 @@ void FindSharedMotif::Exec(const std::string &path) {
   std::string result = DNA::FindSharedMotif(map);
   std::cout << result << std::endl;
 }
+
+static const cli::CountNucleotides kCountNucleotides = CountNucleotides("count_nucleotides",
+                                                                        "Takes a DNA string and returns the counting of each nucleotides in the format {'A', 'C', 'T', 'G}");
+static const cli::DnaToRnaTranscription kDnaToRnaTranscription = DnaToRnaTranscription("dna_to_rna_translation",
+                                                                                       "Takes a DNA string and returnsthe rna transcription");
+static const cli::RnaToProteinTranslation kToProteinTranslation = RnaToProteinTranslation("rna_to_protein_translation",
+                                                                                          "Takes a RNA string and returnsthe proteins translation");
+static const cli::FindMotif kFindMotif = FindMotif("find_motif",
+                                                   "Takes a DNA sequence, a motif and return the positions of the motif in the dna sequence");
+static const cli::FindSharedMotif kFindSharedMotif = FindSharedMotif("find_shared_motif",
+                                                                     "Takes multiple DNA sequences, and return the longest common motif");
 }

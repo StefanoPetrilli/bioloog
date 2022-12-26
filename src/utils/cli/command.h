@@ -17,7 +17,6 @@
 #include "../../DNA/rna_to_protein_translation.h"
 
 namespace cli {
-
 class VirtualCommand {
  public:
   VirtualCommand(const std::string &name, const std::string &description);
