@@ -31,7 +31,7 @@ std::vector<std::string> ReadLinesFromFile(const std::string &path) {
 
   size_t position_start = 0, position_end, delimiter_length = 1;
   while ((position_end = file_content.find(kNewLine, position_start)) != std::string::npos) {
-    line = file_content.substr(position_start, position_end - position_start);
+    line = LineFormat(file_content.substr(position_start, position_end - position_start));
     position_start = position_end + delimiter_length;
     result.push_back(line);
     line = "";
@@ -53,15 +53,23 @@ std::map<std::string, std::string> ReadFastaFromFile(const std::string &path) {
   for (const std::string& line : file_lines) {
     if (IsSequenceName(line)) {
       result.insert({key, content});
-      key = line.substr(1);
+      key = KeyFormat(line);
       content = "";
     } else {
-      content += line;
+      content += LineFormat(line);
     }
   }
 
   result.insert({key, content});
   result.erase("");
   return result;
+}
+
+std::string LineFormat(const std::string &line) {
+  return line.ends_with('\r') ? line.substr(0, line.length() - 1) : line;
+}
+
+std::string KeyFormat(const std::string &key) {
+  return key.ends_with('\r') ? key.substr(1, key.length() - 2) :  key.substr(1);
 }
 }
