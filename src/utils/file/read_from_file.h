@@ -26,6 +26,8 @@ std::string static const kDefaultInputFilePath = ".." +
     kPathSeparator + "input_files" +
     kPathSeparator;
 
+std::string KeyFormat(const std::string &basic_string);
+std::string LineFormat(const std::string &basic_string);
 void ReadFromFile(std::string const &path, std::string &result);
 std::vector<std::string> ReadLinesFromFile(const std::string &path);
 std::map<std::string, std::string> ReadFastaFromFile(const std::string &path);

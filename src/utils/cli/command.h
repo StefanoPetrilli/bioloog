@@ -18,7 +18,7 @@
 
 namespace cli {
 class VirtualCommand {
- protected:
+ public:
   VirtualCommand(const std::string &name, const std::string &description);
   ~VirtualCommand() = default;
 
@@ -71,7 +71,7 @@ class FindMotif : VirtualCommand {
 class FindSharedMotif : VirtualCommand {
  public:
   FindSharedMotif(const std::string &name, const std::string &description) : VirtualCommand(name,
-                                                                                            description) {};
+                                                                                      description) {};
   void Exec(const std::string &path) override;
 };
 }
