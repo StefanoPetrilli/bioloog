@@ -45,4 +45,17 @@ TEST_P(ContainMotifParametrizedTests, Expect_Matching_Value) {
 
   EXPECT_EQ(expected, result) << std::endl;
 }
+
+TEST(ParallelContainMotifDatasetTest, Expect_Matching_Value) {
+  std::string input, dna_sequence, motif;
+  bool result, expected = true;
+
+  std::vector<std::string> file_lines = read_from_file::ReadLinesFromFile("covid_dna.txt");
+  dna_sequence = file_lines.at(0);
+  motif = file_lines.at(1);
+
+  result = DNA::ContainMotif(dna_sequence, motif);
+
+  EXPECT_EQ(expected, result) << std::endl;
+}
 }
