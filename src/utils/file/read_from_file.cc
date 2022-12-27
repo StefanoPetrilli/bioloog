@@ -31,7 +31,7 @@ std::vector<std::string> ReadLinesFromFile(const std::string &path) {
 
   size_t position_start = 0, position_end, delimiter_length = 1;
   while ((position_end = file_content.find(kNewLine, position_start)) != std::string::npos) {
-    line = LineFormat(file_content.substr(position_start, position_end - position_start));
+    line = RemoveEscapeCharacter(file_content.substr(position_start, position_end - position_start));
     position_start = position_end + delimiter_length;
     result.push_back(line);
     line = "";
@@ -56,7 +56,7 @@ std::map<std::string, std::string> ReadFastaFromFile(const std::string &path) {
       key = KeyFormat(line);
       content = "";
     } else {
-      content += LineFormat(line);
+      content += RemoveEscapeCharacter(line);
     }
   }
 
@@ -65,11 +65,14 @@ std::map<std::string, std::string> ReadFastaFromFile(const std::string &path) {
   return result;
 }
 
-std::string LineFormat(const std::string &line) {
-  return line.ends_with('\r') ? line.substr(0, line.length() - 1) : line;
+std::string RemoveEscapeCharacter(const std::string &line) {
+  std::string result = line;
+  while (result.starts_with('\n') || result.starts_with('\r')) result = result.substr(1);
+  while (result.ends_with('\n') || result.ends_with('\r')) result = result.substr(0, result.length() - 1);
+  return result;
 }
 
 std::string KeyFormat(const std::string &key) {
-  return key.ends_with('\r') ? key.substr(1, key.length() - 2) :  key.substr(1);
+  return key.ends_with('\r') ? RemoveEscapeCharacter(key.substr(1)) : key.substr(1);
 }
 }

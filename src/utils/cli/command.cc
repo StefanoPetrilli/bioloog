@@ -76,9 +76,9 @@ void FindMotif::Exec(const std::string &path) {
   read_from_file::ReadFromFile(path, file_content);
 
   int newline_position = file_content.find(read_from_file::kNewLine);
-  std::string dna_sequence = file_content.substr(0, newline_position);
+  std::string dna_sequence = read_from_file::RemoveEscapeCharacter(file_content.substr(0, newline_position));
   std::string motif_starting_with_newline = file_content.substr(newline_position);
-  std::string motif = motif_starting_with_newline.substr(1);
+  std::string motif = read_from_file::RemoveEscapeCharacter(motif_starting_with_newline);
 
   input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence);
   input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(motif);
