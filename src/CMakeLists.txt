@@ -26,15 +26,5 @@ set(sources
         DNA/find_shared_motif.cc
         )
 
-if (OPENMP_FOUND)
-    set(sources
-            ${sources}
-            )
-
-    set(header
-            ${header}
-            )
-endif ()
-
 add_executable(bioloog ${headers} main.cc ${sources})
-add_library(src STATIC ${headers} ${sources})
+add_library(src ${headers} ${sources})

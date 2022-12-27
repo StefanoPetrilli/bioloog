@@ -22,16 +22,6 @@ set(sources
         DNA/find_motif_test.cc DNA/find_motif_test.cc
         DNA/find_shared_motif_test.cc utils/cli/command_test.cc)
 
-if (OPENMP_FOUND)
-    set(sources
-            ${sources}
-            )
-
-    set(header
-            ${header}
-            )
-endif ()
-
 add_executable(MainTest ${header} ${sources})
 
 target_link_libraries(
