@@ -103,6 +103,18 @@ void FindSharedMotif::Exec(const std::string &path) {
   std::cout << result << std::endl;
 }
 
+void FindConsensusAndProfile::Exec(const std::string &path) {
+  std::string file_content;
+  auto map = read_from_file::ReadFastaFromFile(path);
+
+  for (auto dna_sequence : map) {
+    input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence.second);
+  }
+
+  auto result = DNA::FindConsensusAndProfile(map);
+  std::cout << std::get<0>(result) << '\n' << DNA::ProfileToString(std::get<1>(result)) << std::endl;
+}
+
 static const cli::CountNucleotides kCountNucleotides = CountNucleotides("count_nucleotides",
                                                                         "Takes a DNA string and returns the counting of each nucleotides in the format {'A', 'C', 'T', 'G}");
 static const cli::DnaToRnaTranscription kDnaToRnaTranscription = DnaToRnaTranscription("dna_to_rna_translation",
@@ -113,4 +125,6 @@ static const cli::FindMotif kFindMotif = FindMotif("find_motif",
                                                    "Takes a DNA sequence, a motif and return the positions of the motif in the dna sequence");
 static const cli::FindSharedMotif kFindSharedMotif = FindSharedMotif("find_shared_motif",
                                                                      "Takes multiple DNA sequences, and return the longest common motif");
+static const cli::FindConsensusAndProfile kFindConsensusAndProfile = FindConsensusAndProfile("find_consensus_and_profile",
+                                                                     "Takes multiple DNA sequences, and return consensus and profile");
 }
