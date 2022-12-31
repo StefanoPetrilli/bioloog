@@ -2,8 +2,6 @@
 // Created by Stefano on 12/16/2022.
 //
 #include "find_motif_test.h"
-#include "../../src/DNA/find_motif.h"
-#include "../../src/utils/file/read_from_file.h"
 
 namespace find_motif_test {
 TEST_P(FindMotifParametrizedTestsSingleCharacterMotif, Expect_ProperMotifPosition_WithSingleCharacterMotif) {
@@ -25,11 +23,11 @@ TEST_P(FindMotifParametrizedTests, Expect_ProperMotifPosition_WithMultipleCharac
 TEST(FindMotifDataset, Expect_ProperTranslation) {
   std::string input, expected, dna_sequence, motif, result;
 
-  std::vector<std::string> file_lines = read_from_file::ReadLinesFromFile("rosalind_subs_1_dataset.txt");
+  std::vector<std::string> file_lines = file::ReadLinesFromFile(file::kRosalindSubsDataset);
   dna_sequence = file_lines.at(0);
   motif = file_lines.at(1);
 
-  read_from_file::ReadFromFile("rosalind_subs_1_output.txt", expected);
+  file::ReadFromFile(file::kRosalindSubsOutput, expected);
 
   for (auto element : DNA::FindMotif(dna_sequence, motif))
     result += std::to_string(element + 1) + " ";
@@ -50,7 +48,7 @@ TEST(ParallelContainMotifDatasetTest, Expect_Matching_Value) {
   std::string input, dna_sequence, motif;
   bool result, expected = true;
 
-  std::vector<std::string> file_lines = read_from_file::ReadLinesFromFile("covid_dna.txt");
+  std::vector<std::string> file_lines = file::ReadLinesFromFile(file::kCovidFileName);
   dna_sequence = file_lines.at(0);
   motif = file_lines.at(1);
 

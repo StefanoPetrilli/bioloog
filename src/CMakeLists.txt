@@ -5,6 +5,7 @@ set(headers
         utils/file/read_from_file.h
         utils/cli/display_help.h
         utils/cli/command.h
+        utils/file/file.h
         utils/cli/display_error.h
         utils/input_validation/alphabet_validatort.h
         DNA/count_nucleotides.h

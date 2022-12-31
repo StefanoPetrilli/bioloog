@@ -43,7 +43,7 @@ std::string VirtualCommand::ToString() const {
 
 void CountNucleotides::Exec(const std::string &path) {
   std::string dna_sequence;
-  read_from_file::ReadFromFile(path, dna_sequence);
+  file::ReadFromFile(path, dna_sequence);
 
   input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence);
 
@@ -53,7 +53,7 @@ void CountNucleotides::Exec(const std::string &path) {
 
 void DnaToRnaTranscription::Exec(const std::string &path) {
   std::string dna_sequence;
-  read_from_file::ReadFromFile(path, dna_sequence);
+  file::ReadFromFile(path, dna_sequence);
 
   input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence);
 
@@ -63,7 +63,7 @@ void DnaToRnaTranscription::Exec(const std::string &path) {
 
 void RnaToProteinTranslation::Exec(const std::string &path) {
   std::string dna_sequence;
-  read_from_file::ReadFromFile(path, dna_sequence);
+  file::ReadFromFile(path, dna_sequence);
 
   input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence);
 
@@ -73,12 +73,12 @@ void RnaToProteinTranslation::Exec(const std::string &path) {
 
 void FindMotif::Exec(const std::string &path) {
   std::string file_content;
-  read_from_file::ReadFromFile(path, file_content);
+  file::ReadFromFile(path, file_content);
 
-  int newline_position = file_content.find(read_from_file::kNewLine);
-  std::string dna_sequence = read_from_file::RemoveEscapeCharacter(file_content.substr(0, newline_position));
+  int newline_position = file_content.find(file::kNewLine);
+  std::string dna_sequence = file::RemoveEscapeCharacter(file_content.substr(0, newline_position));
   std::string motif_starting_with_newline = file_content.substr(newline_position);
-  std::string motif = read_from_file::RemoveEscapeCharacter(motif_starting_with_newline);
+  std::string motif = file::RemoveEscapeCharacter(motif_starting_with_newline);
 
   input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence);
   input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(motif);
@@ -93,7 +93,7 @@ void FindMotif::Exec(const std::string &path) {
 
 void FindSharedMotif::Exec(const std::string &path) {
   std::string file_content;
-  auto map = read_from_file::ReadFastaFromFile(path);
+  auto map = file::ReadFastaFromFile(path);
 
   for (auto dna_sequence : map) {
     input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence.second);
@@ -105,7 +105,7 @@ void FindSharedMotif::Exec(const std::string &path) {
 
 void FindConsensusAndProfile::Exec(const std::string &path) {
   std::string file_content;
-  auto map = read_from_file::ReadFastaFromFile(path);
+  auto map = file::ReadFastaFromFile(path);
 
   for (auto dna_sequence : map) {
     input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence.second);
