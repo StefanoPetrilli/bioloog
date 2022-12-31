@@ -15,7 +15,8 @@ std::map<std::string, std::string> input_with_errors = {
     {"dna_to_rna_translation", "nucleotides_invalid.txt"},
     {"rna_to_protein_translation", "nucleotides_invalid.txt"},
     {"find_motif", "motif_test_error.txt"},
-    {"find_shared_motif", "fasta_example_input_illegal_characters.txt"}
+    {"find_shared_motif", "fasta_example_input_illegal_characters.txt"},
+    {"find_consensus_and_profile", "fasta_example_input_illegal_characters.txt"}
     };
 }
 

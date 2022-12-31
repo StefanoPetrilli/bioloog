@@ -11,7 +11,9 @@ set(headers
         DNA/dna_to_rna_transcription.h
         DNA/rna_to_protein_translation.h
         DNA/find_motif.h
-        DNA/find_shared_motif.h)
+        DNA/find_shared_motif.h
+        DNA/find_consensus_and_profile.h
+        )
 
 set(sources
         utils/file/read_from_file.cc
@@ -24,6 +26,7 @@ set(sources
         DNA/rna_to_protein_translation.cc
         DNA/find_motif.cc
         DNA/find_shared_motif.cc
+        DNA/find_consensus_and_profile.cc
         )
 
 add_executable(bioloog ${headers} main.cc ${sources})
