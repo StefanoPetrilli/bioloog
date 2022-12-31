@@ -12,7 +12,7 @@
 #include <map>
 #include "file.h"
 
-namespace read_from_file {
+namespace file {
 const static char kFastaStartingCharacter = '>';
 const static char kNewLine = '\n';
 const static std::string kPathSeparator =

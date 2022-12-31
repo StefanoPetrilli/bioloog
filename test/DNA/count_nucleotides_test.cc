@@ -22,8 +22,8 @@ TEST_P(CountNucleotidesMultipleParametersTests, Expect_properCounting) {
 TEST(CountNucleotidesDatasetTest, Expect_properTranslation) {
   std::string input, expected;
 
-  read_from_file::ReadFromFile(file::kRosalindDnaDataset, input);
-  read_from_file::ReadFromFile(file::kRosalindDnaOutput, expected);
+  file::ReadFromFile(file::kRosalindDnaDataset, input);
+  file::ReadFromFile(file::kRosalindDnaOutput, expected);
 
   auto result = DNA::CountNucleotides(input);
 

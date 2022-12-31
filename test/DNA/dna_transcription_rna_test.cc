@@ -51,8 +51,8 @@ TEST_P(DnaToRnaTranscriptionMultipleParametersTranslationTests, Expect_properTra
 TEST(DnaToRnaTranscriptionDatasetTest, Expect_properTranslation) {
   std::string input, expected;
 
-  read_from_file::ReadFromFile(file::kRosalindRnaDataset, input);
-  read_from_file::ReadFromFile(file::kRosalindRnaOutput, expected);
+  file::ReadFromFile(file::kRosalindRnaDataset, input);
+  file::ReadFromFile(file::kRosalindRnaOutput, expected);
 
   EXPECT_EQ(expected, DNA::DnaToRnaTranscription(input));
 }

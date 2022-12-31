@@ -7,7 +7,7 @@
 
 #include "read_from_file.h"
 
-namespace read_from_file {
+namespace file {
 
 void ReadFromFile(const std::string& path, std::string &result) {
 

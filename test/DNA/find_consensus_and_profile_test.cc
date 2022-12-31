@@ -6,7 +6,7 @@
 
 namespace find_consensus_and_profile_test {
 TEST(FindConsensusAndProfile, GivenOneString_Expect_ConsensusIdenticToInput) {
-  auto sequences = read_from_file::ReadFastaFromFile(file::kCovidFastaFileName);
+  auto sequences = file::ReadFastaFromFile(file::kCovidFastaFileName);
   std::string expected = sequences.begin()->second;
 
   EXPECT_EQ(expected, std::get<0>(DNA::FindConsensusAndProfile(sequences)));
@@ -20,13 +20,13 @@ TEST(FindConsensusAndProfile, GivenOneString_Expect_CorrectProfile) {
       {'T', {0, 1, 1, 0, 0, 0, 0, 0}}
   };
 
-  auto sequences = read_from_file::ReadFastaFromFile(file::kCovidShortFastaFileName);
+  auto sequences = file::ReadFastaFromFile(file::kCovidShortFastaFileName);
 
   EXPECT_EQ(expected, std::get<1>(DNA::FindConsensusAndProfile(sequences)));
 }
 
 TEST(FindConsensusAndProfile, GivenMultipleStrings_Expect_ConsensusIdenticToInput) {
-  auto sequences = read_from_file::ReadFastaFromFile(file::kMultipleFastaEqualLength);
+  auto sequences = file::ReadFastaFromFile(file::kMultipleFastaEqualLength);
   std::string expected = "ATGCAACT";
 
   EXPECT_EQ(expected, std::get<0>(DNA::FindConsensusAndProfile(sequences)));
@@ -40,7 +40,7 @@ TEST(FindConsensusAndProfile, GivenMultipleStrings_Expect_CorrectProfile) {
       {'T', {1, 5, 0, 0, 0, 1, 1, 6}}
   };
 
-  auto sequences = read_from_file::ReadFastaFromFile(file::kMultipleFastaEqualLength);
+  auto sequences = file::ReadFastaFromFile(file::kMultipleFastaEqualLength);
 
   EXPECT_EQ(expected, std::get<1>(DNA::FindConsensusAndProfile(sequences)));
 }

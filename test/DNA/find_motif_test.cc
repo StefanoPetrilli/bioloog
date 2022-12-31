@@ -23,11 +23,11 @@ TEST_P(FindMotifParametrizedTests, Expect_ProperMotifPosition_WithMultipleCharac
 TEST(FindMotifDataset, Expect_ProperTranslation) {
   std::string input, expected, dna_sequence, motif, result;
 
-  std::vector<std::string> file_lines = read_from_file::ReadLinesFromFile(file::kRosalindSubsDataset);
+  std::vector<std::string> file_lines = file::ReadLinesFromFile(file::kRosalindSubsDataset);
   dna_sequence = file_lines.at(0);
   motif = file_lines.at(1);
 
-  read_from_file::ReadFromFile(file::kRosalindSubsOutput, expected);
+  file::ReadFromFile(file::kRosalindSubsOutput, expected);
 
   for (auto element : DNA::FindMotif(dna_sequence, motif))
     result += std::to_string(element + 1) + " ";
@@ -48,7 +48,7 @@ TEST(ParallelContainMotifDatasetTest, Expect_Matching_Value) {
   std::string input, dna_sequence, motif;
   bool result, expected = true;
 
-  std::vector<std::string> file_lines = read_from_file::ReadLinesFromFile(file::kCovidFileName);
+  std::vector<std::string> file_lines = file::ReadLinesFromFile(file::kCovidFileName);
   dna_sequence = file_lines.at(0);
   motif = file_lines.at(1);
 

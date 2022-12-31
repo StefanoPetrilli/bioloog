@@ -23,12 +23,12 @@ void ReadFromFile::TearDown() {
 
 TEST_F(ReadFromFile, Expect_invalid_argument_whenFileDoesNotExist) {
   std::string result;
-  EXPECT_THROW(read_from_file::ReadFromFile(kNonExistentFileNameTest1, result), std::invalid_argument) << std::endl;
+  EXPECT_THROW(file::ReadFromFile(kNonExistentFileNameTest1, result), std::invalid_argument) << std::endl;
 }
 
 TEST_F(ReadFromFile, Expect_result_toContainTheContentOfTheFileWhenTheFileExists) {
   std::string result;
-  read_from_file::ReadFromFile(kExistentFileNameTest2, result);
+  file::ReadFromFile(kExistentFileNameTest2, result);
   EXPECT_EQ(kExpectedStringTest2, result) << std::endl;
 }
 
@@ -48,7 +48,7 @@ void ReadLinesFromFile::TearDown() {
 
 TEST_F(ReadLinesFromFile, Expect_Result_ToContainTheContentOfTheFileWhenTheFileExists) {
   std::vector<std::string> result;
-  result = read_from_file::ReadLinesFromFile(kMultipleLinesReadFileName);
+  result = file::ReadLinesFromFile(kMultipleLinesReadFileName);
   for (size_t i = 0; i < result.size(); i ++)
     EXPECT_EQ(kMultipleLinesListExpected, result) << std::endl;
 }
@@ -60,7 +60,7 @@ TEST(ReadFastaFromFile, Expect_Result_ToContainTheContentOfTheFile) {
       {"Taxon2", "CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC"},
       {"Taxon3", "CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT"}
   };
-  result = read_from_file::ReadFastaFromFile(kFastaContentFileName);
+  result = file::ReadFastaFromFile(kFastaContentFileName);
   EXPECT_EQ(expected, result);
 }
 }
