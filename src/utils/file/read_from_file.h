@@ -10,6 +10,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include "file.h"
 
 namespace read_from_file {
 const static char kFastaStartingCharacter = '>';
@@ -27,8 +28,8 @@ std::string static const kDefaultInputFilePath = ".." +
 
 std::string KeyFormat(const std::string &basic_string);
 std::string RemoveEscapeCharacter(const std::string &basic_string);
-void ReadFromFile(std::string const &path, std::string &result);
-std::vector<std::string> ReadLinesFromFile(const std::string &path);
-std::map<std::string, std::string> ReadFastaFromFile(const std::string &path);
+void ReadFromFile(const std::string& path, std::string &result);
+std::vector<std::string> ReadLinesFromFile(const std::string& path);
+std::map<std::string, std::string> ReadFastaFromFile(const std::string& path);
 }
 #endif //BIOLOOG_READFROMFILE_H

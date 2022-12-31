@@ -9,19 +9,19 @@
 
 namespace read_from_file {
 
-void ReadFromFile(std::string const &path, std::string &result) {
+void ReadFromFile(const std::string& path, std::string &result) {
 
-  std::ifstream file(kDefaultInputFilePath + path);
+  std::ifstream file_stream(kDefaultInputFilePath + path);
 
-  if (file.is_open()) {
-    getline(file, result, '\x1A');
-    file.close();
+  if (file_stream.is_open()) {
+    getline(file_stream, result, '\x1A');
+    file_stream.close();
   } else {
     throw std::invalid_argument("The path does not correspond to a file or the file cannot be accessed");
   }
 }
 
-std::vector<std::string> ReadLinesFromFile(const std::string &path) {
+std::vector<std::string> ReadLinesFromFile(const std::string& path) {
 
   std::string file_content;
   ReadFromFile(path, file_content);
@@ -45,7 +45,7 @@ std::vector<std::string> ReadLinesFromFile(const std::string &path) {
 
 auto IsSequenceName = [] (const std::string& line) { return line.starts_with('>'); };
 
-std::map<std::string, std::string> ReadFastaFromFile(const std::string &path) {
+std::map<std::string, std::string> ReadFastaFromFile(const std::string& path) {
   std::map<std::string, std::string> result;
   std::vector<std::string> file_lines = ReadLinesFromFile(path);
 

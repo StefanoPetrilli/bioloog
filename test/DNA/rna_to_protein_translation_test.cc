@@ -46,8 +46,9 @@ TEST_P(RnaToProteinTranslationTestMultipleProtein, SingleProtein_Expect_properTr
 TEST(RnaToProteinTranslationDatasetTest, Expect_properTranslation) {
   std::string input, expected, actual;
 
-  read_from_file::ReadFromFile("rosalind_prot_1_dataset.txt", input);
-  read_from_file::ReadFromFile("rosalind_prot_1_output.txt", expected);
+  read_from_file::ReadFromFile(file::kRosalindProtDataset, input);
+  read_from_file::ReadFromFile(file::kRosalindProtOutput, expected);
+
   actual = DNA::RnaToProteinTranslation(input);
   EXPECT_EQ(expected, actual);
 }

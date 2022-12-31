@@ -35,7 +35,7 @@ TEST(GetLongestSubstringRemaining, Expect_Result_ToBeTheLongestSubstringRemainin
 TEST(FindSharedMotifSmallDataset, Expect_ProperResult) {
   std::string result, expected = "AC";
 
-  auto sequences = read_from_file::ReadFastaFromFile("shared_motif_test.txt");
+  auto sequences = read_from_file::ReadFastaFromFile(file::kFindSharedMotifTest);
 
   result = DNA::FindSharedMotif(sequences);
   EXPECT_EQ(expected, result);
@@ -43,9 +43,9 @@ TEST(FindSharedMotifSmallDataset, Expect_ProperResult) {
 
 TEST(FindSharedMotifDataset, Expect_ProperResult) {
   std::string result, expected;
-  read_from_file::ReadFromFile("rosalind_lcsm_1_output.txt", expected);
+  read_from_file::ReadFromFile(file::kRosalindLcsmOutput, expected);
 
-  auto sequences = read_from_file::ReadFastaFromFile("rosalind_lcsm_1_dataset.txt");
+  auto sequences = read_from_file::ReadFastaFromFile(file::kRosalindLcsmDataset);
   result = DNA::FindSharedMotif(sequences);
 
   EXPECT_EQ(expected, result);
