@@ -14,6 +14,7 @@ set(headers
         DNA/find_motif.h
         DNA/find_shared_motif.h
         DNA/find_consensus_and_profile.h
+        DNA/restriction_sites.h
         )
 
 set(sources
@@ -28,6 +29,7 @@ set(sources
         DNA/find_motif.cc
         DNA/find_shared_motif.cc
         DNA/find_consensus_and_profile.cc
+        DNA/restriction_sites.cc
         )
 
 add_executable(bioloog ${headers} main.cc ${sources})

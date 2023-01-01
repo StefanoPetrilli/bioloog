@@ -95,7 +95,7 @@ void FindSharedMotif::Exec(const std::string &path) {
   std::string file_content;
   auto map = file::ReadFastaFromFile(path);
 
-  for (auto dna_sequence : map) {
+  for (const auto& dna_sequence : map) {
     input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence.second);
   }
 
@@ -107,7 +107,7 @@ void FindConsensusAndProfile::Exec(const std::string &path) {
   std::string file_content;
   auto map = file::ReadFastaFromFile(path);
 
-  for (auto dna_sequence : map) {
+  for (const auto& dna_sequence : map) {
     input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence.second);
   }
 
@@ -115,16 +115,36 @@ void FindConsensusAndProfile::Exec(const std::string &path) {
   std::cout << std::get<0>(result) << '\n' << DNA::ProfileToString(std::get<1>(result)) << std::endl;
 }
 
-static const cli::CountNucleotides kCountNucleotides = CountNucleotides("count_nucleotides",
-                                                                        "Takes a DNA string and returns the counting of each nucleotides in the format {'A', 'C', 'T', 'G}");
-static const cli::DnaToRnaTranscription kDnaToRnaTranscription = DnaToRnaTranscription("dna_to_rna_translation",
-                                                                                       "Takes a DNA string and returnsthe rna transcription");
-static const cli::RnaToProteinTranslation kToProteinTranslation = RnaToProteinTranslation("rna_to_protein_translation",
-                                                                                          "Takes a RNA string and returnsthe proteins translation");
-static const cli::FindMotif kFindMotif = FindMotif("find_motif",
-                                                   "Takes a DNA sequence, a motif and return the positions of the motif in the dna sequence");
+void RestrictionSite::Exec(const std::string &path) {
+  std::string file_content;
+  auto map = file::ReadFastaFromFile(path);
+
+  for (const auto& dna_sequence : map) {
+    input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence.second);
+  }
+
+  auto result = DNA::RestrictionSites(map.begin()->second);
+  std::cout << DNA::Format(result) << std::endl;
+}
+
+static const cli::CountNucleotides kCountNucleotides =
+    CountNucleotides("count_nucleotides",
+                     "Takes a DNA string and returns the counting of each nucleotides in the format {'A', 'C', 'T', 'G}");
+static const cli::DnaToRnaTranscription kDnaToRnaTranscription =
+    DnaToRnaTranscription("dna_to_rna_translation",
+                          "Takes a DNA string and returnsthe rna transcription");
+static const cli::RnaToProteinTranslation kToProteinTranslation =
+    RnaToProteinTranslation("rna_to_protein_translation",
+                            "Takes a RNA string and returnsthe proteins translation");
+static const cli::FindMotif kFindMotif =
+    FindMotif("find_motif",
+              "Takes a DNA sequence, a motif and return the positions of the motif in the dna sequence");
 static const cli::FindSharedMotif kFindSharedMotif = FindSharedMotif("find_shared_motif",
                                                                      "Takes multiple DNA sequences, and return the longest common motif");
-static const cli::FindConsensusAndProfile kFindConsensusAndProfile = FindConsensusAndProfile("find_consensus_and_profile",
-                                                                     "Takes multiple DNA sequences, and return consensus and profile");
+static const cli::FindConsensusAndProfile kFindConsensusAndProfile =
+    FindConsensusAndProfile("find_consensus_and_profile",
+                            "Takes multiple DNA sequences, and return consensus and profile");
+static const cli::RestrictionSite kRestrictionSite =
+    RestrictionSite("restriction_site",
+                    "Take a DNA string in FASTA format and return the position of restriction sites.");
 }

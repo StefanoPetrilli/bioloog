@@ -16,6 +16,7 @@
 #include "../../DNA/dna_to_rna_transcription.h"
 #include "../../DNA/rna_to_protein_translation.h"
 #include "../../DNA/find_consensus_and_profile.h"
+#include "../../DNA/restriction_sites.h"
 
 namespace cli {
 class VirtualCommand {
@@ -72,13 +73,20 @@ class FindMotif : VirtualCommand {
 class FindSharedMotif : VirtualCommand {
  public:
   FindSharedMotif(const std::string &name, const std::string &description) : VirtualCommand(name,
-                                                                                      description) {};
+                                                                                            description) {};
   void Exec(const std::string &path) override;
 };
 
 class FindConsensusAndProfile : VirtualCommand {
  public:
   FindConsensusAndProfile(const std::string &name, const std::string &description) : VirtualCommand(name,
+                                                                                                    description) {};
+  void Exec(const std::string &path) override;
+};
+
+class RestrictionSite : VirtualCommand {
+ public:
+  RestrictionSite(const std::string &name, const std::string &description) : VirtualCommand(name,
                                                                                             description) {};
   void Exec(const std::string &path) override;
 };
