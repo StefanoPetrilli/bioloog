@@ -25,5 +25,6 @@ const static std::list<std::tuple<std::string, std::string>> kReversePalindromeP
 std::list<restriction_site> RestrictionSites(const std::string& dna_sequence);
 std::list<std::string> GenerateAllReversePalindrome(const std::string& base_string);
 std::string Format(const std::list<restriction_site>& list);
+void InsertPossiblePalindromeInToCheck(std::list<restriction_site>& to_check, const std::string& string,const size_t position);
 }
 #endif //BIOLOOG_SRC_DNA_RESTRICTION_SITES_H_

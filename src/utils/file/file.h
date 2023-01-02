@@ -20,6 +20,7 @@ static const std::string kRosalindLcsmDataset = "rosalind_lcsm_1_dataset.txt";
 static const std::string kRosalindLcsmOutput = "rosalind_lcsm_1_output.txt";
 static const std::string kRosalindProtDataset = "rosalind_prot_1_dataset.txt";
 static const std::string kRosalindProtOutput = "rosalind_prot_1_output.txt";
+static const std::string kRosalindRestrictionDataset = "rosalind_restriction_1_dataset.txt";
 static const std::string kCovidShortFastaFileName = "fasta_covid19_short.txt";
 static const std::string kCovidShortFastaProfileFileName = "fasta_covid19_short_profile.txt";
 static const std::string kMultipleFastaEqualLength = "rosalind_multiple_fasta_equal_length.txt";

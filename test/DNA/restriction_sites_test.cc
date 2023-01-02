@@ -28,7 +28,8 @@ TEST(RestrictionSite, GivenOneLongRestrictionSite_Return_ExpectedResult) {
   EXPECT_EQ(expected, result);
 }
 
-TEST(RestrictionSite, GivenOneLongRestrictionSite_WithLenghtGreaterThan12_ExpectedLongerRestrictionSiteFoundToBeLong12) {
+TEST(RestrictionSite,
+     GivenOneLongRestrictionSite_WithLenghtGreaterThan12_ExpectedLongerRestrictionSiteFoundToBeLong12) {
   auto sequences = file::ReadFastaFromFile(file::kRestrictionSiteShortLongerThan12);
   auto expected = std::list<DNA::restriction_site>{
       std::make_tuple("AATT", 5, 4),
@@ -63,5 +64,14 @@ TEST(RestrictionSiteDataset1, GivenDataset_Expect_CorrectResult) {
   result.sort();
 
   EXPECT_EQ(expected, result);
+  EXPECT_EQ(expected, result);
+}
+
+TEST(RestrictionSiteDataset2, GivenDataset_Expect_CorrectResult) {
+  auto sequences = file::ReadFastaFromFile(file::kRosalindRestrictionDataset);
+  auto expected_length = 98;
+  auto result_length = DNA::RestrictionSites(sequences.begin()->second).size();
+
+  EXPECT_EQ(expected_length, result_length);
 }
 }

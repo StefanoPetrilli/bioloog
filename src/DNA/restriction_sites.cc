@@ -13,12 +13,10 @@ std::list<restriction_site> RestrictionSites(const std::string &dna_sequence) {
   for (const auto &s : kShortestReversePalindrome) {
     position = dna_sequence.find(s);
 
-    while (position != std::string::npos) {
+    for (; position != std::string::npos; position = dna_sequence.find(s, position + 1)) {
       result.emplace_back(s, position, s.length());
-      for (const auto &restriction_sites : GenerateAllReversePalindrome(s)) {
-        to_check.emplace_back(restriction_sites, position - 1, restriction_sites.length());
-      }
-      position = dna_sequence.find(s, position + 1);
+      if (position != 0)
+        InsertPossiblePalindromeInToCheck(to_check, s, position - 1);
     }
   }
 
@@ -26,18 +24,23 @@ std::list<restriction_site> RestrictionSites(const std::string &dna_sequence) {
     restriction_site r = to_check.back();
     to_check.pop_back();
 
-    if ((std::get<1>(r) < 0) || (dna_sequence.substr(std::get<1>(r), std::get<2>(r)) != std::get<0>(r)))
-      continue;
+    if (dna_sequence.substr(std::get<1>(r), std::get<2>(r)) != std::get<0>(r)) continue;
 
     result.emplace_back(r);
 
-    if (std::get<0>(r).length() == 12) continue;
-    for (const auto &restriction_sites : GenerateAllReversePalindrome(std::get<0>(r))) {
-      to_check.emplace_back(restriction_sites, std::get<1>(r) - 1, restriction_sites.length());
-    }
+    if (std::get<1>(r) != 0 && std::get<0>(r).length() < 12)
+      InsertPossiblePalindromeInToCheck(to_check, std::get<0>(r), std::get<1>(r) - 1);
   }
 
   return result;
+}
+
+void InsertPossiblePalindromeInToCheck(std::list<restriction_site> &to_check,
+                                       const std::string &string,
+                                       const size_t position) {
+  for (const auto &restriction_sites : GenerateAllReversePalindrome(string)) {
+    to_check.emplace_back(restriction_sites, position, restriction_sites.length());
+  }
 }
 
 std::list<std::string> GenerateAllReversePalindrome(const std::string &base_string) {
