@@ -74,4 +74,27 @@ TEST(RestrictionSiteDataset2, GivenDataset_Expect_CorrectResult) {
 
   EXPECT_EQ(expected_length, result_length);
 }
+
+TEST(RestrictionSiteDataset3, GivenCovidDna_MeasureTimeOfParallelAndSequential_ExpectParallelToBeFaster) {
+  auto sequences = file::ReadFastaFromFile(file::kCovidFastaFileName);
+  auto start_sequential = std::chrono::high_resolution_clock::now();
+  auto sequential_result_length = DNA::SequentialRestrictionSites(sequences.begin()->second).size();
+  auto stop_sequential = std::chrono::high_resolution_clock::now();
+
+  auto start_parallel = std::chrono::high_resolution_clock::now();
+  auto parallel_result_length = DNA::ParallelRestrictionSites(sequences.begin()->second).size();
+  auto stop_parallel = std::chrono::high_resolution_clock::now();
+
+  auto sequential_execution_time = duration_cast<std::chrono::microseconds>(stop_sequential - start_sequential);
+  auto parallel_execution_time = duration_cast<std::chrono::microseconds>(stop_parallel - start_parallel);
+
+  EXPECT_EQ(sequential_result_length, parallel_result_length);
+
+  std::cout << "Parallel execution time: "
+            << parallel_execution_time.count()
+            << ", Sequential execution time: "
+            << sequential_execution_time.count() << "\n";
+
+  EXPECT_GT(sequential_execution_time, parallel_execution_time);
+}
 }
