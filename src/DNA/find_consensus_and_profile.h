@@ -8,8 +8,8 @@
 #include <string>
 
 namespace DNA {
-typedef std::map<char, std::vector<int>> Profile;
-typedef std::string Consensus;
+using Profile =  std::map<char, std::vector<int>>;
+using Consensus = std::string;
 std::tuple<Consensus, Profile> FindConsensusAndProfile(const std::map<std::string, std::string> &sequences);
 char FindConsensusFromProfile(Profile profile, int i);
 std::string ProfileToString(Profile profile);

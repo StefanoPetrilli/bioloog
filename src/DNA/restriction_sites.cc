@@ -4,7 +4,7 @@
 #include "restriction_sites.h"
 
 namespace DNA {
-std::list<restriction_site> RestrictionSites(const std::string &dna_sequence) {
+std::list<RestrictionSite> RestrictionSites(const std::string &dna_sequence) {
 #ifdef _OPENMP
   return ParallelRestrictionSites(dna_sequence);
 #else
@@ -12,9 +12,9 @@ std::list<restriction_site> RestrictionSites(const std::string &dna_sequence) {
 #endif
 }
 
-std::list<restriction_site> SequentialRestrictionSites(const std::string &dna_sequence) {
-  std::list<restriction_site> result;
-  std::list<restriction_site> to_check;
+std::list<RestrictionSite> SequentialRestrictionSites(const std::string &dna_sequence) {
+  std::list<RestrictionSite> result;
+  std::list<RestrictionSite> to_check;
 
   size_t position;
   for (const auto &s : kShortestReversePalindrome) {
@@ -28,7 +28,7 @@ std::list<restriction_site> SequentialRestrictionSites(const std::string &dna_se
   }
 
   while (!to_check.empty()) {
-    restriction_site r = to_check.back();
+    RestrictionSite r = to_check.back();
     to_check.pop_back();
 
     if (dna_sequence.substr(std::get<1>(r), std::get<2>(r)) != std::get<0>(r)) continue;
@@ -42,13 +42,13 @@ std::list<restriction_site> SequentialRestrictionSites(const std::string &dna_se
   return result;
 }
 
-std::list<restriction_site> ParallelRestrictionSites(const std::string &dna_sequence) {
+std::list<RestrictionSite> ParallelRestrictionSites(const std::string &dna_sequence) {
 
   if (dna_sequence.size() < kDimensionRequirementForParallelExecutionRestrictionSite)
     return SequentialRestrictionSites(dna_sequence);
 
-  std::list<restriction_site> result, private_result;
-  std::list<restriction_site> private_to_check;
+  std::list<RestrictionSite> result, private_result;
+  std::list<RestrictionSite> private_to_check;
 
   size_t position;
 
@@ -68,7 +68,7 @@ std::list<restriction_site> ParallelRestrictionSites(const std::string &dna_sequ
           }
 
           while (!private_to_check.empty()) {
-            restriction_site r = private_to_check.back(); //TODO refactor, r is not a readable name
+            RestrictionSite r = private_to_check.back(); //TODO refactor, r is not a readable name
             private_to_check.pop_back();
 
             if (dna_sequence.substr(std::get<1>(r), std::get<2>(r)) != std::get<0>(r)) continue;
@@ -92,7 +92,7 @@ std::list<restriction_site> ParallelRestrictionSites(const std::string &dna_sequ
   return result;
 }
 
-void InsertPossiblePalindromeInToCheck(std::list<restriction_site> &to_check,
+void InsertPossiblePalindromeInToCheck(std::list<RestrictionSite> &to_check,
                                        const std::string &string,
                                        const size_t position) {
   for (const auto &restriction_sites : GenerateAllReversePalindrome(string)) {
@@ -109,7 +109,7 @@ std::list<std::string> GenerateAllReversePalindrome(const std::string &base_stri
   return result;
 }
 
-std::string Format(const std::list<restriction_site> &list) {
+std::string Format(const std::list<RestrictionSite> &list) {
   std::string result;
 
   for (auto r : list)

@@ -7,14 +7,14 @@
 namespace find_consensus_and_profile_test {
 TEST(RestrictionSite, GivenOneRestrictionSite_Return_ExpectedResult) {
   auto sequences = file::ReadFastaFromFile(file::kRestrictionSiteShort);
-  auto expected = std::list<DNA::restriction_site>{std::make_tuple("ACGT", 0, 4)};
+  auto expected = std::list<DNA::RestrictionSite>{std::make_tuple("ACGT", 0, 4)};
 
   EXPECT_EQ(expected, DNA::RestrictionSites(sequences.begin()->second));
 }
 
 TEST(RestrictionSite, GivenOneLongRestrictionSite_Return_ExpectedResult) {
   auto sequences = file::ReadFastaFromFile(file::kRestrictionSiteShort2);
-  auto expected = std::list<DNA::restriction_site>{
+  auto expected = std::list<DNA::RestrictionSite>{
       std::make_tuple("AATT", 3, 4),
       std::make_tuple("AAATTT", 2, 6),
       std::make_tuple("AAAATTTT", 1, 8),
@@ -31,7 +31,7 @@ TEST(RestrictionSite, GivenOneLongRestrictionSite_Return_ExpectedResult) {
 TEST(RestrictionSite,
      GivenOneLongRestrictionSite_WithLenghtGreaterThan12_ExpectedLongerRestrictionSiteFoundToBeLong12) {
   auto sequences = file::ReadFastaFromFile(file::kRestrictionSiteShortLongerThan12);
-  auto expected = std::list<DNA::restriction_site>{
+  auto expected = std::list<DNA::RestrictionSite>{
       std::make_tuple("AATT", 5, 4),
       std::make_tuple("AAATTT", 4, 6),
       std::make_tuple("AAAATTTT", 3, 8),
@@ -48,7 +48,7 @@ TEST(RestrictionSite,
 
 TEST(RestrictionSiteDataset1, GivenDataset_Expect_CorrectResult) {
   auto sequences = file::ReadFastaFromFile(file::kRestrictionSite);
-  auto expected = std::list<DNA::restriction_site>{
+  auto expected = std::list<DNA::RestrictionSite>{
       std::make_tuple("ATGCAT", 3, 6),
       std::make_tuple("TGCA", 4, 4),
       std::make_tuple("GCATGC", 5, 6),
