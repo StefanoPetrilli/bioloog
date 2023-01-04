@@ -12,7 +12,8 @@ set(header
         DNA/rna_to_protein_translation_test.h
         DNA/find_motif_test.cc DNA/find_motif_test.h
         DNA/find_shared_motif_test.h
-        DNA/find_consensus_and_profile_test.h)
+        DNA/find_consensus_and_profile_test.h
+        DNA/restriction_sites_test.h)
 
 set(sources
         utils/file/read_from_file_test.cc
@@ -23,7 +24,8 @@ set(sources
         DNA/rna_to_protein_translation_test.cc
         DNA/find_motif_test.cc DNA/find_motif_test.cc
         DNA/find_shared_motif_test.cc
-        DNA/find_consensus_and_profile_test.cc)
+        DNA/find_consensus_and_profile_test.cc
+        DNA/restriction_sites_test.cc)
 
 add_executable(MainTest ${header} ${sources})
 
