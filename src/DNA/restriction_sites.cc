@@ -51,25 +51,26 @@ std::list<RestrictionSite> ParallelRestrictionSites(const std::string &dna_seque
   //if (dna_sequence.size() < kDimensionRequirementForParallelExecutionRestrictionSite)
   //  return SequentialRestrictionSites(dna_sequence);
 
-  std::list<RestrictionSite> result, private_result;
+  std::list<RestrictionSite> result;
   std::list<RestrictionSite> private_to_check;
 
   size_t position;
 
-#pragma omp parallel private(position, private_result, private_to_check) shared(result, dna_sequence, kShortestReversePalindrome) default(none)
+#pragma omp parallel private(position, private_to_check) shared(result, dna_sequence, kShortestReversePalindrome) default(none)
   {
 #pragma omp single
     {
-#pragma omp taskloop grainsize(1) private(position, private_result, private_to_check) shared(result, dna_sequence, kShortestReversePalindrome) default(none)
+#pragma omp declare reduction (merge : std::list<RestrictionSite> : omp_out.insert(omp_out.end(), omp_in.begin(), omp_in.end()))
+#pragma omp taskloop grainsize(1) reduction(merge: result) private(position, private_to_check) shared(dna_sequence, kShortestReversePalindrome) default(none)
       for (size_t i = 0; i < kShortestReversePalindrome.size(); ++i) {
 
         position = dna_sequence.find(kShortestReversePalindrome.at(i));
 
         for (; position != std::string::npos;
                position = dna_sequence.find(kShortestReversePalindrome.at(i), position + 1)) {
-          private_result.emplace_back(kShortestReversePalindrome.at(i),
-                                      position,
-                                      kShortestReversePalindrome.at(i).length());
+          result.emplace_back(kShortestReversePalindrome.at(i),
+                              position,
+                              kShortestReversePalindrome.at(i).length());
           if (position != 0)
             InsertPossiblePalindromeInToCheck(private_to_check, kShortestReversePalindrome.at(i), position - 1);
         }
@@ -83,17 +84,13 @@ std::list<RestrictionSite> ParallelRestrictionSites(const std::string &dna_seque
               != std::get<0>(possible_restriction_site))
             continue;
 
-          private_result.emplace_back(possible_restriction_site);
+          result.emplace_back(possible_restriction_site);
 
           if (std::get<1>(possible_restriction_site) != 0 && std::get<0>(possible_restriction_site).length() < 12)
             InsertPossiblePalindromeInToCheck(private_to_check,
                                               std::get<0>(possible_restriction_site),
                                               std::get<1>(possible_restriction_site) - 1);
         }
-
-#pragma omp critical
-        result.insert(result.end(), private_result.begin(), private_result.end());
-
       }
     }
   }
