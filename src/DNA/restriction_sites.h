@@ -8,6 +8,10 @@
 #include <list>
 #include <tuple>
 
+#ifdef _OPENMP
+#include <omp.h>
+#endif
+
 namespace DNA {
 typedef std::tuple<std::string, int, int> restriction_site;
 const static std::list<std::string> kShortestReversePalindrome = {
@@ -22,9 +26,16 @@ const static std::list<std::tuple<std::string, std::string>> kReversePalindromeP
     std::make_tuple("C", "G"),
     std::make_tuple("G", "C")
 };
-std::list<restriction_site> RestrictionSites(const std::string& dna_sequence);
-std::list<std::string> GenerateAllReversePalindrome(const std::string& base_string);
-std::string Format(const std::list<restriction_site>& list);
-void InsertPossiblePalindromeInToCheck(std::list<restriction_site>& to_check, const std::string& string,const size_t position);
+std::list<restriction_site> RestrictionSites(const std::string &dna_sequence);
+std::list<restriction_site> SequentialRestrictionSites(const std::string &dna_sequence);
+std::list<std::string> GenerateAllReversePalindrome(const std::string &base_string);
+std::string Format(const std::list<restriction_site> &list);
+void InsertPossiblePalindromeInToCheck(std::list<restriction_site> &to_check,
+                                       const std::string &string,
+                                       size_t position);
+#ifdef _OPENMP
+static const size_t kDimensionRequirementForParallelExecutionRestrictionSite = 750;
+std::list<restriction_site> ParallelRestrictionSites(const std::string &dna_sequence);
+#endif
 }
 #endif //BIOLOOG_SRC_DNA_RESTRICTION_SITES_H_

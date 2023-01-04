@@ -35,7 +35,7 @@ bool SequentialContainMotif(const std::string &dna_sequence, const std::string &
 
 #ifdef _OPENMP
 bool ParallelContainMotif(const std::string &dna_sequence, const std::string &motif, size_t chunk_size) {
-  if (dna_sequence.size() < kDimensionRequirementForParallelExecution)
+  if (dna_sequence.size() < kDimensionRequirementForParallelExecutionFindMotif)
     return SequentialContainMotif(dna_sequence, motif);
 
   bool found = false;
