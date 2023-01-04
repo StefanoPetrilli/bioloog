@@ -7,6 +7,7 @@
 #include <string>
 #include <list>
 #include <tuple>
+#include <vector>
 
 #ifdef _OPENMP
 #include <omp.h>
@@ -14,7 +15,7 @@
 
 namespace DNA {
 using RestrictionSite = std::tuple<std::string, int, int>;
-const static std::list<std::string> kShortestReversePalindrome = {
+const static std::vector<std::string> kShortestReversePalindrome = {
     "AATT", "ACGT", "ATAT", "AGCT",
     "TATA", "TCGA", "TTAA", "TGCA",
     "GATC", "GCGC", "GTAC", "GGCC",

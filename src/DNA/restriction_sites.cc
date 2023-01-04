@@ -28,15 +28,19 @@ std::list<RestrictionSite> SequentialRestrictionSites(const std::string &dna_seq
   }
 
   while (!to_check.empty()) {
-    RestrictionSite r = to_check.back();
+    RestrictionSite possible_restriction_site = to_check.back();
     to_check.pop_back();
 
-    if (dna_sequence.substr(std::get<1>(r), std::get<2>(r)) != std::get<0>(r)) continue;
+    if (dna_sequence.substr(std::get<1>(possible_restriction_site), std::get<2>(possible_restriction_site))
+        != std::get<0>(possible_restriction_site))
+      continue;
 
-    result.emplace_back(r);
+    result.emplace_back(possible_restriction_site);
 
-    if (std::get<1>(r) != 0 && std::get<0>(r).length() < 12)
-      InsertPossiblePalindromeInToCheck(to_check, std::get<0>(r), std::get<1>(r) - 1);
+    if (std::get<1>(possible_restriction_site) != 0 && std::get<0>(possible_restriction_site).length() < 12)
+      InsertPossiblePalindromeInToCheck(to_check,
+                                        std::get<0>(possible_restriction_site),
+                                        std::get<1>(possible_restriction_site) - 1);
   }
 
   return result;
@@ -44,8 +48,8 @@ std::list<RestrictionSite> SequentialRestrictionSites(const std::string &dna_seq
 
 std::list<RestrictionSite> ParallelRestrictionSites(const std::string &dna_sequence) {
 
-  if (dna_sequence.size() < kDimensionRequirementForParallelExecutionRestrictionSite)
-    return SequentialRestrictionSites(dna_sequence);
+  //if (dna_sequence.size() < kDimensionRequirementForParallelExecutionRestrictionSite)
+  //  return SequentialRestrictionSites(dna_sequence);
 
   std::list<RestrictionSite> result, private_result;
   std::list<RestrictionSite> private_to_check;
@@ -56,35 +60,40 @@ std::list<RestrictionSite> ParallelRestrictionSites(const std::string &dna_seque
   {
 #pragma omp single
     {
-      for (const auto &s : kShortestReversePalindrome) {
-#pragma omp task private(position, private_result, private_to_check) firstprivate(s) shared(result, dna_sequence, kShortestReversePalindrome) default(none)
-        {
-          position = dna_sequence.find(s);
+#pragma omp taskloop grainsize(1) private(position, private_result, private_to_check) shared(result, dna_sequence, kShortestReversePalindrome) default(none)
+      for (size_t i = 0; i < kShortestReversePalindrome.size(); ++i) {
 
-          for (; position != std::string::npos; position = dna_sequence.find(s, position + 1)) {
-            private_result.emplace_back(s, position, s.length());
-            if (position != 0)
-              InsertPossiblePalindromeInToCheck(private_to_check, s, position - 1);
-          }
+        position = dna_sequence.find(kShortestReversePalindrome.at(i));
 
-          while (!private_to_check.empty()) {
-            RestrictionSite r = private_to_check.back(); //TODO refactor, r is not a readable name
-            private_to_check.pop_back();
+        for (; position != std::string::npos;
+               position = dna_sequence.find(kShortestReversePalindrome.at(i), position + 1)) {
+          private_result.emplace_back(kShortestReversePalindrome.at(i),
+                                      position,
+                                      kShortestReversePalindrome.at(i).length());
+          if (position != 0)
+            InsertPossiblePalindromeInToCheck(private_to_check, kShortestReversePalindrome.at(i), position - 1);
+        }
 
-            if (dna_sequence.substr(std::get<1>(r), std::get<2>(r)) != std::get<0>(r)) continue;
+        while (!private_to_check.empty()) {
+          RestrictionSite
+              possible_restriction_site = private_to_check.back();
+          private_to_check.pop_back();
 
-            private_result.emplace_back(r);
+          if (dna_sequence.substr(std::get<1>(possible_restriction_site), std::get<2>(possible_restriction_site))
+              != std::get<0>(possible_restriction_site))
+            continue;
 
-            if (std::get<1>(r) != 0 && std::get<0>(r).length() < 12)
-              InsertPossiblePalindromeInToCheck(private_to_check, std::get<0>(r), std::get<1>(r) - 1);
-          }
+          private_result.emplace_back(possible_restriction_site);
+
+          if (std::get<1>(possible_restriction_site) != 0 && std::get<0>(possible_restriction_site).length() < 12)
+            InsertPossiblePalindromeInToCheck(private_to_check,
+                                              std::get<0>(possible_restriction_site),
+                                              std::get<1>(possible_restriction_site) - 1);
+        }
 
 #pragma omp critical
-          {
-            for (const auto &r : private_result)
-              result.emplace_back(r);
-          }
-        }
+        result.insert(result.end(), private_result.begin(), private_result.end());
+
       }
     }
   }
