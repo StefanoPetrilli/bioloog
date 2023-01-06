@@ -127,6 +127,15 @@ void RestrictionSite::Exec(const std::string &path) {
   std::cout << DNA::Format(result) << std::endl;
 }
 
+void InferringmRna::Exec(const std::string &path) {
+  std::string protein_sequence;
+  file::ReadFromFile(path, protein_sequence);
+
+  input_validation::kStandardValidatorProtein.IsPartOfTheAlphabet(protein_sequence);
+
+  std::cout << protein::InferMRna(protein_sequence) << std::endl;
+}
+
 static const cli::CountNucleotides kCountNucleotides =
     CountNucleotides("count_nucleotides",
                      "Takes a DNA string and returns the counting of each nucleotides in the format {'A', 'C', 'T', 'G}");
@@ -147,4 +156,7 @@ static const cli::FindConsensusAndProfile kFindConsensusAndProfile =
 static const cli::RestrictionSite kRestrictionSite =
     RestrictionSite("restriction_site",
                     "Take a DNA string in FASTA format and return the position of restriction sites.");
+static const cli::InferringmRna kInferringmRna =
+    InferringmRna("infer_possible_mRna",
+                    "Take a protein sequence and returns the number of possible RNA sequence that could have generated that sequence");
 }
