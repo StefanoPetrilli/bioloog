@@ -7,7 +7,7 @@
 #include <gtest/gtest.h>
 #include <map>
 
-#include "../../src/DNA/find_shared_motif.h"
+#include "find_shared_motif.h"
 
 namespace find_shared_motif_test {
 class GetCommonSubstringsMultipleParameters

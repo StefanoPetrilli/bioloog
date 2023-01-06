@@ -6,8 +6,8 @@
 #define BIOLOOG_TEST_DNA_FIND_CONSENSUS_AND_PROFILE_TEST_H_
 #include <gtest/gtest.h>
 
-#include "../../src/utils/file/read_from_file.h"
-#include "../../src/DNA/dna_to_rna_transcription.h"
-#include "../../src/DNA/find_consensus_and_profile.h"
+#include "read_from_file.h"
+#include "dna_to_rna_transcription.h"
+#include "find_consensus_and_profile.h"
 
 #endif //BIOLOOG_TEST_DNA_FIND_CONSENSUS_AND_PROFILE_TEST_H_

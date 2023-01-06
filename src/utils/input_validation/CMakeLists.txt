@@ -3,3 +3,4 @@ add_library(input_validation
         )
 
 target_include_directories(input_validation PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(input_validation PUBLIC dna file)

@@ -5,8 +5,10 @@
 #ifndef BIOLOOG_TEST_DNA_COUNT_NUCLEOTIDES_TEST_H_
 #define BIOLOOG_TEST_DNA_COUNT_NUCLEOTIDES_TEST_H_
 #include <gtest/gtest.h>
-#include "../../src/DNA/count_nucleotides.h"
-#include "../../src/utils/file/read_from_file.h"
+
+#include "count_nucleotides.h"
+#include "read_from_file.h"
+
 namespace count_nucleotides_test {
 class CountNucleotidesMultipleParametersTests
     : public ::testing::TestWithParam<std::tuple<std::string, std::array<int, 4>>> {

@@ -7,7 +7,7 @@ set(test_files
         utils/input_validation/alphabet_validator_test.h
         utils/cli/command_test.h
         DNA/count_nucleotides_test.h
-        DNA/dna_transcription_rna_test.h
+        DNA/dna_to_rna_transcription_test.h
         DNA/rna_to_protein_translation_test.h
         DNA/find_motif_test.cc DNA/find_motif_test.h
         DNA/find_shared_motif_test.h
@@ -18,7 +18,7 @@ set(test_files
         utils/input_validation/alphabet_validator_test.cc
         utils/cli/command_test.cc
         DNA/count_nucleotides_test.cc
-        DNA/dna_transcription_rna_test.cc
+        DNA/dna_to_rna_transcription_test.cc
         DNA/rna_to_protein_translation_test.cc
         DNA/find_motif_test.cc DNA/find_motif_test.cc
         DNA/find_shared_motif_test.cc

@@ -9,3 +9,4 @@ add_library(dna
         )
 
 target_include_directories(dna PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(dna PUBLIC file input_validation)

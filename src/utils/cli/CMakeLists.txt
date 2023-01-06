@@ -5,3 +5,4 @@ add_library(cli
         )
 
 target_include_directories(cli PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(cli PUBLIC file dna protein input_validation)

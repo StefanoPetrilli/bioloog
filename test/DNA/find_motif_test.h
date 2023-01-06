@@ -7,8 +7,8 @@
 #include <gtest/gtest.h>
 #include <list>
 
-#include "../../src/DNA/find_motif.h"
-#include "../../src/utils/file/read_from_file.h"
+#include "find_motif.h"
+#include "read_from_file.h"
 
 namespace find_motif_test {
 class FindMotifParametrizedTestsSingleCharacterMotif
