@@ -17,6 +17,7 @@
 #include "../../DNA/rna_to_protein_translation.h"
 #include "../../DNA/find_consensus_and_profile.h"
 #include "../../DNA/restriction_sites.h"
+#include "../../protein/inferring_mRna_from_protein.h"
 
 namespace cli {
 class VirtualCommand {
@@ -87,6 +88,13 @@ class FindConsensusAndProfile : VirtualCommand {
 class RestrictionSite : VirtualCommand {
  public:
   RestrictionSite(const std::string &name, const std::string &description) : VirtualCommand(name,
+                                                                                            description) {};
+  void Exec(const std::string &path) override;
+};
+
+class InferringmRna : VirtualCommand {
+ public:
+  InferringmRna(const std::string &name, const std::string &description) : VirtualCommand(name,
                                                                                             description) {};
   void Exec(const std::string &path) override;
 };

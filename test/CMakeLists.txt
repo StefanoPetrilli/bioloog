@@ -13,7 +13,8 @@ set(header
         DNA/find_motif_test.cc DNA/find_motif_test.h
         DNA/find_shared_motif_test.h
         DNA/find_consensus_and_profile_test.h
-        DNA/restriction_sites_test.h)
+        DNA/restriction_sites_test.h
+        protein/inferring_mRna_from_protein_test.h)
 
 set(sources
         utils/file/read_from_file_test.cc
@@ -25,7 +26,8 @@ set(sources
         DNA/find_motif_test.cc DNA/find_motif_test.cc
         DNA/find_shared_motif_test.cc
         DNA/find_consensus_and_profile_test.cc
-        DNA/restriction_sites_test.cc)
+        DNA/restriction_sites_test.cc
+        protein/inferring_mRna_from_protein_test.cc)
 
 add_executable(MainTest ${header} ${sources})
 

@@ -46,10 +46,8 @@ std::list<RestrictionSite> SequentialRestrictionSites(const std::string &dna_seq
   return result;
 }
 
+#ifdef _OPENMP
 std::list<RestrictionSite> ParallelRestrictionSites(const std::string &dna_sequence) {
-
-  //if (dna_sequence.size() < kDimensionRequirementForParallelExecutionRestrictionSite)
-  //  return SequentialRestrictionSites(dna_sequence);
 
   std::list<RestrictionSite> result;
   std::list<RestrictionSite> private_to_check;
@@ -97,6 +95,7 @@ std::list<RestrictionSite> ParallelRestrictionSites(const std::string &dna_seque
 
   return result;
 }
+#endif
 
 void InsertPossiblePalindromeInToCheck(std::list<RestrictionSite> &to_check,
                                        const std::string &string,
