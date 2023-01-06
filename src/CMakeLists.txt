@@ -1,5 +1,5 @@
 add_subdirectory(utils)
-add_subdirectory(DNA)
+add_subdirectory(dna)
 add_subdirectory(protein)
 
 add_executable(bioloog main.cc utils/cli/command.h)
