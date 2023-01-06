@@ -18,6 +18,7 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Bstatic,--whole-archi
 add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 
 include(FetchContent)
+include(GoogleTest)
 FetchContent_Declare(
         googletest
         URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip

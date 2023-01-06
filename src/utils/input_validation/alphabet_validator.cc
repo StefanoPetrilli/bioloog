@@ -2,7 +2,7 @@
 // Created by Stefano on 12/10/2022.
 //
 
-#include "alphabet_validatort.h"
+#include "alphabet_validator.h"
 
 namespace input_validation {
 input_validation::AlphabetValidator::AlphabetValidator(const std::string &alphabet, const std::string &error_message) {

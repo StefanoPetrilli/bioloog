@@ -1,5 +1,5 @@
-#include "cli/display_help.h"
-#include "cli/command.h"
+#include "utils/cli/display_help.h"
+#include "utils/cli/command.h"
 
 int main(int argc, char *argv[]) {
   if (argc == 1)
