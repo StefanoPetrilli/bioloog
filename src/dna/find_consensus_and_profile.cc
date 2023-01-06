@@ -30,8 +30,8 @@ std::tuple<Consensus, Profile> FindConsensusAndProfile(const std::map<std::strin
   return {consensus, profile};
 }
 
-char FindConsensusFromProfile(Profile profile, int i) {
-  char result;
+char FindConsensusFromProfile(const Profile& profile, int i) {
+  char result = '0';
   int max = 0;
   for (auto p : profile) {
     if (p.second.at(i) > max) {
@@ -42,9 +42,9 @@ char FindConsensusFromProfile(Profile profile, int i) {
   return result;
 }
 
-std::string ProfileToString(Profile profile) {
+std::string ProfileToString(const Profile& profile) {
   std::string result;
-  for (auto p : profile) {
+  for (const auto& p : profile) {
     result.append(1, p.first);
     result += ": ";
     for (auto c : p.second) {
