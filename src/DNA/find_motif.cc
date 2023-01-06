@@ -2,7 +2,6 @@
 // Created by Stefano on 12/16/2022.
 //
 #include "find_motif.h"
-#include "input_validation/alphabet_validatort.h"
 
 namespace DNA {
 std::list<int> FindMotif(const std::string &dna_sequence, const std::string &motif) {

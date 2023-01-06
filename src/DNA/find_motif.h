@@ -12,6 +12,8 @@
 #include <omp.h>
 #endif
 
+#include "../utils/input_validation/alphabet_validatort.h"
+
 namespace DNA {
 std::list<int> FindMotif(const std::string &dna_sequence, const std::string &motif);
 bool ContainMotif(const std::string &dna_sequence, const std::string &motif);

@@ -33,6 +33,8 @@ add_executable(MainTest ${header} ${sources})
 
 target_link_libraries(
         MainTest
+        protein
+        dna
         src
         GTest::gtest_main
 )
