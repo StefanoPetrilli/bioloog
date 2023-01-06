@@ -6,6 +6,8 @@
 #define BIOLOOG_TEST_UTILS_FILE_READ_FROM_FILE_TEST_H_
 #include <gtest/gtest.h>
 #include <fstream>
+#include <list>
+
 #include "../../../src/utils/file/read_from_file.h"
 
 namespace read_from_file_test {

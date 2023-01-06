@@ -12,7 +12,7 @@
 #include <omp.h>
 #endif
 
-#include "../utils/input_validation/alphabet_validatort.h"
+#include "../utils/input_validation/alphabet_validator.h"
 
 namespace DNA {
 std::list<int> FindMotif(const std::string &dna_sequence, const std::string &motif);

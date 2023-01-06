@@ -12,7 +12,7 @@
 
 #include "../../src/DNA/find_shared_motif.h"
 #include "../../src/utils/file/read_from_file.h"
-#include "../utils/input_validation/alphabet_validatort.h"
+#include "../utils/input_validation/alphabet_validator.h"
 
 namespace DNA {
 static const std::string kFastaFileWithErrors = "fasta_example_input_illegal_characters.txt";

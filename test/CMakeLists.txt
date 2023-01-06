@@ -1,9 +1,8 @@
-include_directories(utils)
-include_directories(../../src/utils)
-include_directories(DNA)
-include_directories(../../src/DNA)
+add_subdirectory(utils)
+add_subdirectory(DNA)
+add_subdirectory(protein)
 
-set(header
+set(test_files
         utils/file/read_from_file_test.h
         utils/input_validation/alphabet_validator_test.h
         utils/cli/command_test.h
@@ -14,9 +13,7 @@ set(header
         DNA/find_shared_motif_test.h
         DNA/find_consensus_and_profile_test.h
         DNA/restriction_sites_test.h
-        protein/inferring_mRna_from_protein_test.h)
-
-set(sources
+        protein/inferring_mRna_from_protein_test.h
         utils/file/read_from_file_test.cc
         utils/input_validation/alphabet_validator_test.cc
         utils/cli/command_test.cc
@@ -29,16 +26,18 @@ set(sources
         DNA/restriction_sites_test.cc
         protein/inferring_mRna_from_protein_test.cc)
 
-add_executable(MainTest ${header} ${sources})
+add_executable(bioloogTest ${test_files})
 
 target_link_libraries(
-        MainTest
+        bioloogTest
         protein
         dna
-        src
+        cli
+        file
+        input_validation
         GTest::gtest_main
 )
 
 include(GoogleTest)
-gtest_discover_tests(MainTest)
+gtest_discover_tests(bioloogTest)
 

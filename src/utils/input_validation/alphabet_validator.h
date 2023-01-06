@@ -2,15 +2,15 @@
 // Created by Stefano on 12/10/2022.
 //
 
-#ifndef BIOLOOG_SRC_UTILS_INPUT_VALIDATION_ALPHABET_VALIDATORT_H_
-#define BIOLOOG_SRC_UTILS_INPUT_VALIDATION_ALPHABET_VALIDATORT_H_
+#ifndef BIOLOOG_SRC_UTILS_INPUT_VALIDATION_ALPHABET_VALIDATOR_H_
+#define BIOLOOG_SRC_UTILS_INPUT_VALIDATION_ALPHABET_VALIDATOR_H_
 #include <string>
 #include <vector>
 #include <iostream>
 
 #include "../../DNA/find_motif.h"
 #include "../../DNA/find_shared_motif.h"
-#include "../input_validation/alphabet_validatort.h"
+#include "../input_validation/alphabet_validator.h"
 
 namespace input_validation {
 static const std::string kRnaAlphabet = "ACGU";
@@ -41,4 +41,4 @@ static const AlphabetValidator kStandardValidatorRna = AlphabetValidator(kRnaAlp
 static const AlphabetValidator kStandardValidatorDna = AlphabetValidator(kDnaAlphabet, kDnaErrorMessage);
 static const AlphabetValidator kStandardValidatorProtein = AlphabetValidator(kProteinAlphabet, kProteinErrorMessage);
 }
-#endif //BIOLOOG_SRC_UTILS_INPUT_VALIDATION_ALPHABET_VALIDATORT_H_
+#endif //BIOLOOG_SRC_UTILS_INPUT_VALIDATION_ALPHABET_VALIDATOR_H_

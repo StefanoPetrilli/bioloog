@@ -8,7 +8,7 @@
 #include <stdexcept>
 #include <map>
 
-#include "../utils/input_validation/alphabet_validatort.h"
+#include "../utils/input_validation/alphabet_validator.h"
 
 namespace DNA {
 

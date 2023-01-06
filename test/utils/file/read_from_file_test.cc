@@ -1,7 +1,6 @@
 //
 // Created by Stefano on 11/25/2022.
 //
-#include <list>
 #include "read_from_file_test.h"
 
 namespace read_from_file_test {

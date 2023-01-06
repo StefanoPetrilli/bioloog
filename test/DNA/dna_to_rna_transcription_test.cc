@@ -1,7 +1,7 @@
 //
 // Created by Stefano on 12/7/2022.
 //
-#include "dna_transcription_rna_test.h"
+#include "dna_to_rna_transcription_test.h"
 
 namespace dna_transcript_rna_test {
 TEST(DnaToRnaTranscription, Expect_invalid_argument_whenStringContainsInvalidCharacters) {
