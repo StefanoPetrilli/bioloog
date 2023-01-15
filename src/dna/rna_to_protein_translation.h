@@ -15,7 +15,7 @@ namespace DNA {
 const int CODON_LENGTH = 3;
 const char STRING_TERMINAL_CHARACTER = '0';
 
-const std::map<std::string, char> codon_table =
+const std::unordered_map<std::string, char> codon_table =
     {{"UUU", 'F'}, {"UUC", 'F'}, {"UUA", 'L'}, {"UUG", 'L'}, {"UCU", 'S'},
      {"UCC", 'S'}, {"UCA", 'S'}, {"UCG", 'S'}, {"UAU", 'Y'}, {"UAC", 'Y'},
      {"UAA", '0'}, {"UAG", '0'}, {"UGU", 'C'}, {"UGC", 'C'}, {"UGA", '0'},

@@ -10,7 +10,7 @@
 #include <typeindex>
 
 namespace command_test {
-std::map<std::string, std::string> input_with_errors = {
+std::unordered_map<std::string, std::string> input_with_errors = {
     {"count_nucleotides", file::kNucleotidesErrorFile},
     {"dna_to_rna_translation", file::kNucleotidesErrorFile},
     {"rna_to_protein_translation", file::kNucleotidesErrorFile},

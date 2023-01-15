@@ -2,9 +2,6 @@
 // Created by Stefano on 11/23/2022.
 //
 
-#include <list>
-#include <vector>
-
 #include "read_from_file.h"
 
 namespace file {
@@ -45,8 +42,8 @@ std::vector<std::string> ReadLinesFromFile(const std::string& path) {
 
 auto IsSequenceName = [] (const std::string& line) { return line.starts_with('>'); };
 
-std::map<std::string, std::string> ReadFastaFromFile(const std::string& path) {
-  std::map<std::string, std::string> result;
+std::unordered_map<std::string, std::string> ReadFastaFromFile(const std::string& path) {
+  std::unordered_map<std::string, std::string> result;
   std::vector<std::string> file_lines = ReadLinesFromFile(path);
 
   std::string key, content;
