@@ -18,6 +18,7 @@
 #include "find_consensus_and_profile.h"
 #include "restriction_sites.h"
 #include "inferring_mRna_from_protein.h"
+#include "rna_splicing.h"
 
 namespace cli {
 class VirtualCommand {
@@ -96,6 +97,13 @@ class InferringmRna : VirtualCommand {
  public:
   InferringmRna(const std::string &name, const std::string &description) : VirtualCommand(name,
                                                                                             description) {};
+  void Exec(const std::string &path) override;
+};
+
+class RnaSplicing : VirtualCommand {
+ public:
+  RnaSplicing(const std::string &name, const std::string &description) : VirtualCommand(name,
+                                                                                          description) {};
   void Exec(const std::string &path) override;
 };
 }

@@ -62,12 +62,12 @@ void DnaToRnaTranscription::Exec(const std::string &path) {
 }
 
 void RnaToProteinTranslation::Exec(const std::string &path) {
-  std::string dna_sequence;
-  file::ReadFromFile(path, dna_sequence);
+  std::string rna_sequence;
+  file::ReadFromFile(path, rna_sequence);
 
-  input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence);
+  input_validation::kStandardValidatorRna.IsPartOfTheAlphabet(rna_sequence);
 
-  std::string result = DNA::RnaToProteinTranslation(dna_sequence);
+  std::string result = DNA::RnaToProteinTranslation(rna_sequence);
   std::cout << "The protein translation is: " << result << std::endl;
 }
 
@@ -95,7 +95,7 @@ void FindSharedMotif::Exec(const std::string &path) {
   std::string file_content;
   auto map = file::ReadFastaFromFile(path);
 
-  for (const auto& dna_sequence : map) {
+  for (const auto &dna_sequence : map) {
     input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence.second);
   }
 
@@ -107,7 +107,7 @@ void FindConsensusAndProfile::Exec(const std::string &path) {
   std::string file_content;
   auto map = file::ReadFastaFromFile(path);
 
-  for (const auto& dna_sequence : map) {
+  for (const auto &dna_sequence : map) {
     input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence.second);
   }
 
@@ -119,7 +119,7 @@ void RestrictionSite::Exec(const std::string &path) {
   std::string file_content;
   auto map = file::ReadFastaFromFile(path);
 
-  for (const auto& dna_sequence : map) {
+  for (const auto &dna_sequence : map) {
     input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence.second);
   }
 
@@ -136,27 +136,50 @@ void InferringmRna::Exec(const std::string &path) {
   std::cout << protein::InferMRna(protein_sequence) << std::endl;
 }
 
+void RnaSplicing::Exec(const std::string &path) {
+  std::string file_content;
+  auto map = file::ReadFastaFromFile(path);
+
+  for (const auto &dna_sequence : map) {
+    input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence.second);
+  }
+
+  auto result = DNA::RnaSplicing(map);
+  std::cout << "The result is: " << result << std::endl;
+}
+
 static const cli::CountNucleotides kCountNucleotides =
     CountNucleotides("count_nucleotides",
                      "Takes a DNA string and returns the counting of each nucleotides in the format {'A', 'C', 'T', 'G}");
+
 static const cli::DnaToRnaTranscription kDnaToRnaTranscription =
     DnaToRnaTranscription("dna_to_rna_translation",
                           "Takes a DNA string and returnsthe rna transcription");
+
 static const cli::RnaToProteinTranslation kToProteinTranslation =
     RnaToProteinTranslation("rna_to_protein_translation",
                             "Takes a RNA string and returnsthe proteins translation");
+
 static const cli::FindMotif kFindMotif =
     FindMotif("find_motif",
               "Takes a DNA sequence, a motif and return the positions of the motif in the dna sequence");
+
 static const cli::FindSharedMotif kFindSharedMotif = FindSharedMotif("find_shared_motif",
                                                                      "Takes multiple DNA sequences, and return the longest common motif");
+
 static const cli::FindConsensusAndProfile kFindConsensusAndProfile =
     FindConsensusAndProfile("find_consensus_and_profile",
                             "Takes multiple DNA sequences, and return consensus and profile");
+
 static const cli::RestrictionSite kRestrictionSite =
     RestrictionSite("restriction_site",
                     "Take a DNA string in FASTA format and return the position of restriction sites.");
+
 static const cli::InferringmRna kInferringmRna =
     InferringmRna("infer_possible_mRna",
-                    "Take a protein sequence and returns the number of possible RNA sequence that could have generated that sequence");
+                  "Take a protein sequence and returns the number of possible RNA sequence that could have generated that sequence");
+
+static const cli::RnaSplicing kRnaSplicing =
+    RnaSplicing("rna_splicing",
+                "Takes a DNA sequence and exons in FASTA format, returns the protein string resulting from ranscribing and translating the exons");
 }
