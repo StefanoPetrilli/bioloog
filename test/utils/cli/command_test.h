@@ -19,6 +19,7 @@ std::map<std::string, std::string> input_with_errors = {
     {"find_consensus_and_profile", file::kFastaErrorFile},
     {"restriction_site", file::kFastaErrorFile},
     {"infer_possible_mRna", file::kProteinErrorFile},
+    {"rna_splicing", file::kFastaErrorFile}
 };
 }
 

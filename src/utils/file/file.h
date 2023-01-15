@@ -21,6 +21,8 @@ static const std::string kRosalindLcsmOutput = "rosalind_lcsm_1_output.txt";
 static const std::string kRosalindProtDataset = "rosalind_prot_1_dataset.txt";
 static const std::string kRosalindProtOutput = "rosalind_prot_1_output.txt";
 static const std::string kRosalindRestrictionDataset = "rosalind_restriction_1_dataset.txt";
+static const std::string kRosalindSplicingDataset = "rosalind_splc_1_dataset.txt";
+static const std::string kRosalindSplicingOutput = "rosalind_splc_1_output.txt";
 static const std::string kCovidShortFastaFileName = "fasta_covid19_short.txt";
 static const std::string kCovidShortFastaProfileFileName = "fasta_covid19_short_profile.txt";
 static const std::string kMultipleFastaEqualLength = "rosalind_multiple_fasta_equal_length.txt";
@@ -36,6 +38,7 @@ static const std::string kNucleotidesErrorFile = "nucleotides_invalid.txt";
 static const std::string kFastaErrorFile = "fasta_example_input_illegal_characters.txt";
 static const std::string kMotifErrorFile = "motif_test_error.txt";
 static const std::string kProteinErrorFile = "protein_test_error.txt";
+static const std::string kRnaSplicingExample = "rna_splicing_example.txt";
 }
 #endif //BIOLOOG_SRC_UTILS_FILE_FILE_H_
 
