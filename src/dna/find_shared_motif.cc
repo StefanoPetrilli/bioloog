@@ -6,7 +6,7 @@
 
 //TODO rewrite loops using range based loops when possible so to reverse iterate on the data structures
 namespace DNA {
-std::string FindSharedMotif(const std::map<std::string, std::string> &sequences) {
+std::string FindSharedMotif(const std::unordered_map<std::string, std::string> &sequences) {
 
   auto sequences_iterator = sequences.begin();
 

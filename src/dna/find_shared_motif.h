@@ -5,7 +5,7 @@
 #ifndef BIOLOOG_SRC_DNA_FIND_SHARED_MOTIF_H_
 #define BIOLOOG_SRC_DNA_FIND_SHARED_MOTIF_H_
 #include <string>
-#include <map>
+#include <unordered_map>
 #include <iostream>
 #include <list>
 #include <set>
@@ -15,8 +15,7 @@
 #include "alphabet_validator.h"
 
 namespace DNA {
-static const std::string kFastaFileWithErrors = "fasta_example_input_illegal_characters.txt";
-std::string FindSharedMotif(const std::map<std::string, std::string>& sequences);
+std::string FindSharedMotif(const std::unordered_map<std::string, std::string>& sequences);
 std::vector<std::set<std::string>> GetCommonSubstrings(const std::string &sequence1, const std::string &sequence2);
 std::string GetLongestSubstringRemaining(std::vector<std::set<std::string>> substrings);
 }

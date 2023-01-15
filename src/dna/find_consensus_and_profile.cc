@@ -2,11 +2,10 @@
 // Created by Stefano on 12/29/2022.
 //
 
-#include <vector>
 #include "find_consensus_and_profile.h"
 
 namespace DNA {
-std::tuple<Consensus, Profile> FindConsensusAndProfile(const std::map<std::string, std::string> &sequences) {
+std::tuple<Consensus, Profile> FindConsensusAndProfile(const std::unordered_map<std::string, std::string> &sequences) {
   int sequence_length = sequences.begin()->second.length();
   Profile profile = {{'A', std::vector(sequence_length, 0)},
                      {'C', std::vector(sequence_length, 0)},

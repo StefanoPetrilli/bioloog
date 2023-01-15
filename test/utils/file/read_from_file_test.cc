@@ -53,8 +53,8 @@ TEST_F(ReadLinesFromFile, Expect_Result_ToContainTheContentOfTheFileWhenTheFileE
 }
 
 TEST(ReadFastaFromFile, Expect_Result_ToContainTheContentOfTheFile) {
-  std::map<std::string, std::string> result;
-  std::map<std::string, std::string> expected = {
+  std::unordered_map<std::string, std::string> result;
+  std::unordered_map<std::string, std::string> expected = {
       {"Taxon1", "CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG"},
       {"Taxon2", "CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC"},
       {"Taxon3", "CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT"}
