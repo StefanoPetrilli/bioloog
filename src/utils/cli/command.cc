@@ -148,6 +148,18 @@ void RnaSplicing::Exec(const std::string &path) {
   std::cout << "The result is: " << result << std::endl;
 }
 
+void FindSplicedMotif::Exec(const std::string &path) {
+  std::string file_content;
+  auto map = file::ReadFastaFromFile(path);
+
+  for (const auto &dna_sequence : map) {
+    input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence.second);
+  }
+
+  auto result = DNA::RnaSplicing(map);
+  std::cout << "The result is: " << result << std::endl;
+}
+
 static const cli::CountNucleotides kCountNucleotides =
     CountNucleotides("count_nucleotides",
                      "Takes a DNA string and returns the counting of each nucleotides in the format {'A', 'C', 'T', 'G}");
@@ -182,4 +194,9 @@ static const cli::InferringmRna kInferringmRna =
 static const cli::RnaSplicing kRnaSplicing =
     RnaSplicing("rna_splicing",
                 "Takes a DNA sequence and exons in FASTA format, returns the protein string resulting from ranscribing and translating the exons");
+
+static const cli::FindSplicedMotif kFindSplicedMotif =
+    FindSplicedMotif("find_spliced_motif",
+                     "Takes a DNA sequence and a motif in fasta format and returns a collection of indices that correspond to the position of the element of the motif");
+
 }

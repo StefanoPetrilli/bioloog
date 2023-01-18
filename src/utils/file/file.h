@@ -39,6 +39,7 @@ static const std::string kFastaErrorFile = "fasta_example_input_illegal_characte
 static const std::string kMotifErrorFile = "motif_test_error.txt";
 static const std::string kProteinErrorFile = "protein_test_error.txt";
 static const std::string kRnaSplicingExample = "rna_splicing_example.txt";
+static const std::string kSplicedMotifExample = "find_spliced_motif_test.txt";
 }
 #endif //BIOLOOG_SRC_UTILS_FILE_FILE_H_
 

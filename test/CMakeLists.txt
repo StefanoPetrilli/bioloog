@@ -24,7 +24,7 @@ set(test_files
         dna/find_shared_motif_test.cc
         dna/find_consensus_and_profile_test.cc
         dna/restriction_sites_test.cc
-        protein/inferring_mRna_from_protein_test.cc dna/rna_splicing_test.cc dna/rna_splicing_test.h)
+        protein/inferring_mRna_from_protein_test.cc dna/rna_splicing_test.cc dna/rna_splicing_test.h dna/find_spliced_motif_test.cc dna/find_spliced_motif_test.h)
 
 add_executable(bioloogTest ${test_files})
 

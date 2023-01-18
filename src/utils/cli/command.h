@@ -106,5 +106,12 @@ class RnaSplicing : VirtualCommand {
                                                                                           description) {};
   void Exec(const std::string &path) override;
 };
+
+class FindSplicedMotif : VirtualCommand {
+ public:
+  FindSplicedMotif(const std::string &name, const std::string &description) : VirtualCommand(name,
+                                                                                        description) {};
+  void Exec(const std::string &path) override;
+};
 }
 #endif //BIOLOOG_SRC_UTILS_CLI_COMMANDS_H_

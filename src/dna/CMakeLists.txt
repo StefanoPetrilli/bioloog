@@ -6,7 +6,7 @@ add_library(dna
         find_shared_motif.cc find_shared_motif.h
         find_consensus_and_profile.cc find_consensus_and_profile.h
         restriction_sites.cc restriction_sites.h
-        rna_splicing.cc rna_splicing.h)
+        rna_splicing.cc rna_splicing.h find_spliced_motif.cc find_spliced_motif.h)
 
 target_include_directories(dna PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(dna PUBLIC file input_validation)
