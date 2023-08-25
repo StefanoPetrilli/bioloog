@@ -1,9 +1,5 @@
-//
-// Created by Stefano on 1/6/2023.
-//
+#pragma once
 
-#ifndef BIOLOOG_SRC_PROTEIN_INFERRING_MRNA_FROM_PROTEIN_H_
-#define BIOLOOG_SRC_PROTEIN_INFERRING_MRNA_FROM_PROTEIN_H_
 #include <string>
 #include <iostream>
 #include <unordered_map>
@@ -21,4 +17,3 @@ unsigned int GetPossibleTranslations(const char &protein);
 unsigned int ParallelInferMRna(const std::string &protein_sequence);
 #endif
 }
-#endif //BIOLOOG_SRC_PROTEIN_INFERRING_MRNA_FROM_PROTEIN_H_

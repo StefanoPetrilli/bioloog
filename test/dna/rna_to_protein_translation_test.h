@@ -1,9 +1,5 @@
-//
-// Created by Stefano on 12/11/2022.
-//
+#pragma once
 
-#ifndef BIOLOOG_TEST_DNA_RNA_TO_PROTEIN_TRANSLATION_TEST_H_
-#define BIOLOOG_TEST_DNA_RNA_TO_PROTEIN_TRANSLATION_TEST_H_
 #include <gtest/gtest.h>
 
 #include "rna_to_protein_translation.h"
@@ -19,4 +15,3 @@ class RnaToProteinTranslationTestMultipleProtein
     : public ::testing::TestWithParam<std::tuple<std::string, std::string>> {
 };
 }
-#endif //BIOLOOG_TEST_DNA_RNA_TO_PROTEIN_TRANSLATION_TEST_H_

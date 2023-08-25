@@ -1,9 +1,4 @@
-//
-// Created by Stefano on 12/1/2022.
-//
-
-#ifndef BIOLOOG_SRC_UTILS_CLI_DISPLAY_HELP_H_
-#define BIOLOOG_SRC_UTILS_CLI_DISPLAY_HELP_H_
+#pragma once
 
 #include <string>
 #include <iostream>
@@ -22,4 +17,3 @@ const std::string commands_intro = "The available commands are:\n";
 
 void DisplayHelp();
 }
-#endif //BIOLOOG_SRC_UTILS_CLI_DISPLAY_HELP_H_

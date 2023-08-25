@@ -19,4 +19,4 @@ TEST(RnaSplicingDataset, GivenExample_Return_ExpectedResult) {
 
   EXPECT_EQ(expected, DNA::RnaSplicing(sequences));
 }
-}
+}  // namespace dna_splicing_test

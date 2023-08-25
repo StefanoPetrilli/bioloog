@@ -6,7 +6,8 @@
 
 //TODO rewrite loops using range based loops when possible so to reverse iterate on the data structures
 namespace DNA {
-std::string FindSharedMotif(const std::unordered_map<std::string, std::string> &sequences) {
+std::string FindSharedMotif(
+    const std::unordered_map<std::string, std::string>& sequences) {
 
   auto sequences_iterator = sequences.begin();
 
@@ -19,20 +20,19 @@ std::string FindSharedMotif(const std::unordered_map<std::string, std::string> &
   auto substrings_to_remove = new std::set<std::string>();
   for (; sequences_iterator != sequences.end(); sequences_iterator++) {
 
-    for (auto &substrings_list_iterator : substrings) {
-      for (const auto &substring_set_iterator : substrings_list_iterator) {
-        if (not ContainMotif(sequences_iterator->second, substring_set_iterator)) {
+    for (auto& substrings_list_iterator : substrings) {
+      for (const auto& substring_set_iterator : substrings_list_iterator) {
+        if (not ContainMotif(sequences_iterator->second,
+                             substring_set_iterator)) {
           substrings_to_remove->insert(substring_set_iterator);
         }
       }
 
-      std::set_difference(substrings_list_iterator.begin(),
-                          substrings_list_iterator.end(),
-                          substrings_to_remove->begin(),
-                          substrings_to_remove->end(),
-                          std::inserter(substrings_list_iterator,
-                                        substrings_list_iterator.
-                                            end()));
+      std::set_difference(
+          substrings_list_iterator.begin(), substrings_list_iterator.end(),
+          substrings_to_remove->begin(), substrings_to_remove->end(),
+          std::inserter(substrings_list_iterator,
+                        substrings_list_iterator.end()));
 
       substrings_to_remove = new std::set<std::string>();
     }
@@ -41,7 +41,8 @@ std::string FindSharedMotif(const std::unordered_map<std::string, std::string> &
   return GetLongestSubstringRemaining(substrings);
 }
 
-std::vector<std::set<std::string>> GetCommonSubstrings(const std::string &sequence1, const std::string &sequence2) {
+std::vector<std::set<std::string>> GetCommonSubstrings(
+    const std::string& sequence1, const std::string& sequence2) {
 
   std::vector<std::set<std::string>> result = {};
   std::set<std::string> subsequences = {"A", "C", "T", "G"};
@@ -50,7 +51,7 @@ std::vector<std::set<std::string>> GetCommonSubstrings(const std::string &sequen
   while (not subsequences.empty()) {
     result.emplace_back();
 
-    for (const auto &motif : subsequences) {
+    for (const auto& motif : subsequences) {
       if ((ContainMotif(sequence1, motif) && ContainMotif(sequence2, motif))) {
         for (auto nucleotide : input_validation::kDnaAlphabet)
           next_subsequences.insert(motif + nucleotide);
@@ -68,7 +69,8 @@ std::vector<std::set<std::string>> GetCommonSubstrings(const std::string &sequen
   return result;
 }
 
-std::string GetLongestSubstringRemaining(std::vector<std::set<std::string>> substrings) {
+std::string GetLongestSubstringRemaining(
+    std::vector<std::set<std::string>> substrings) {
   return *substrings.back().begin();
 }
-}
+}  // namespace DNA

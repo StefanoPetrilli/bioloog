@@ -5,7 +5,8 @@
 
 namespace count_nucleotides_test {
 
-TEST(CountNucleotides, Expect_invalid_argument_whenStringContainsInvalidCharacters) {
+TEST(CountNucleotides,
+     Expect_invalid_argument_whenStringContainsInvalidCharacters) {
   EXPECT_THROW(DNA::CountNucleotides("$"), std::invalid_argument) << std::endl;
   EXPECT_THROW(DNA::CountNucleotides("E"), std::invalid_argument) << std::endl;
   EXPECT_THROW(DNA::CountNucleotides("."), std::invalid_argument) << std::endl;
@@ -27,11 +28,10 @@ TEST(CountNucleotidesDatasetTest, Expect_properTranslation) {
 
   auto result = DNA::CountNucleotides(input);
 
-  std::string output = std::to_string(result[0]) + " " +
-      std::to_string(result[1]) + " " +
-      std::to_string(result[2]) + " " +
-      std::to_string(result[3]);
+  std::string output =
+      std::to_string(result[0]) + " " + std::to_string(result[1]) + " " +
+      std::to_string(result[2]) + " " + std::to_string(result[3]);
 
   EXPECT_EQ(expected, output);
 }
-}
+}  // namespace count_nucleotides_test

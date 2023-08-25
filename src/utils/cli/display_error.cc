@@ -5,7 +5,7 @@
 #include "display_error.h"
 
 namespace cli {
-void DisplayError(){
+void DisplayError() {
   std::cout << "Command not valid." << std::endl;
 }
-}
+}  // namespace cli

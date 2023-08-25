@@ -5,13 +5,15 @@
 #include "rna_splicing.h"
 
 namespace DNA {
-std::string RnaSplicing(const std::unordered_map<std::string, std::string> &sequences) {
+std::string RnaSplicing(
+    const std::unordered_map<std::string, std::string>& sequences) {
   auto rna_sequence = GetLonger(sequences);
 
   auto result = rna_sequence;
   size_t position;
   for (const auto& sequence : sequences) {
-    if (sequence.second == rna_sequence) continue;
+    if (sequence.second == rna_sequence)
+      continue;
     position = result.find(sequence.second);
     if (position != std::string::npos)
       result.erase(position, sequence.second.length());
@@ -22,13 +24,15 @@ std::string RnaSplicing(const std::unordered_map<std::string, std::string> &sequ
 
   return result;
 }
-std::string GetLonger(const std::unordered_map<std::string, std::string> &sequences) {
+std::string GetLonger(
+    const std::unordered_map<std::string, std::string>& sequences) {
   std::string longest;
 
   for (const auto& sequence : sequences) {
-    if (sequence.second.size() > longest.size()) longest = sequence.second;
+    if (sequence.second.size() > longest.size())
+      longest = sequence.second;
   }
 
   return longest;
-  }
 }
+}  // namespace DNA

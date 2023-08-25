@@ -5,7 +5,8 @@
 #include "alphabet_validator.h"
 
 namespace input_validation {
-input_validation::AlphabetValidator::AlphabetValidator(const std::string &alphabet, const std::string &error_message) {
+input_validation::AlphabetValidator::AlphabetValidator(
+    const std::string& alphabet, const std::string& error_message) {
   this->lookup_vector_ = std::vector<int>(128, false);
 
   for (char c : alphabet)
@@ -22,7 +23,8 @@ void input_validation::AlphabetValidator::SetLookupVector(char character) {
   this->lookup_vector_.at(character) = true;
 }
 
-bool input_validation::AlphabetValidator::IsPartOfTheAlphabet(char character) const {
+bool input_validation::AlphabetValidator::IsPartOfTheAlphabet(
+    char character) const {
   return this->lookup_vector_.at(character);
 }
 
@@ -37,8 +39,7 @@ std::string AlphabetValidator::GetErrorMessage() const {
   return this->error_message_;
 }
 
-void AlphabetValidator::SetErrorMessage(const std::string &error_message) {
+void AlphabetValidator::SetErrorMessage(const std::string& error_message) {
   this->error_message_ = error_message;
 }
-}
-
+}  // namespace input_validation

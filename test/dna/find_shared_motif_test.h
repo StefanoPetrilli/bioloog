@@ -1,9 +1,5 @@
-//
-// Created by Stefano on 12/18/2022.
-//
+#pragma once
 
-#ifndef BIOLOOG_TEST_DNA_FIND_SHARED_MOTIF_TEST_H_
-#define BIOLOOG_TEST_DNA_FIND_SHARED_MOTIF_TEST_H_
 #include <gtest/gtest.h>
 #include <map>
 
@@ -30,4 +26,3 @@ INSTANTIATE_TEST_SUITE_P
     )
 );
 }
-#endif //BIOLOOG_TEST_DNA_FIND_SHARED_MOTIF_TEST_H_

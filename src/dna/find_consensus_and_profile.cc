@@ -5,7 +5,8 @@
 #include "find_consensus_and_profile.h"
 
 namespace DNA {
-std::tuple<Consensus, Profile> FindConsensusAndProfile(const std::unordered_map<std::string, std::string> &sequences) {
+std::tuple<Consensus, Profile> FindConsensusAndProfile(
+    const std::unordered_map<std::string, std::string>& sequences) {
   int sequence_length = sequences.begin()->second.length();
   Profile profile = {{'A', std::vector(sequence_length, 0)},
                      {'C', std::vector(sequence_length, 0)},
@@ -23,7 +24,7 @@ std::tuple<Consensus, Profile> FindConsensusAndProfile(const std::unordered_map<
   }
 
   for (i = 0; i < profile.begin()->second.size(); ++i) {
-    consensus.push_back(FindConsensusFromProfile(profile, (int) i));
+    consensus.push_back(FindConsensusFromProfile(profile, (int)i));
   }
 
   return {consensus, profile};
@@ -53,4 +54,4 @@ std::string ProfileToString(const Profile& profile) {
   }
   return result;
 }
-}
+}  // namespace DNA

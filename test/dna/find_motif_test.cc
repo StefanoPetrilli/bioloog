@@ -4,7 +4,8 @@
 #include "find_motif_test.h"
 
 namespace find_motif_test {
-TEST_P(FindMotifParametrizedTestsSingleCharacterMotif, Expect_ProperMotifPosition_WithSingleCharacterMotif) {
+TEST_P(FindMotifParametrizedTestsSingleCharacterMotif,
+       Expect_ProperMotifPosition_WithSingleCharacterMotif) {
   std::string dna_sequence = std::get<0>(GetParam());
   std::string motif = std::get<1>(GetParam());
   std::list<int> expected = std::get<2>(GetParam());
@@ -12,7 +13,8 @@ TEST_P(FindMotifParametrizedTestsSingleCharacterMotif, Expect_ProperMotifPositio
   EXPECT_EQ(expected, DNA::FindMotif(dna_sequence, motif)) << std::endl;
 }
 
-TEST_P(FindMotifParametrizedTests, Expect_ProperMotifPosition_WithMultipleCharacterMotif) {
+TEST_P(FindMotifParametrizedTests,
+       Expect_ProperMotifPosition_WithMultipleCharacterMotif) {
   std::string dna_sequence = std::get<0>(GetParam());
   std::string motif = std::get<1>(GetParam());
   std::list<int> expected = std::get<2>(GetParam());
@@ -23,7 +25,8 @@ TEST_P(FindMotifParametrizedTests, Expect_ProperMotifPosition_WithMultipleCharac
 TEST(FindMotifDataset, Expect_ProperTranslation) {
   std::string input, expected, dna_sequence, motif, result;
 
-  std::vector<std::string> file_lines = file::ReadLinesFromFile(file::kRosalindSubsDataset);
+  std::vector<std::string> file_lines =
+      file::ReadLinesFromFile(file::kRosalindSubsDataset);
   dna_sequence = file_lines.at(0);
   motif = file_lines.at(1);
 
@@ -48,7 +51,8 @@ TEST(ParallelContainMotifDatasetTest, Expect_Matching_Value) {
   std::string input, dna_sequence, motif;
   bool result, expected = true;
 
-  std::vector<std::string> file_lines = file::ReadLinesFromFile(file::kCovidFileName);
+  std::vector<std::string> file_lines =
+      file::ReadLinesFromFile(file::kCovidFileName);
   dna_sequence = file_lines.at(0);
   motif = file_lines.at(1);
 
@@ -56,4 +60,4 @@ TEST(ParallelContainMotifDatasetTest, Expect_Matching_Value) {
 
   EXPECT_EQ(expected, result) << std::endl;
 }
-}
+}  // namespace find_motif_test

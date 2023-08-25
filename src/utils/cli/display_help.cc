@@ -6,9 +6,10 @@
 
 namespace cli {
 void DisplayHelp() {
-  std::cout << cli::ascii_art << cli::program_name << cli::commands_intro <<  std::endl;
+  std::cout << cli::ascii_art << cli::program_name << cli::commands_intro
+            << std::endl;
 
-  for(cli::VirtualCommand* i : cli::VirtualCommand::GetList())
+  for (cli::VirtualCommand* i : cli::VirtualCommand::GetList())
     std::cout << i->ToString() << std::endl;
 }
-}
+}  // namespace cli

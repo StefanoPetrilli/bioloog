@@ -1,9 +1,5 @@
-//
-// Created by Stefano on 12/31/2022.
-//
+#pragma once
 
-#ifndef BIOLOOG_SRC_DNA_RESTRICTION_SITES_H_
-#define BIOLOOG_SRC_DNA_RESTRICTION_SITES_H_
 #include <string>
 #include <list>
 #include <tuple>
@@ -39,4 +35,3 @@ static const size_t kDimensionRequirementForParallelExecutionRestrictionSite = 7
 std::list<RestrictionSite> ParallelRestrictionSites(const std::string &dna_sequence);
 #endif
 }
-#endif //BIOLOOG_SRC_DNA_RESTRICTION_SITES_H_

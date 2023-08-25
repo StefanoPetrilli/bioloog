@@ -1,9 +1,5 @@
-//
-// Created by Stefano on 12/11/2022.
-//
+#pragma once
 
-#ifndef BIOLOOG_TEST_DNA_COUNT_NUCLEOTIDES_TEST_H_
-#define BIOLOOG_TEST_DNA_COUNT_NUCLEOTIDES_TEST_H_
 #include <gtest/gtest.h>
 
 #include "count_nucleotides.h"
@@ -27,5 +23,3 @@ INSTANTIATE_TEST_SUITE_P
 )
 );
 }
-
-#endif //BIOLOOG_TEST_DNA_COUNT_NUCLEOTIDES_TEST_H_

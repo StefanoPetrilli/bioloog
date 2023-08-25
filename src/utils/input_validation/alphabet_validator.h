@@ -1,9 +1,5 @@
-//
-// Created by Stefano on 12/10/2022.
-//
+#pragma once
 
-#ifndef BIOLOOG_SRC_UTILS_INPUT_VALIDATION_ALPHABET_VALIDATOR_H_
-#define BIOLOOG_SRC_UTILS_INPUT_VALIDATION_ALPHABET_VALIDATOR_H_
 #include <string>
 #include <vector>
 #include <iostream>
@@ -41,4 +37,3 @@ static const AlphabetValidator kStandardValidatorRna = AlphabetValidator(kRnaAlp
 static const AlphabetValidator kStandardValidatorDna = AlphabetValidator(kDnaAlphabet, kDnaErrorMessage);
 static const AlphabetValidator kStandardValidatorProtein = AlphabetValidator(kProteinAlphabet, kProteinErrorMessage);
 }
-#endif //BIOLOOG_SRC_UTILS_INPUT_VALIDATION_ALPHABET_VALIDATOR_H_

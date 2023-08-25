@@ -1,9 +1,5 @@
-//
-// Created by Stefano on 12/31/2022.
-//
+#pragma once
 
-#ifndef BIOLOOG_SRC_UTILS_FILE_FILE_H_
-#define BIOLOOG_SRC_UTILS_FILE_FILE_H_
 #include <string>
 #include <stdexcept>
 
@@ -44,5 +40,3 @@ static const std::string kRnaSplicingExample = "rna_splicing_example.txt";
 static const std::string kSplicedMotifExample = "find_spliced_motif_test.txt";
 static const std::string kFindsplicedMotifExample = "find_spliced_motif_example.txt";
 }
-#endif //BIOLOOG_SRC_UTILS_FILE_FILE_H_
-

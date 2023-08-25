@@ -5,7 +5,8 @@
 #include "inferring_mRna_from_protein_test.h"
 
 namespace inferring_mRna_from_protein_test {
-TEST_P(InferringmRnaFromProteinMultipleParameters, GivenSequence_Expect_CorrectNumber) {
+TEST_P(InferringmRnaFromProteinMultipleParameters,
+       GivenSequence_Expect_CorrectNumber) {
   auto input = std::get<0>(GetParam());
   auto expected = std::get<1>(GetParam());
 
@@ -13,7 +14,8 @@ TEST_P(InferringmRnaFromProteinMultipleParameters, GivenSequence_Expect_CorrectN
   EXPECT_EQ(expected, actual);
 }
 
-TEST(InferringmRnaFromProteinMultipleDataset, GivenSequence_Expect_CorrectNumber) {
+TEST(InferringmRnaFromProteinMultipleDataset,
+     GivenSequence_Expect_CorrectNumber) {
   std::string input;
   file::ReadFromFile(file::kInfermRnaDatasetInput, input);
   auto expected = 225216;
@@ -21,4 +23,4 @@ TEST(InferringmRnaFromProteinMultipleDataset, GivenSequence_Expect_CorrectNumber
   auto actual = protein::InferMRna(input);
   EXPECT_EQ(expected, actual);
 }
-}
+}  // namespace inferring_mRna_from_protein_test

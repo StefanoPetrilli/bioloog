@@ -13,14 +13,19 @@ std::string DnaToRnaTranscription(const std::string& dna) {
     switch (c) {
       case 'A':
       case 'C':
-      case 'G': result += c;
+      case 'G':
+        result += c;
         break;
-      case 'T': result += "U";
+      case 'T':
+        result += "U";
         break;
-      default:throw std::invalid_argument("An illegal character was inserted. Only 'A', 'C', 'G' and 'T' accepted.");
+      default:
+        throw std::invalid_argument(
+            "An illegal character was inserted. Only 'A', 'C', 'G' and 'T' "
+            "accepted.");
     }
   }
 
   return result;
 }
-}
+}  // namespace DNA

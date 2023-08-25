@@ -11,4 +11,4 @@ TEST(Command, Expect_Throw_WhenInputsAreNotValid) {
     EXPECT_THROW(command->Exec(path), std::exception);
   }
 }
-}
+}  // namespace command_test

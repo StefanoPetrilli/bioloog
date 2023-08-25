@@ -1,9 +1,4 @@
-//
-// Created by Stefano on 12/2/2022.
-//
-
-#ifndef BIOLOOG_SRC_UTILS_CLI_COMMANDS_H_
-#define BIOLOOG_SRC_UTILS_CLI_COMMANDS_H_
+#pragma once
 
 #include <string>
 #include <unordered_map>
@@ -116,4 +111,3 @@ class FindSplicedMotif : VirtualCommand {
   void Exec(const std::string &path) override;
 };
 }
-#endif //BIOLOOG_SRC_UTILS_CLI_COMMANDS_H_

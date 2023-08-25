@@ -1,9 +1,5 @@
-//
-// Created by Stefano on 12/7/2022.
-//
+#pragma once
 
-#ifndef BIOLOOG_SRC_DNA_RNA_TO_PROTEIN_TRANSLATION_H_
-#define BIOLOOG_SRC_DNA_RNA_TO_PROTEIN_TRANSLATION_H_
 #include <string>
 #include <stdexcept>
 #include <map>
@@ -32,4 +28,3 @@ const std::unordered_map<std::string, char> codon_table =
 
 std::string RnaToProteinTranslation(std::string rna_sequence);
 }
-#endif //BIOLOOG_SRC_DNA_RNA_TO_PROTEIN_TRANSLATION_H_

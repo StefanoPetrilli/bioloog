@@ -1,9 +1,5 @@
-//
-// Created by Stefano on 1/6/2023.
-//
+#pragma once
 
-#ifndef BIOLOOG_TEST_PROTEIN_INFERRING_MRNA_FROM_PROTEIN_TEST_H_
-#define BIOLOOG_TEST_PROTEIN_INFERRING_MRNA_FROM_PROTEIN_TEST_H_
 #include <gtest/gtest.h>
 
 #include "../../src/protein/inferring_mRna_from_protein.h"
@@ -23,4 +19,3 @@ INSTANTIATE_TEST_SUITE_P
     )
 );
 }
-#endif //BIOLOOG_TEST_PROTEIN_INFERRING_MRNA_FROM_PROTEIN_TEST_H_

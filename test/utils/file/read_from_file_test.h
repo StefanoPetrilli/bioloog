@@ -1,9 +1,5 @@
-//
-// Created by Stefano on 12/11/2022.
-//
+#pragma once
 
-#ifndef BIOLOOG_TEST_UTILS_FILE_READ_FROM_FILE_TEST_H_
-#define BIOLOOG_TEST_UTILS_FILE_READ_FROM_FILE_TEST_H_
 #include <gtest/gtest.h>
 #include <fstream>
 #include <list>
@@ -38,4 +34,3 @@ class ReadLinesFromFile : public ::testing::Test {
   void TearDown() override;
 };
 }
-#endif //BIOLOOG_TEST_UTILS_FILE_READ_FROM_FILE_TEST_H_

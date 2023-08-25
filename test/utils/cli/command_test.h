@@ -1,9 +1,5 @@
-//
-// Created by Stefano on 12/25/2022.
-//
+#pragma once
 
-#ifndef BIOLOOG_TEST_UTILS_CLI_COMMAND_TEST_H_
-#define BIOLOOG_TEST_UTILS_CLI_COMMAND_TEST_H_
 #include <gtest/gtest.h>
 #include "../../../src/utils/cli/command.h"
 
@@ -23,5 +19,3 @@ std::unordered_map<std::string, std::string> input_with_errors = {
     {"find_spliced_motif", file::kFastaErrorFile}
 };
 }
-
-#endif //BIOLOOG_TEST_UTILS_CLI_COMMAND_TEST_H_

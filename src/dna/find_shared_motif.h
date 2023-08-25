@@ -1,9 +1,5 @@
-//
-// Created by Stefano on 12/18/2022.
-//
+#pragma once
 
-#ifndef BIOLOOG_SRC_DNA_FIND_SHARED_MOTIF_H_
-#define BIOLOOG_SRC_DNA_FIND_SHARED_MOTIF_H_
 #include <string>
 #include <unordered_map>
 #include <iostream>
@@ -19,4 +15,3 @@ std::string FindSharedMotif(const std::unordered_map<std::string, std::string>& 
 std::vector<std::set<std::string>> GetCommonSubstrings(const std::string &sequence1, const std::string &sequence2);
 std::string GetLongestSubstringRemaining(std::vector<std::set<std::string>> substrings);
 }
-#endif //BIOLOOG_SRC_DNA_FIND_SHARED_MOTIF_H_
