@@ -19,6 +19,8 @@
 #include "restriction_sites.h"
 #include "inferring_mRna_from_protein.h"
 #include "rna_splicing.h"
+#include "find_spliced_motif.h"
+#include "format.h"
 
 namespace cli {
 class VirtualCommand {
@@ -104,6 +106,13 @@ class RnaSplicing : VirtualCommand {
  public:
   RnaSplicing(const std::string &name, const std::string &description) : VirtualCommand(name,
                                                                                           description) {};
+  void Exec(const std::string &path) override;
+};
+
+class FindSplicedMotif : VirtualCommand {
+ public:
+  FindSplicedMotif(const std::string &name, const std::string &description) : VirtualCommand(name,
+                                                                                        description) {};
   void Exec(const std::string &path) override;
 };
 }

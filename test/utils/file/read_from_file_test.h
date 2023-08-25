@@ -22,6 +22,7 @@ static const std::string kMultipleLinesReadFileName = "Test1MultipleLines";
 static const std::string kFileContentMultipleLines = "Test\nTest\nTest\n";
 static const std::vector<std::string> kMultipleLinesListExpected = {"Test", "Test", "Test"};
 static const std::string kFastaContentFileName = "fasta_example_input.txt";
+static const std::string kFastaPairContentFileName = "find_spliced_motif_example.txt";
 
 class ReadFromFile : public ::testing::Test {
  protected:
