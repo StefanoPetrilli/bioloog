@@ -19,6 +19,8 @@
 #include "restriction_sites.h"
 #include "inferring_mRna_from_protein.h"
 #include "rna_splicing.h"
+#include "find_spliced_motif.h"
+#include "format.h"
 
 namespace cli {
 class VirtualCommand {

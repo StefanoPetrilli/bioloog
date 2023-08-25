@@ -15,6 +15,8 @@ set(test_files
         dna/restriction_sites_test.h
         protein/inferring_mRna_from_protein_test.h
         utils/file/read_from_file_test.cc
+        utils/format/format_test.cc
+        utils/format/format_test.h
         utils/input_validation/alphabet_validator_test.cc
         utils/cli/command_test.cc
         dna/count_nucleotides_test.cc
@@ -24,7 +26,11 @@ set(test_files
         dna/find_shared_motif_test.cc
         dna/find_consensus_and_profile_test.cc
         dna/restriction_sites_test.cc
-        protein/inferring_mRna_from_protein_test.cc dna/rna_splicing_test.cc dna/rna_splicing_test.h dna/find_spliced_motif_test.cc dna/find_spliced_motif_test.h)
+        protein/inferring_mRna_from_protein_test.cc 
+        dna/rna_splicing_test.cc 
+        dna/rna_splicing_test.h 
+        dna/find_spliced_motif_test.cc 
+        dna/find_spliced_motif_test.h)
 
 add_executable(bioloogTest ${test_files})
 
@@ -34,6 +40,7 @@ target_link_libraries(
         dna
         cli
         file
+        format
         input_validation
         GTest::gtest_main
 )

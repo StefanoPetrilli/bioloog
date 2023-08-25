@@ -8,5 +8,6 @@
 
 #include "read_from_file.h"
 #include "find_spliced_motif.h"
+#include "format.h"
 
 #endif //BIOLOOG_TEST_DNA_FIND_SPLICED_MOTIF_TEST_H_

@@ -6,11 +6,12 @@
 #define BIOLOOG_SRC_DNA_FIND_SPLICED_MOTIF_H_
 
 #include <cstdio>
-#include <list>
+#include <vector>
 #include <unordered_map>
 #include <string>
+#include <iostream>
 
 namespace DNA {
-std::list<int> FindSplicedMotif(const std::unordered_map<std::string, std::string> &sequences);
+std::vector<int> FindSplicedMotif(const std::pair<std::string, std::string> &sequences);
 }
 #endif //BIOLOOG_SRC_DNA_FIND_SPLICED_MOTIF_H_

@@ -44,7 +44,7 @@ auto IsSequenceName = [] (const std::string& line) { return line.starts_with('>'
 
 std::unordered_map<std::string, std::string> ReadFastaFromFile(const std::string& path) {
   std::unordered_map<std::string, std::string> result;
-  std::vector<std::string> file_lines = ReadLinesFromFile(path);
+  auto file_lines = ReadLinesFromFile(path);
 
   std::string key, content;
   for (const std::string& line : file_lines) {
@@ -59,6 +59,30 @@ std::unordered_map<std::string, std::string> ReadFastaFromFile(const std::string
 
   result.insert({key, content});
   result.erase("");
+  return result;
+}
+
+std::pair<std::string, std::string> ReadFastaPairFromFile(const std::string &path)
+{
+  std::pair<std::string, std::string> result;
+  size_t second_sequence_index {0};
+  auto file_lines = ReadLinesFromFile(path);
+
+  file_lines.erase(file_lines.begin());
+  for (size_t i = 0; i < file_lines.size(); i ++) {
+    if (IsSequenceName(file_lines[i]) && second_sequence_index == 0)
+      second_sequence_index = i;
+    else if (IsSequenceName(file_lines[i]) && second_sequence_index != 0) { 
+      throw std::invalid_argument("The file contains more than two sequences");
+    }
+  }
+
+  for (size_t i = 0; i < second_sequence_index; i++)
+    result.first += file_lines[i];
+  
+   for (size_t i = second_sequence_index + 1; i < file_lines.size(); i++)
+    result.second += file_lines[i]; 
+
   return result;
 }
 

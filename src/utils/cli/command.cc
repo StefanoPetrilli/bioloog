@@ -150,14 +150,14 @@ void RnaSplicing::Exec(const std::string &path) {
 
 void FindSplicedMotif::Exec(const std::string &path) {
   std::string file_content;
-  auto map = file::ReadFastaFromFile(path);
+  auto pair = file::ReadFastaPairFromFile(path);
 
-  for (const auto &dna_sequence : map) {
-    input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(dna_sequence.second);
-  }
+  input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(pair.first);
+  input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(pair.second); 
 
-  auto result = DNA::RnaSplicing(map);
-  std::cout << "The result is: " << result << std::endl;
+  auto result = DNA::FindSplicedMotif(pair);
+  auto formatted_result = format::ToString(result);
+  std::cout << "The result is: " << formatted_result << std::endl;
 }
 
 static const cli::CountNucleotides kCountNucleotides =

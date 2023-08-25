@@ -62,4 +62,18 @@ TEST(ReadFastaFromFile, Expect_Result_ToContainTheContentOfTheFile) {
   result = file::ReadFastaFromFile(kFastaContentFileName);
   EXPECT_EQ(expected, result);
 }
+
+TEST(ReadFastaPairFromFile, ValidInput_ExpectResult_ToContainTheContentOfTheFile) {
+  std::pair<std::string, std::string> result;
+  std::pair<std::string, std::string> expected = {
+      "ACGTACGTGACG",
+      "GTA"
+  };
+  result = file::ReadFastaPairFromFile(kFastaPairContentFileName);
+  EXPECT_EQ(expected, result);
+}
+
+TEST(ReadFastaPairFromFile, MoreThanTwoSequences_Expect_Exception) {
+  EXPECT_THROW(file::ReadFastaPairFromFile(kFastaContentFileName), std::invalid_argument);
+}
 }
