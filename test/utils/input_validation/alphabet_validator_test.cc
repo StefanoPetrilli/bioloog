@@ -1,7 +1,5 @@
-//
-// Created by Stefano on 12/10/2022.
-//
-#include "alphabet_validator_test.h"
+#include "alphabet_validator.h"
+#include <gtest/gtest.h>
 
 //TODO rewrite those tests more gracefully using parameters tests
 namespace input_validation_test {

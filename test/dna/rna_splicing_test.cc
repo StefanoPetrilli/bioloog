@@ -1,8 +1,7 @@
-//
-// Created by Stefano on 1/15/2023.
-//
-
-#include "rna_splicing_test.h"
+#include "rna_splicing.h"
+#include <gtest/gtest.h>
+#include <list>
+#include "read_from_file.h"
 
 namespace dna_splicing_test {
 TEST(RnaSplicing, GivenExample_Return_ExpectedResult) {

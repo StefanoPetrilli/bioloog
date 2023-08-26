@@ -1,8 +1,7 @@
-//
-// Created by Stefano on 12/31/2022.
-//
+#include <gtest/gtest.h>
 
-#include "restriction_sites_test.h"
+#include "read_from_file.h"
+#include "restriction_sites.h"
 
 namespace find_consensus_and_profile_test {
 TEST(RestrictionSite, GivenOneRestrictionSite_Return_ExpectedResult) {

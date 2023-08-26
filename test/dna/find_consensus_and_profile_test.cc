@@ -1,8 +1,8 @@
-//
-// Created by Stefano on 12/29/2022.
-//
+#include <gtest/gtest.h>
 
-#include "find_consensus_and_profile_test.h"
+#include "dna_to_rna_transcription.h"
+#include "find_consensus_and_profile.h"
+#include "read_from_file.h"
 
 namespace find_consensus_and_profile_test {
 TEST(FindConsensusAndProfile, GivenOneString_Expect_ConsensusIdenticToInput) {

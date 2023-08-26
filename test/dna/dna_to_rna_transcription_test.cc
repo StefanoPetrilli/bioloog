@@ -1,9 +1,16 @@
-//
-// Created by Stefano on 12/7/2022.
-//
-#include "dna_to_rna_transcription_test.h"
+#include <gtest/gtest.h>
+
+#include "dna_to_rna_transcription.h"
+#include "read_from_file.h"
 
 namespace dna_transcript_rna_test {
+
+class DnaToRnaTranscriptionMultipleParametersNoTranslationTests
+    : public ::testing::TestWithParam<std::tuple<std::string, std::string>> {};
+
+class DnaToRnaTranscriptionMultipleParametersTranslationTests
+    : public ::testing::TestWithParam<std::tuple<std::string, std::string>> {};
+
 TEST(DnaToRnaTranscription,
      Expect_invalid_argument_whenStringContainsInvalidCharacters) {
   EXPECT_THROW(DNA::DnaToRnaTranscription("$"), std::invalid_argument)

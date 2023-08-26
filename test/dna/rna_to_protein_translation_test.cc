@@ -1,9 +1,17 @@
-//
-// Created by Stefano on 12/7/2022.
-//
-#include "rna_to_protein_translation_test.h"
+#include <gtest/gtest.h>
+
+#include "dna_to_rna_transcription.h"
+#include "read_from_file.h"
+#include "rna_to_protein_translation.h"
 
 namespace rna_to_protein_translation_test {
+
+class RnaToProteinTranslationTestSingleProtein
+    : public ::testing::TestWithParam<std::tuple<std::string, std::string>> {};
+
+class RnaToProteinTranslationTestMultipleProtein
+    : public ::testing::TestWithParam<std::tuple<std::string, std::string>> {};
+
 INSTANTIATE_TEST_SUITE_P(Tests, RnaToProteinTranslationTestSingleProtein,
                          ::testing::Values(std::make_tuple("", ""),
                                            std::make_tuple("GCU", "A"),

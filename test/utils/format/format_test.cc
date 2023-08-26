@@ -1,4 +1,6 @@
-#include "format_test.h"
+#include "format.h"
+#include <gtest/gtest.h>
+#include <vector>
 
 namespace format_test {
 TEST(ToString, EmptyVectorReturnsEmptyString) {

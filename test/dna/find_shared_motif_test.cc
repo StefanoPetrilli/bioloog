@@ -1,10 +1,25 @@
-//
-// Created by Stefano on 12/18/2022.
-//
+#include <gtest/gtest.h>
+#include <map>
 
-#include "find_shared_motif_test.h"
+#include "find_shared_motif.h"
 
 namespace find_shared_motif_test {
+class GetCommonSubstringsMultipleParameters
+    : public ::testing::TestWithParam<std::tuple<
+          std::string, std::string, std::vector<std::set<std::string>>>> {};
+
+INSTANTIATE_TEST_SUITE_P(
+    Tests, GetCommonSubstringsMultipleParameters,
+    ::testing::Values(
+        std::tuple<std::string, std::string,
+                   std::vector<std::set<std::string>>>("A", "", {}),
+        std::tuple<std::string, std::string,
+                   std::vector<std::set<std::string>>>("A", "A", {{"A"}}),
+        std::tuple<std::string, std::string,
+                   std::vector<std::set<std::string>>>(
+            "ACCCGT", "ACCCTG",
+            {{"A", "C", "G", "T"}, {"AC", "CC"}, {"ACC", "CCC"}, {"ACCC"}})));
+
 TEST(GetCommonSubstrings, Expect_EmptyVector_WhenInputEmpty) {
   EXPECT_EQ(DNA::GetCommonSubstrings("", ""),
             std::vector<std::set<std::string>>{})

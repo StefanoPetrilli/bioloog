@@ -31,3 +31,4 @@ enable_testing()
 
 add_subdirectory(test)
 add_subdirectory(src)
+file(COPY input_files DESTINATION input_files)
