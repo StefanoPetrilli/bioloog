@@ -170,6 +170,17 @@ void FindSplicedMotif::Exec(const std::string& path) {
   std::cout << "The result is: " << formatted_result << std::endl;
 }
 
+void FindSharedSplicedMotif::Exec(const std::string& path) {
+  std::string file_content;
+  auto pair = file::ReadFastaPairFromFile(path);
+
+  input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(pair.first);
+  input_validation::kStandardValidatorDna.IsPartOfTheAlphabet(pair.second);
+
+  auto result = DNA::FindSharedSplicedMotif(pair);
+  std::cout << "The result is: " << result << std::endl;
+}
+
 static const cli::CountNucleotides kCountNucleotides =
     CountNucleotides("count_nucleotides",
                      "Takes a DNA string and returns the counting of each "
@@ -219,4 +230,8 @@ static const cli::FindSplicedMotif kFindSplicedMotif = FindSplicedMotif(
     "Takes a DNA sequence and a motif in fasta format and returns a collection "
     "of indices that correspond to the position of the element of the motif");
 
+static const cli::FindSharedSplicedMotif kFindSharedSplicedMotif =
+    FindSharedSplicedMotif(
+        "find_shared_spliced_motif",
+        "Takes two DNA sequence and find the longest shared spliced motif");
 }  // namespace cli

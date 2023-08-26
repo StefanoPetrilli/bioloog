@@ -1,9 +1,9 @@
 #pragma once
 
 #include <array>
-#include <string>
 #include <stdexcept>
+#include <string>
 
 namespace DNA {
-std::array<int, 4> CountNucleotides(std::string const &DNA);
+std::array<int, 4> CountNucleotides(std::string const& DNA);
 }

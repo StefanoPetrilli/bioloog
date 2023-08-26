@@ -17,6 +17,8 @@ static const std::string kRosalindLcsmOutput = "rosalind_lcsm_1_output.txt";
 static const std::string kRosalindProtDataset = "rosalind_prot_1_dataset.txt";
 static const std::string kRosalindProtOutput = "rosalind_prot_1_output.txt";
 static const std::string kFindsplicedMotifDataset = "rosalind_sseq_1_dataset.txt";
+static const std::string kFindSharedSplicedMotifDataset = "rosalind_lcsq_1_dataset.txt";
+static const std::string kFindSharedSplicedMotifOutput = "rosalind_lcsq_1_output.txt";
 static const std::string kFindsplicedMotifOutput = "rosalind_sseq_1_output.txt";
 static const std::string kRosalindRestrictionDataset = "rosalind_restriction_1_dataset.txt";
 static const std::string kRosalindSplicingDataset = "rosalind_splc_1_dataset.txt";
@@ -38,5 +40,6 @@ static const std::string kMotifErrorFile = "motif_test_error.txt";
 static const std::string kProteinErrorFile = "protein_test_error.txt";
 static const std::string kRnaSplicingExample = "rna_splicing_example.txt";
 static const std::string kSplicedMotifExample = "find_spliced_motif_test.txt";
-static const std::string kFindsplicedMotifExample = "find_spliced_motif_example.txt";
+static const std::string kFindSplicedMotifExample = "find_spliced_motif_example.txt";
+static const std::string kFindSharedSplicedMotifExample = "shared_spliced_motif.txt";
 }

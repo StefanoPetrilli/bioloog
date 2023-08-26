@@ -5,7 +5,7 @@
 #include "read_from_file.h"
 namespace find_spliced_motif_test {
 TEST(FindSplicedMotif, GivenExample_Return_ExpectedResult) {
-  auto sequences = file::ReadFastaPairFromFile(file::kFindsplicedMotifExample);
+  auto sequences = file::ReadFastaPairFromFile(file::kFindSplicedMotifExample);
   std::vector<int> expected = {3, 4, 5};
 
   EXPECT_EQ(expected, DNA::FindSplicedMotif(sequences));
