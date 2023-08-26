@@ -1,7 +1,3 @@
-//
-// Created by Stefano on 11/29/2022.
-//
-
 #include "count_nucleotides.h"
 
 namespace DNA {
