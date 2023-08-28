@@ -1,6 +1,3 @@
-//
-// Created by Stefano on 12/18/2022.
-//
 #include "find_shared_motif.h"
 
 #include "find_motif.h"

@@ -26,6 +26,7 @@ FetchContent_Declare(
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
+set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
 
 enable_testing()
 
