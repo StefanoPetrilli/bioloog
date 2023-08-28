@@ -6,7 +6,6 @@
 
 namespace DNA {
 std::string DnaToRnaTranscription(const std::string& dna) {
-
   std::string result;
 
   for (char c : dna) {

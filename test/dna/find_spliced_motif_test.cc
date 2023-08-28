@@ -1,6 +1,7 @@
+#include "find_spliced_motif.h"
+
 #include <gtest/gtest.h>
 
-#include "find_spliced_motif.h"
 #include "format.h"
 #include "read_from_file.h"
 namespace find_spliced_motif_test {

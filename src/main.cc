@@ -1,9 +1,9 @@
-#include "utils/cli/display_help.h"
 #include "utils/cli/command.h"
+#include "utils/cli/display_help.h"
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char *argv[]) {
-
-  auto e = new cli::FindSplicedMotif("find_spliced_motif", "Find a spliced motif in a sequence");
+  auto e = new cli::FindSplicedMotif("find_spliced_motif",
+                                     "Find a spliced motif in a sequence");
   e->Exec("rosalind_sseq_1_dataset.txt");
 
   /*

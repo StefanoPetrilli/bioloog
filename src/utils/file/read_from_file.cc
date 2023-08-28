@@ -7,7 +7,6 @@
 namespace file {
 
 void ReadFromFile(const std::string& path, std::string& result) {
-
   std::ifstream file_stream(kDefaultInputFilePath + path);
 
   if (file_stream.is_open()) {
@@ -21,7 +20,6 @@ void ReadFromFile(const std::string& path, std::string& result) {
 }
 
 std::vector<std::string> ReadLinesFromFile(const std::string& path) {
-
   std::string file_content;
   ReadFromFile(path, file_content);
 
@@ -38,8 +36,7 @@ std::vector<std::string> ReadLinesFromFile(const std::string& path) {
     line = "";
   }
 
-  if (not line.empty())
-    result.push_back(line);
+  if (not line.empty()) result.push_back(line);
 
   return result;
 }

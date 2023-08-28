@@ -1,6 +1,7 @@
+#include "inferring_mRna_from_protein.h"
+
 #include <gtest/gtest.h>
 
-#include "inferring_mRna_from_protein.h"
 #include "read_from_file.h"
 
 namespace inferring_mRna_from_protein_test {

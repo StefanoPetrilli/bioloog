@@ -9,7 +9,6 @@ std::string FindSharedSplicedMotif(
 
 std::string RecursiveFindSharedSplicedMotif(
     const std::pair<std::string, std::string>& sequences) {
-
   if (sequences.first.empty() || sequences.second.empty())
     return std::string();
   else if (sequences.first.back() == sequences.second.back())
@@ -32,7 +31,8 @@ std::string RecursiveFindSharedSplicedMotif(
 
 std::string DynamicProgrammingFindSharedSplicedMotif(
     const std::pair<std::string, std::string>& sequences) {
-  size_t numRows = sequences.second.size() + 1, numCols = sequences.first.size() + 1;
+  size_t numRows = sequences.second.size() + 1,
+         numCols = sequences.first.size() + 1;
   std::vector<std::vector<std::string>> result_matrix(
       numRows, std::vector<std::string>(numCols, std::string()));
 

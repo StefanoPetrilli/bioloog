@@ -9,8 +9,7 @@ input_validation::AlphabetValidator::AlphabetValidator(
     const std::string& alphabet, const std::string& error_message) {
   this->lookup_vector_ = std::vector<int>(128, false);
 
-  for (char c : alphabet)
-    this->SetLookupVector(c);
+  for (char c : alphabet) this->SetLookupVector(c);
 
   SetErrorMessage(error_message);
 }

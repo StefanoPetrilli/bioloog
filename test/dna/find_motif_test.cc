@@ -1,7 +1,9 @@
+#include "find_motif.h"
+
 #include <gtest/gtest.h>
+
 #include <list>
 
-#include "find_motif.h"
 #include "read_from_file.h"
 
 namespace find_motif_test {

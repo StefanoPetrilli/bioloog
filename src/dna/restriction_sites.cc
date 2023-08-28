@@ -53,7 +53,6 @@ std::list<RestrictionSite> SequentialRestrictionSites(
 #ifdef _OPENMP
 std::list<RestrictionSite> ParallelRestrictionSites(
     const std::string& dna_sequence) {
-
   std::list<RestrictionSite> result;
   std::list<RestrictionSite> private_to_check;
 
@@ -70,7 +69,6 @@ std::list<RestrictionSite> ParallelRestrictionSites(
               : result) private(position, private_to_check) \
         shared(dna_sequence, kShortestReversePalindrome) default(none)
       for (size_t i = 0; i < kShortestReversePalindrome.size(); ++i) {
-
         position = dna_sequence.find(kShortestReversePalindrome.at(i));
 
         for (; position != std::string::npos;

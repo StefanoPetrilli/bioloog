@@ -6,7 +6,6 @@
 namespace DNA {
 std::list<int> FindMotif(const std::string& dna_sequence,
                          const std::string& motif) {
-
   std::list<int> result{};
   size_t floating_position = 0;
 
@@ -41,8 +40,7 @@ bool ParallelContainMotif(const std::string& dna_sequence,
     return SequentialContainMotif(dna_sequence, motif);
 
   bool found = false;
-  if (chunk_size < motif.size())
-    chunk_size = motif.size() * 2;
+  if (chunk_size < motif.size()) chunk_size = motif.size() * 2;
 #pragma omp parallel shared(dna_sequence, motif, chunk_size, \
                             found) default(none)
   {

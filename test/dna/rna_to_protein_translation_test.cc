@@ -1,8 +1,9 @@
+#include "rna_to_protein_translation.h"
+
 #include <gtest/gtest.h>
 
 #include "dna_to_rna_transcription.h"
 #include "read_from_file.h"
-#include "rna_to_protein_translation.h"
 
 namespace rna_to_protein_translation_test {
 

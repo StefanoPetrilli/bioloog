@@ -6,7 +6,6 @@
 
 namespace protein {
 unsigned int InferMRna(std::string& protein_sequence) {
-
   protein_sequence.push_back(kStopCodon);
 
 #ifdef _OPENMP

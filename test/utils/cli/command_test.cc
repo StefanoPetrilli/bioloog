@@ -3,6 +3,7 @@
 //
 
 #include "command.h"
+
 #include <gtest/gtest.h>
 
 #include <typeindex>

@@ -1,6 +1,9 @@
 #include "rna_splicing.h"
+
 #include <gtest/gtest.h>
+
 #include <list>
+
 #include "read_from_file.h"
 
 namespace dna_splicing_test {

@@ -1,8 +1,9 @@
+#include "read_from_file.h"
+
 #include <gtest/gtest.h>
+
 #include <fstream>
 #include <list>
-
-#include "read_from_file.h"
 namespace read_from_file_test {
 
 static const std::string kNonExistentFileNameTest1 = "Test1ExampleNonExistent";

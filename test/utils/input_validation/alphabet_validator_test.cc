@@ -1,7 +1,8 @@
 #include "alphabet_validator.h"
+
 #include <gtest/gtest.h>
 
-//TODO rewrite those tests more gracefully using parameters tests
+// TODO rewrite those tests more gracefully using parameters tests
 namespace input_validation_test {
 TEST(AlphabetValidator, InstantiateLookupTableProperly) {
   std::string alphabet = "ABC";

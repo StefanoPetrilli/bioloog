@@ -1,7 +1,8 @@
-#include <gtest/gtest.h>
-#include <map>
-
 #include "find_shared_motif.h"
+
+#include <gtest/gtest.h>
+
+#include <map>
 
 namespace find_shared_motif_test {
 class GetCommonSubstringsMultipleParameters

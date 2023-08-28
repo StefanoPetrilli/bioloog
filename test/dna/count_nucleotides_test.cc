@@ -1,6 +1,7 @@
+#include "count_nucleotides.h"
+
 #include <gtest/gtest.h>
 
-#include "count_nucleotides.h"
 #include "read_from_file.h"
 
 namespace count_nucleotides_test {

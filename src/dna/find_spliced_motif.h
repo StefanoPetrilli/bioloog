@@ -1,11 +1,12 @@
 #pragma once
 
 #include <cstdio>
-#include <vector>
-#include <unordered_map>
-#include <string>
 #include <iostream>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 namespace DNA {
-std::vector<int> FindSplicedMotif(const std::pair<std::string, std::string> &sequences);
+std::vector<int> FindSplicedMotif(
+    const std::pair<std::string, std::string> &sequences);
 }

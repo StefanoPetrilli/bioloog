@@ -2,7 +2,6 @@
 
 namespace DNA {
 std::array<int, 4> CountNucleotides(std::string const& DNA) {
-
   std::array<int, 4> counting = {0, 0, 0, 0};
 
   for (char c : DNA) {

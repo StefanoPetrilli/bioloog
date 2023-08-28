@@ -1,7 +1,8 @@
+#include "restriction_sites.h"
+
 #include <gtest/gtest.h>
 
 #include "read_from_file.h"
-#include "restriction_sites.h"
 
 namespace find_consensus_and_profile_test {
 TEST(RestrictionSite, GivenOneRestrictionSite_Return_ExpectedResult) {
