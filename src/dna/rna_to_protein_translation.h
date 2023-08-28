@@ -6,7 +6,7 @@
 
 #include "../utils/input_validation/alphabet_validator.h"
 
-namespace DNA {
+namespace dna {
 
 const int CODON_LENGTH = 3;
 const char STRING_TERMINAL_CHARACTER = '0';
@@ -27,4 +27,4 @@ const std::unordered_map<std::string, char> codon_table = {
     {"GGU", 'G'}, {"GGC", 'G'}, {"GGA", 'G'}, {"GGG", 'G'}};
 
 std::string RnaToProteinTranslation(std::string rna_sequence);
-}  // namespace DNA
+}  // namespace dna

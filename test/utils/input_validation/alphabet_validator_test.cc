@@ -2,7 +2,8 @@
 
 #include <gtest/gtest.h>
 
-// TODO rewrite those tests more gracefully using parameters tests
+// TODO(stefanopetrilli): rewrite those tests more gracefully using parameters
+// testsg parameters tests
 namespace input_validation_test {
 TEST(AlphabetValidator, InstantiateLookupTableProperly) {
   std::string alphabet = "ABC";
@@ -17,7 +18,7 @@ TEST(AlphabetValidator, InstantiateLookupTableProperly) {
   EXPECT_EQ(test_validator.GetLookupVector().at(outside_of_alphabet), false);
 }
 
-TEST(AlphabetValidator, IsStringPartOfTheAlphabet_ShouldWorkProperly) {
+TEST(AlphabetValidator, IsStringPartOfTheAlphabetShouldWorkProperly) {
   std::string alphabet = "DEF";
   char outside_of_alphabet = 'a';
 
@@ -30,7 +31,7 @@ TEST(AlphabetValidator, IsStringPartOfTheAlphabet_ShouldWorkProperly) {
   EXPECT_EQ(test_validator.IsPartOfTheAlphabet(outside_of_alphabet), false);
 }
 
-TEST(AlphabetValidator, IsStringPartOfTheAlphabet_ShouldNotThrow) {
+TEST(AlphabetValidator, IsStringPartOfTheAlphabetShouldNotThrow) {
   std::string alphabet = "DEF";
   std::string outside_of_alphabet = "DEFDEFDEFFEDFED";
 
@@ -40,7 +41,7 @@ TEST(AlphabetValidator, IsStringPartOfTheAlphabet_ShouldNotThrow) {
   EXPECT_NO_THROW(test_validator.IsPartOfTheAlphabet(outside_of_alphabet));
 }
 
-TEST(AlphabetValidator, IsStringPartOfTheAlphabet_ShouldThrow) {
+TEST(AlphabetValidator, IsStringPartOfTheAlphabetShouldThrow) {
   std::string alphabet = "DEF";
   std::string outside_of_alphabet = "a";
 

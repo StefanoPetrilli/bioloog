@@ -2,9 +2,9 @@
 
 #include "find_motif.h"
 
-// TODO rewrite loops using range based loops when possible so to reverse
-// iterate on the data structures
-namespace DNA {
+// TODO(stefanopetrilli): rewrite loops using range based loops when possible so
+// to reverse iterate on the data structures
+namespace dna {
 std::string FindSharedMotif(
     const std::unordered_map<std::string, std::string>& sequences) {
   auto sequences_iterator = sequences.begin();
@@ -15,7 +15,7 @@ std::string FindSharedMotif(
   sequences_iterator++;
   auto substrings = GetCommonSubstrings(sequence1, sequence2);
 
-  auto substrings_to_remove = new std::set<std::string>();
+  auto* substrings_to_remove = new std::set<std::string>();
   for (; sequences_iterator != sequences.end(); sequences_iterator++) {
     for (auto& substrings_list_iterator : substrings) {
       for (const auto& substring_set_iterator : substrings_list_iterator) {
@@ -68,4 +68,4 @@ std::string GetLongestSubstringRemaining(
     std::vector<std::set<std::string>> substrings) {
   return *substrings.back().begin();
 }
-}  // namespace DNA
+}  // namespace dna

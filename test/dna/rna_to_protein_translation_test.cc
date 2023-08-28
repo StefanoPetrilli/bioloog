@@ -21,11 +21,11 @@ INSTANTIATE_TEST_SUITE_P(Tests, RnaToProteinTranslationTestSingleProtein,
                                            std::make_tuple("UGA", "")));
 
 TEST_P(RnaToProteinTranslationTestSingleProtein,
-       SingleProtein_Expect_properTranslation) {
+       SingleProteinExpectproperTranslation) {
   std::string expected = std::get<1>(GetParam());
   std::string input = std::get<0>(GetParam());
 
-  EXPECT_EQ(expected, DNA::RnaToProteinTranslation(input)) << std::endl;
+  EXPECT_EQ(expected, dna::RnaToProteinTranslation(input)) << std::endl;
 }
 
 INSTANTIATE_TEST_SUITE_P(
@@ -37,20 +37,22 @@ INSTANTIATE_TEST_SUITE_P(
                         "MAMAPRTEINSTRING")));
 
 TEST_P(RnaToProteinTranslationTestMultipleProtein,
-       SingleProtein_Expect_properTranslation) {
+       SingleProteinExpectproperTranslation) {
   std::string expected = std::get<1>(GetParam());
   std::string input = std::get<0>(GetParam());
 
-  EXPECT_EQ(expected, DNA::RnaToProteinTranslation(input)) << std::endl;
+  EXPECT_EQ(expected, dna::RnaToProteinTranslation(input)) << std::endl;
 }
 
-TEST(RnaToProteinTranslationDatasetTest, Expect_properTranslation) {
-  std::string input, expected, actual;
+TEST(RnaToProteinTranslationDatasetTest, ExpectproperTranslation) {
+  std::string input;
+  std::string expected;
+  std::string actual;
 
   file::ReadFromFile(file::kRosalindProtDataset, input);
   file::ReadFromFile(file::kRosalindProtOutput, expected);
 
-  actual = DNA::RnaToProteinTranslation(input);
+  actual = dna::RnaToProteinTranslation(input);
   EXPECT_EQ(expected, actual);
 }
 }  // namespace rna_to_protein_translation_test

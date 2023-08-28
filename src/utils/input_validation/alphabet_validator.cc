@@ -7,7 +7,7 @@
 namespace input_validation {
 input_validation::AlphabetValidator::AlphabetValidator(
     const std::string& alphabet, const std::string& error_message) {
-  this->lookup_vector_ = std::vector<int>(128, false);
+  this->lookup_vector_ = std::vector<int>(128, 0);
 
   for (char c : alphabet) this->SetLookupVector(c);
 
@@ -19,12 +19,12 @@ std::vector<int> input_validation::AlphabetValidator::GetLookupVector() {
 }
 
 void input_validation::AlphabetValidator::SetLookupVector(char character) {
-  this->lookup_vector_.at(character) = true;
+  this->lookup_vector_.at(character) = 1;
 }
 
 bool input_validation::AlphabetValidator::IsPartOfTheAlphabet(
     char character) const {
-  return this->lookup_vector_.at(character);
+  return this->lookup_vector_.at(character) != 0;
 }
 
 void AlphabetValidator::IsPartOfTheAlphabet(const std::string& sequence) const {

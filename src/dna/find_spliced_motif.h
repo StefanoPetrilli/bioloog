@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <vector>
 
-namespace DNA {
+namespace dna {
 std::vector<int> FindSplicedMotif(
     const std::pair<std::string, std::string> &sequences);
 }

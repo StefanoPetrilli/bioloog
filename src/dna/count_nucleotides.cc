@@ -1,10 +1,10 @@
 #include "count_nucleotides.h"
 
-namespace DNA {
-std::array<int, 4> CountNucleotides(std::string const& DNA) {
+namespace dna {
+std::array<int, 4> CountNucleotides(std::string const& dna) {
   std::array<int, 4> counting = {0, 0, 0, 0};
 
-  for (char c : DNA) {
+  for (char c : dna) {
     switch (c) {
       case 'A':
         counting[0]++;
@@ -27,4 +27,4 @@ std::array<int, 4> CountNucleotides(std::string const& DNA) {
 
   return counting;
 }
-}  // namespace DNA
+}  // namespace dna

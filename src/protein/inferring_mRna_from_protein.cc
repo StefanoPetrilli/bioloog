@@ -25,7 +25,7 @@ unsigned int SequentialInferMRna(const std::string& protein_sequence) {
 }
 
 unsigned int ParallelInferMRna(const std::string& protein_sequence) {
-  long result = 1;
+  int64_t result = 1;
 
 #pragma omp parallel shared(result, protein_sequence, kModule) default(none)
   {
@@ -37,9 +37,8 @@ unsigned int ParallelInferMRna(const std::string& protein_sequence) {
 #pragma omp taskloop num_tasks(1) reduction(productAndModule \
                                             : result)        \
     shared(protein_sequence, kModule) default(none)
-      for (size_t i = 0; i < protein_sequence.length(); i++)
-        result = (result * GetPossibleTranslations(protein_sequence.at(i))) %
-                 kModule;
+      for (char i : protein_sequence)
+        result = (result * GetPossibleTranslations(i)) % kModule;
     }
   }
 

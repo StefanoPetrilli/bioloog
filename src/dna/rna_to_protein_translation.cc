@@ -4,10 +4,12 @@
 
 #include "rna_to_protein_translation.h"
 
-namespace DNA {
+namespace dna {
 std::string RnaToProteinTranslation(std::string rna_sequence) {
-  std::string result, substring;
-  for (int i = 0; i + CODON_LENGTH <= (int)rna_sequence.length(); i++) {
+  std::string result;
+  std::string substring;
+  for (int i = 0; i + CODON_LENGTH <= static_cast<int>(rna_sequence.length());
+       i++) {
     substring = rna_sequence.substr(i, CODON_LENGTH);
     auto it = codon_table.find(substring);
 
@@ -21,4 +23,4 @@ std::string RnaToProteinTranslation(std::string rna_sequence) {
 
   return result;
 }
-}  // namespace DNA
+}  // namespace dna

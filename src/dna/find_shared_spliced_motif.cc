@@ -1,6 +1,6 @@
 #include "find_shared_spliced_motif.h"
 
-namespace DNA {
+namespace dna {
 
 std::string FindSharedSplicedMotif(
     const std::pair<std::string, std::string>& sequences) {
@@ -9,9 +9,8 @@ std::string FindSharedSplicedMotif(
 
 std::string RecursiveFindSharedSplicedMotif(
     const std::pair<std::string, std::string>& sequences) {
-  if (sequences.first.empty() || sequences.second.empty())
-    return std::string();
-  else if (sequences.first.back() == sequences.second.back())
+  if (sequences.first.empty() || sequences.second.empty()) return std::string();
+  if (sequences.first.back() == sequences.second.back())
     return RecursiveFindSharedSplicedMotif(std::make_pair(
                sequences.first.substr(0, sequences.first.size() - 1),
                sequences.second.substr(0, sequences.second.size() - 1))) +
@@ -31,13 +30,13 @@ std::string RecursiveFindSharedSplicedMotif(
 
 std::string DynamicProgrammingFindSharedSplicedMotif(
     const std::pair<std::string, std::string>& sequences) {
-  size_t numRows = sequences.second.size() + 1,
-         numCols = sequences.first.size() + 1;
+  size_t num_rows = sequences.second.size() + 1;
+  size_t num_cols = sequences.first.size() + 1;
   std::vector<std::vector<std::string>> result_matrix(
-      numRows, std::vector<std::string>(numCols, std::string()));
+      num_rows, std::vector<std::string>(num_cols, std::string()));
 
-  for (size_t i = 1; i < numRows; ++i) {
-    for (size_t y = 1; y < numCols; ++y) {
+  for (size_t i = 1; i < num_rows; ++i) {
+    for (size_t y = 1; y < num_cols; ++y) {
       if (sequences.second.at(i - 1) == sequences.first.at(y - 1))
         result_matrix.at(i).at(y) =
             result_matrix.at(i - 1).at(y - 1) + sequences.second.at(i - 1);
@@ -52,4 +51,4 @@ std::string DynamicProgrammingFindSharedSplicedMotif(
   return result_matrix.back().back();
 }
 
-}  // namespace DNA
+}  // namespace dna

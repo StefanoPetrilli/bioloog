@@ -3,7 +3,7 @@
 //
 #include "restriction_sites.h"
 
-namespace DNA {
+namespace dna {
 std::list<RestrictionSite> RestrictionSites(const std::string& dna_sequence) {
 #ifdef _OPENMP
   return ParallelRestrictionSites(dna_sequence);
@@ -68,17 +68,14 @@ std::list<RestrictionSite> ParallelRestrictionSites(
     reduction(merge                                         \
               : result) private(position, private_to_check) \
         shared(dna_sequence, kShortestReversePalindrome) default(none)
-      for (size_t i = 0; i < kShortestReversePalindrome.size(); ++i) {
-        position = dna_sequence.find(kShortestReversePalindrome.at(i));
+      for (const auto& i : kShortestReversePalindrome) {
+        position = dna_sequence.find(i);
 
         for (; position != std::string::npos;
-             position = dna_sequence.find(kShortestReversePalindrome.at(i),
-                                          position + 1)) {
-          result.emplace_back(kShortestReversePalindrome.at(i), position,
-                              kShortestReversePalindrome.at(i).length());
+             position = dna_sequence.find(i, position + 1)) {
+          result.emplace_back(i, position, i.length());
           if (position != 0)
-            InsertPossiblePalindromeInToCheck(private_to_check,
-                                              kShortestReversePalindrome.at(i),
+            InsertPossiblePalindromeInToCheck(private_to_check, i,
                                               position - 1);
         }
 
@@ -135,4 +132,4 @@ std::string Format(const std::list<RestrictionSite>& list) {
 
   return result;
 }
-}  // namespace DNA
+}  // namespace dna

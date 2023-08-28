@@ -39,25 +39,29 @@ INSTANTIATE_TEST_SUITE_P(
                       std::make_tuple("GATATATGCATATACTT", "ATAT", true)));
 
 TEST_P(FindMotifParametrizedTestsSingleCharacterMotif,
-       Expect_ProperMotifPosition_WithSingleCharacterMotif) {
+       ExpectProperMotifPositionWithSingleCharacterMotif) {
   std::string dna_sequence = std::get<0>(GetParam());
   std::string motif = std::get<1>(GetParam());
   std::list<int> expected = std::get<2>(GetParam());
 
-  EXPECT_EQ(expected, DNA::FindMotif(dna_sequence, motif)) << std::endl;
+  EXPECT_EQ(expected, dna::FindMotif(dna_sequence, motif)) << std::endl;
 }
 
 TEST_P(FindMotifParametrizedTests,
-       Expect_ProperMotifPosition_WithMultipleCharacterMotif) {
+       ExpectProperMotifPositionWithMultipleCharacterMotif) {
   std::string dna_sequence = std::get<0>(GetParam());
   std::string motif = std::get<1>(GetParam());
   std::list<int> expected = std::get<2>(GetParam());
 
-  EXPECT_EQ(expected, DNA::FindMotif(dna_sequence, motif)) << std::endl;
+  EXPECT_EQ(expected, dna::FindMotif(dna_sequence, motif)) << std::endl;
 }
 
-TEST(FindMotifDataset, Expect_ProperTranslation) {
-  std::string input, expected, dna_sequence, motif, result;
+TEST(FindMotifDataset, ExpectProperTranslation) {
+  std::string input;
+  std::string expected;
+  std::string dna_sequence;
+  std::string motif;
+  std::string result;
 
   std::vector<std::string> file_lines =
       file::ReadLinesFromFile(file::kRosalindSubsDataset);
@@ -66,31 +70,34 @@ TEST(FindMotifDataset, Expect_ProperTranslation) {
 
   file::ReadFromFile(file::kRosalindSubsOutput, expected);
 
-  for (auto element : DNA::FindMotif(dna_sequence, motif))
+  for (auto element : dna::FindMotif(dna_sequence, motif))
     result += std::to_string(element + 1) + " ";
 
   EXPECT_EQ(expected, result);
 }
 
-TEST_P(ContainMotifParametrizedTests, Expect_Matching_Value) {
+TEST_P(ContainMotifParametrizedTests, ExpectMatchingValue) {
   std::string dna_sequence = std::get<0>(GetParam());
   std::string motif = std::get<1>(GetParam());
   bool expected = std::get<2>(GetParam());
-  bool result = DNA::ContainMotif(dna_sequence, motif);
+  bool result = dna::ContainMotif(dna_sequence, motif);
 
   EXPECT_EQ(expected, result) << std::endl;
 }
 
-TEST(ParallelContainMotifDatasetTest, Expect_Matching_Value) {
-  std::string input, dna_sequence, motif;
-  bool result, expected = true;
+TEST(ParallelContainMotifDatasetTest, ExpectMatchingValue) {
+  std::string input;
+  std::string dna_sequence;
+  std::string motif;
+  bool result;
+  bool expected = true;
 
   std::vector<std::string> file_lines =
       file::ReadLinesFromFile(file::kCovidFileName);
   dna_sequence = file_lines.at(0);
   motif = file_lines.at(1);
 
-  result = DNA::ContainMotif(dna_sequence, motif);
+  result = dna::ContainMotif(dna_sequence, motif);
 
   EXPECT_EQ(expected, result) << std::endl;
 }

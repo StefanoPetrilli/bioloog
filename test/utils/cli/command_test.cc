@@ -22,8 +22,8 @@ std::unordered_map<std::string, std::string> input_with_errors = {
     {"find_spliced_motif", file::kFastaErrorFile},
     {"find_shared_spliced_motif", file::kFastaErrorFile}};
 
-TEST(Command, Expect_Throw_WhenInputsAreNotValid) {
-  for (auto command : cli::VirtualCommand::GetList()) {
+TEST(Command, ExpectThrowWhenInputsAreNotValid) {
+  for (auto *command : cli::VirtualCommand::GetList()) {
     std::string path = input_with_errors[command->GetName()];
     EXPECT_THROW(command->Exec(path), std::exception);
   }

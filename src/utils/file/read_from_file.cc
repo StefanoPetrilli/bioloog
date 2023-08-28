@@ -26,7 +26,9 @@ std::vector<std::string> ReadLinesFromFile(const std::string& path) {
   std::vector<std::string> result{};
   std::string line;
 
-  size_t position_start = 0, position_end, delimiter_length = 1;
+  size_t position_start = 0;
+  size_t position_end;
+  size_t delimiter_length = 1;
   while ((position_end = file_content.find(kNewLine, position_start)) !=
          std::string::npos) {
     line = RemoveEscapeCharacter(
@@ -41,7 +43,7 @@ std::vector<std::string> ReadLinesFromFile(const std::string& path) {
   return result;
 }
 
-auto IsSequenceName = [](const std::string& line) {
+auto is_sequence_name = [](const std::string& line) {
   return line.starts_with('>');
 };
 
@@ -50,9 +52,10 @@ std::unordered_map<std::string, std::string> ReadFastaFromFile(
   std::unordered_map<std::string, std::string> result;
   auto file_lines = ReadLinesFromFile(path);
 
-  std::string key, content;
+  std::string key;
+  std::string content;
   for (const std::string& line : file_lines) {
-    if (IsSequenceName(line)) {
+    if (is_sequence_name(line)) {
       result.insert({key, content});
       key = KeyFormat(line);
       content = "";
@@ -74,9 +77,9 @@ std::pair<std::string, std::string> ReadFastaPairFromFile(
 
   file_lines.erase(file_lines.begin());
   for (size_t i = 0; i < file_lines.size(); i++) {
-    if (IsSequenceName(file_lines[i]) && second_sequence_index == 0)
+    if (is_sequence_name(file_lines[i]) && second_sequence_index == 0)
       second_sequence_index = i;
-    else if (IsSequenceName(file_lines[i]) && second_sequence_index != 0) {
+    else if (is_sequence_name(file_lines[i]) && second_sequence_index != 0) {
       throw std::invalid_argument("The file contains more than two sequences");
     }
   }

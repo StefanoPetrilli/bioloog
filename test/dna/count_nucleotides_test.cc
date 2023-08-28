@@ -5,7 +5,6 @@
 #include "read_from_file.h"
 
 namespace count_nucleotides_test {
-
 class CountNucleotidesMultipleParametersTests
     : public ::testing::TestWithParam<
           std::tuple<std::string, std::array<int, 4>>> {};
@@ -20,27 +19,28 @@ INSTANTIATE_TEST_SUITE_P(
         std::make_tuple("TTTTTTTTTT", std::array<int, 4>{0, 0, 0, 10})));
 
 TEST(CountNucleotides,
-     Expect_invalid_argument_whenStringContainsInvalidCharacters) {
-  EXPECT_THROW(DNA::CountNucleotides("$"), std::invalid_argument) << std::endl;
-  EXPECT_THROW(DNA::CountNucleotides("E"), std::invalid_argument) << std::endl;
-  EXPECT_THROW(DNA::CountNucleotides("."), std::invalid_argument) << std::endl;
-  EXPECT_THROW(DNA::CountNucleotides("/"), std::invalid_argument) << std::endl;
+     ExpectInvalidArgumentWhenStringContainsInvalidCharacters) {
+  EXPECT_THROW(dna::CountNucleotides("$"), std::invalid_argument) << std::endl;
+  EXPECT_THROW(dna::CountNucleotides("E"), std::invalid_argument) << std::endl;
+  EXPECT_THROW(dna::CountNucleotides("."), std::invalid_argument) << std::endl;
+  EXPECT_THROW(dna::CountNucleotides("/"), std::invalid_argument) << std::endl;
 }
 
-TEST_P(CountNucleotidesMultipleParametersTests, Expect_properCounting) {
+TEST_P(CountNucleotidesMultipleParametersTests, ExpectProperCounting) {
   std::array<int, 4> expected = std::get<1>(GetParam());
   std::string input = std::get<0>(GetParam());
 
-  EXPECT_EQ(expected, DNA::CountNucleotides(input)) << std::endl;
+  EXPECT_EQ(expected, dna::CountNucleotides(input)) << std::endl;
 }
 
-TEST(CountNucleotidesDatasetTest, Expect_properTranslation) {
-  std::string input, expected;
+TEST(CountNucleotidesDatasetTest, ExpectProperTranslation) {
+  std::string input;
+  std::string expected;
 
   file::ReadFromFile(file::kRosalindDnaDataset, input);
   file::ReadFromFile(file::kRosalindDnaOutput, expected);
 
-  auto result = DNA::CountNucleotides(input);
+  auto result = dna::CountNucleotides(input);
 
   std::string output =
       std::to_string(result[0]) + " " + std::to_string(result[1]) + " " +

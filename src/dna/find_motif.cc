@@ -3,7 +3,7 @@
 //
 #include "find_motif.h"
 
-namespace DNA {
+namespace dna {
 std::list<int> FindMotif(const std::string& dna_sequence,
                          const std::string& motif) {
   std::list<int> result{};
@@ -12,7 +12,7 @@ std::list<int> FindMotif(const std::string& dna_sequence,
   while (floating_position != std::string::npos) {
     floating_position = dna_sequence.find(motif, floating_position);
     if (floating_position != std::string::npos) {
-      result.push_back((int)floating_position);
+      result.push_back(static_cast<int>(floating_position));
       floating_position++;
     }
   }
@@ -63,4 +63,4 @@ bool ParallelContainMotif(const std::string& dna_sequence,
   return found;
 }
 #endif
-}  // namespace DNA
+}  // namespace dna

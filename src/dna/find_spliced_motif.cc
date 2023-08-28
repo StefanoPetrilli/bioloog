@@ -1,6 +1,6 @@
 #include "find_spliced_motif.h"
 
-namespace DNA {
+namespace dna {
 std::vector<int> FindSplicedMotif(
     const std::pair<std::string, std::string>& sequences) {
   std::vector<int> result{};
@@ -17,4 +17,4 @@ std::vector<int> FindSplicedMotif(
 
   return result;
 }
-}  // namespace DNA
+}  // namespace dna

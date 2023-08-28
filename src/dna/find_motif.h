@@ -9,7 +9,7 @@
 
 #include "alphabet_validator.h"
 
-namespace DNA {
+namespace dna {
 std::list<int> FindMotif(const std::string &dna_sequence,
                          const std::string &motif);
 bool ContainMotif(const std::string &dna_sequence, const std::string &motif);
@@ -21,4 +21,4 @@ static const size_t kDimensionRequirementForParallelExecutionFindMotif =
 bool ParallelContainMotif(const std::string &dna_sequence,
                           const std::string &motif, size_t chunk_size = 1000);
 #endif
-}  // namespace DNA
+}  // namespace dna

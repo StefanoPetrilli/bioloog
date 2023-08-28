@@ -9,7 +9,7 @@
 #include <omp.h>
 #endif
 
-namespace DNA {
+namespace dna {
 using RestrictionSite = std::tuple<std::string, int, int>;
 const static std::vector<std::string> kShortestReversePalindrome = {
     "AATT", "ACGT", "ATAT", "AGCT", "TATA", "TCGA", "TTAA", "TGCA",
@@ -33,4 +33,4 @@ static const size_t kDimensionRequirementForParallelExecutionRestrictionSite =
 std::list<RestrictionSite> ParallelRestrictionSites(
     const std::string &dna_sequence);
 #endif
-}  // namespace DNA
+}  // namespace dna

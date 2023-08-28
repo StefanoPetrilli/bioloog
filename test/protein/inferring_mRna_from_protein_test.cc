@@ -4,7 +4,7 @@
 
 #include "read_from_file.h"
 
-namespace inferring_mRna_from_protein_test {
+namespace inferring_m_rna_from_protein_test {
 class InferringmRnaFromProteinMultipleParameters
     : public ::testing::TestWithParam<std::tuple<std::string, unsigned int>> {};
 
@@ -13,7 +13,7 @@ INSTANTIATE_TEST_SUITE_P(
     ::testing::Values(std::tuple<std::string, size_t>("MA", 12)));
 
 TEST_P(InferringmRnaFromProteinMultipleParameters,
-       GivenSequence_Expect_CorrectNumber) {
+       GivenSequenceExpectCorrectNumber) {
   auto input = std::get<0>(GetParam());
   auto expected = std::get<1>(GetParam());
 
@@ -22,7 +22,7 @@ TEST_P(InferringmRnaFromProteinMultipleParameters,
 }
 
 TEST(InferringmRnaFromProteinMultipleDataset,
-     GivenSequence_Expect_CorrectNumber) {
+     GivenSequenceExpectCorrectNumber) {
   std::string input;
   file::ReadFromFile(file::kInfermRnaDatasetInput, input);
   auto expected = 225216;
@@ -30,4 +30,4 @@ TEST(InferringmRnaFromProteinMultipleDataset,
   auto actual = protein::InferMRna(input);
   EXPECT_EQ(expected, actual);
 }
-}  // namespace inferring_mRna_from_protein_test
+}  // namespace inferring_m_rna_from_protein_test

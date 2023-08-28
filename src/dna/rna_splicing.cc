@@ -4,7 +4,7 @@
 
 #include "rna_splicing.h"
 
-namespace DNA {
+namespace dna {
 std::string RnaSplicing(
     const std::unordered_map<std::string, std::string>& sequences) {
   auto rna_sequence = GetLonger(sequences);
@@ -33,4 +33,4 @@ std::string GetLonger(
 
   return longest;
 }
-}  // namespace DNA
+}  // namespace dna
