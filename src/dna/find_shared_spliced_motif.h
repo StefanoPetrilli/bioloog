@@ -5,13 +5,9 @@
 #include <string>
 #include <vector>
 
-#include "format.h"
+#include "longest_common_subsequence.h"
 
 namespace dna {
 std::string FindSharedSplicedMotif(
-    const std::pair<std::string, std::string>& sequences);
-std::string RecursiveFindSharedSplicedMotif(
-    const std::pair<std::string, std::string>& sequences);
-std::string DynamicProgrammingFindSharedSplicedMotif(
     const std::pair<std::string, std::string>& sequences);
 }  // namespace dna

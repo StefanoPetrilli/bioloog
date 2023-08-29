@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.cc": "cpp",
         "tuple": "cpp",
         "array": "cpp",
         "iostream": "cpp",
@@ -68,6 +69,7 @@
         "variant": "cpp",
         "semaphore": "cpp",
         "C_Cpp.clang_format_fallbackStyle": "Google",
+        "span": "cpp"
     },
     "C_Cpp.default.compilerPath": "/usr/bin/g++-12"
 }

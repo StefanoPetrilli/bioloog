@@ -28,6 +28,8 @@ static const std::string kRosalindRestrictionDataset =
 static const std::string kRosalindSplicingDataset =
     "rosalind_splc_1_dataset.txt";
 static const std::string kRosalindSplicingOutput = "rosalind_splc_1_output.txt";
+static const std::string kEditDistanceDataset = "rosalind_edit_1_dataset.txt";
+static const std::string kEditDistanceOutput = "rosalind_edit_1_output.txt";
 static const std::string kCovidShortFastaFileName = "fasta_covid19_short.txt";
 static const std::string kCovidShortFastaProfileFileName =
     "fasta_covid19_short_profile.txt";
@@ -56,4 +58,5 @@ static const std::string kFindSplicedMotifExample =
     "find_spliced_motif_example.txt";
 static const std::string kFindSharedSplicedMotifExample =
     "shared_spliced_motif.txt";
+static const std::string kEditDistance = "edit_distance.txt";
 }  // namespace file

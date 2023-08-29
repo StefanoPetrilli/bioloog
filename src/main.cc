@@ -1,7 +1,12 @@
-#include "utils/cli/command.h"
-#include "utils/cli/display_help.h"
+#include "command.h"
+#include "display_help.h"
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char *argv[]) {
+  auto *e = new cli::EditDistance(
+      "edit_distance", "Find a the edit distance between two protein strings.");
+  e->Exec(file::kEditDistance);
+
+  /*
   if (argc == 1)
     cli::DisplayHelp();
   else {
@@ -9,4 +14,5 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char *argv[]) {
       if (argv[1] == i->GetName()) i->Exec(argv[2]);
     return 0;
   }
+  */
 }

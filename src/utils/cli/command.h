@@ -8,6 +8,7 @@
 
 #include "count_nucleotides.h"
 #include "dna_to_rna_transcription.h"
+#include "edit_distance.h"
 #include "find_consensus_and_profile.h"
 #include "find_shared_spliced_motif.h"
 #include "find_spliced_motif.h"
@@ -118,6 +119,13 @@ class FindSharedSplicedMotif : VirtualCommand {
  public:
   FindSharedSplicedMotif(const std::string& name,
                          const std::string& description)
+      : VirtualCommand(name, description){};
+  void Exec(const std::string& path) override;
+};
+
+class EditDistance : VirtualCommand {
+ public:
+  EditDistance(const std::string& name, const std::string& description)
       : VirtualCommand(name, description){};
   void Exec(const std::string& path) override;
 };

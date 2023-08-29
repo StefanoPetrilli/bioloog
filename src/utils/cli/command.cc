@@ -175,6 +175,17 @@ void FindSharedSplicedMotif::Exec(const std::string& path) {
   std::cout << "The result is: " << result << std::endl;
 }
 
+void EditDistance::Exec(const std::string& path) {
+  std::string file_content;
+  auto pair = file::ReadFastaPairFromFile(path);
+
+  input_validation::kStandardValidatorProtein.IsPartOfTheAlphabet(pair.first);
+  input_validation::kStandardValidatorProtein.IsPartOfTheAlphabet(pair.second);
+
+  auto result = protein::EditDistance(pair);
+  std::cout << "The result is: " << result << std::endl;
+}
+
 static const cli::CountNucleotides kCountNucleotides =
     CountNucleotides("count_nucleotides",
                      "Takes a dna string and returns the counting of each "
@@ -228,4 +239,7 @@ static const cli::FindSharedSplicedMotif kFindSharedSplicedMotif =
     FindSharedSplicedMotif(
         "find_shared_spliced_motif",
         "Takes two dna sequence and find the longest shared spliced motif");
+
+static const cli::EditDistance kEditDistance = EditDistance(
+    "edit_distance", "Find a the edit distance between two protein strings.");
 }  // namespace cli

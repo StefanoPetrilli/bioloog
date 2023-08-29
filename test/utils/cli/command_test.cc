@@ -20,7 +20,8 @@ std::unordered_map<std::string, std::string> input_with_errors = {
     {"infer_possible_mRna", file::kProteinErrorFile},
     {"rna_splicing", file::kFastaErrorFile},
     {"find_spliced_motif", file::kFastaErrorFile},
-    {"find_shared_spliced_motif", file::kFastaErrorFile}};
+    {"find_shared_spliced_motif", file::kFastaErrorFile},
+    {"edit_distance", file::kFastaErrorFile}};
 
 TEST(Command, ExpectThrowWhenInputsAreNotValid) {
   for (auto *command : cli::VirtualCommand::GetList()) {
